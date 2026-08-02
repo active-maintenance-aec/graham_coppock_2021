@@ -1,0 +1,25 @@
+# The deposited archive is fetched from Dataverse by download_original.R, not redistributed.
+original/
+
+# clean_studies.R rewrites the deposited data into these two objects. Committing them
+# would redistribute the deposit through maintained/output/, which the line above
+# exists to prevent, and they are 30 MB. Every other file in output/ is committed:
+# those are the reproduction check.
+maintained/output/data_study1-3_clean.rds
+maintained/output/data_impeach_clean.rds
+
+# Written by the default graphics device when a script is run with Rscript.
+Rplots.pdf
+
+# Working log stays private, per the house rule for public repos.
+notes.md
+
+# Quarto build artifacts
+/.quarto/
+*_files/
+report/maintained/
+
+# RStudio project state
+.Rproj.user/
+
+**/*.quarto_ipynb

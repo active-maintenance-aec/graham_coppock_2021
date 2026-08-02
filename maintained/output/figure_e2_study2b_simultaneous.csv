@@ -1,0 +1,117 @@
+panel,study,Topic,Party,Estimator,Format,category,share,estimate,std.error,conf.low,conf.high,label
+(a) No pretreatment,2b,Obama torture exec. order,Democrat,More-less,Counterfactual,  Diff,0.10769230769230771,0.10769230769230771,0.028505121270262005,0.0514725824986536,0.16391203288596182,0.11 (0.03)
+(a) No pretreatment,2b,Obama torture exec. order,Democrat,More-less,Counterfactual, More,0.13846153846153847,NA,0.02479710874695394,NA,NA,NA
+(a) No pretreatment,2b,Obama torture exec. order,Democrat,More-less,Counterfactual, Same,0.8307692307692316,NA,0.026920244554764113,NA,NA,NA
+(a) No pretreatment,2b,Obama torture exec. order,Democrat,More-less,Counterfactual,Less,0.030769230769230774,NA,0.012398554373476972,NA,NA,NA
+(a) No pretreatment,2b,Obama torture exec. order,Democrat,More-less,Simultaneous,  Diff,0.03225806451612904,0.03225806451612904,0.025439962571557423,-0.018098781545336964,0.08261491057759504,0.03 (0.03)
+(a) No pretreatment,2b,Obama torture exec. order,Democrat,More-less,Simultaneous, More,0.05645161290322581,NA,0.020809790594432893,NA,NA,NA
+(a) No pretreatment,2b,Obama torture exec. order,Democrat,More-less,Simultaneous, Same,0.9193548387096777,NA,0.02455150869650657,NA,NA,NA
+(a) No pretreatment,2b,Obama torture exec. order,Democrat,More-less,Simultaneous,Less,0.02419354838709678,NA,0.013854124038505378,NA,NA,NA
+(a) No pretreatment,2b,Obama torture exec. order,Democrat,More-less,Change,  Diff,0.4580152671755724,0.4580152671755724,0.057608986283517793,0.34404277753459545,0.5719877568165493,0.46 (0.06)
+(a) No pretreatment,2b,Obama torture exec. order,Democrat,More-less,Change, More,0.5496183206106868,NA,0.04363643698524778,NA,NA,NA
+(a) No pretreatment,2b,Obama torture exec. order,Democrat,More-less,Change, Same,0.35877862595419846,NA,0.04206739313864908,NA,NA,NA
+(a) No pretreatment,2b,Obama torture exec. order,Democrat,More-less,Change,Less,0.09160305343511449,NA,0.02530003557864298,NA,NA,NA
+(a) No pretreatment,2b,Obama torture exec. order,Democrat,CATE,Diff. in means,NA,NA,0.255003159890457,0.0613227594209046,0.13405433903740477,0.3759519807435093,0.26 (0.06)
+(a) No pretreatment,2b,Obama torture exec. order,Democrat,CATE,Counterfactual,NA,NA,0.10769230769230771,0.028505121270262,0.051472582498653587,0.16391203288596184,0.11 (0.03)
+(a) No pretreatment,2b,Obama torture exec. order,Democrat,CATE,Simultaneous,NA,NA,0.03225806451612904,0.025439962571557426,-0.018098781545337055,0.08261491057759512,0.03 (0.03)
+(a) No pretreatment,2b,Obama torture exec. order,Republican,More-less,Counterfactual,  Diff,0.023923444976076555,0.023923444976076555,0.027501958463704648,-0.030294869116454702,0.07814175906860782,0.02 (0.03)
+(a) No pretreatment,2b,Obama torture exec. order,Republican,More-less,Counterfactual, More,0.09090909090909093,NA,0.019933136802432482,NA,NA,NA
+(a) No pretreatment,2b,Obama torture exec. order,Republican,More-less,Counterfactual, Same,0.8421052631578955,NA,0.02528339270606638,NA,NA,NA
+(a) No pretreatment,2b,Obama torture exec. order,Republican,More-less,Counterfactual,Less,0.06698564593301436,NA,0.01733418271075292,NA,NA,NA
+(a) No pretreatment,2b,Obama torture exec. order,Republican,More-less,Simultaneous,  Diff,-0.0707070707070707,-0.0707070707070707,0.043673148486065114,-0.15737501251358316,0.015960871099441734,-0.07 (0.04)
+(a) No pretreatment,2b,Obama torture exec. order,Republican,More-less,Simultaneous, More,0.0606060606060606,NA,0.024102876029567198,NA,NA,NA
+(a) No pretreatment,2b,Obama torture exec. order,Republican,More-less,Simultaneous, Same,0.808080808080808,NA,0.03978080447933688,NA,NA,NA
+(a) No pretreatment,2b,Obama torture exec. order,Republican,More-less,Simultaneous,Less,0.1313131313131313,NA,0.03411714406215552,NA,NA,NA
+(a) No pretreatment,2b,Obama torture exec. order,Republican,More-less,Change,  Diff,-0.09259259259259259,-0.09259259259259259,0.07387911345915063,-0.23904931851733566,0.05386413333215048,-0.09 (0.07)
+(a) No pretreatment,2b,Obama torture exec. order,Republican,More-less,Change, More,0.24999999999999997,NA,0.04186091791394608,NA,NA,NA
+(a) No pretreatment,2b,Obama torture exec. order,Republican,More-less,Change, Same,0.40740740740740733,NA,0.047500773411999854,NA,NA,NA
+(a) No pretreatment,2b,Obama torture exec. order,Republican,More-less,Change,Less,0.34259259259259256,NA,0.04587904741301815,NA,NA,NA
+(a) No pretreatment,2b,Obama torture exec. order,Republican,CATE,Diff. in means,NA,NA,0.03045871559633028,0.06937183940823693,-0.10630719926317236,0.16722463045583294,0.03 (0.07)
+(a) No pretreatment,2b,Obama torture exec. order,Republican,CATE,Counterfactual,NA,NA,0.023923444976076555,0.02750195846370465,-0.030294869116454834,0.07814175906860794,0.02 (0.03)
+(a) No pretreatment,2b,Obama torture exec. order,Republican,CATE,Simultaneous,NA,NA,-0.0707070707070707,0.043673148486065114,-0.1573750125135833,0.015960871099441887,-0.07 (0.04)
+(a) No pretreatment,2b,Trump coal ash exec. order,Democrat,More-less,Counterfactual,  Diff,-0.08205128205128205,-0.08205128205128205,0.02848133329877307,-0.13822409100110256,-0.02587847310146156,-0.08 (0.03)
+(a) No pretreatment,2b,Trump coal ash exec. order,Democrat,More-less,Counterfactual, More,0.041025641025641026,NA,0.014240666649386535,NA,NA,NA
+(a) No pretreatment,2b,Trump coal ash exec. order,Democrat,More-less,Counterfactual, Same,0.8358974358974367,NA,0.026590917036710814,NA,NA,NA
+(a) No pretreatment,2b,Trump coal ash exec. order,Democrat,More-less,Counterfactual,Less,0.1230769230769231,NA,0.023586755203833534,NA,NA,NA
+(a) No pretreatment,2b,Trump coal ash exec. order,Democrat,More-less,Simultaneous,  Diff,-0.01612903225806452,-0.01612903225806452,0.025564364108387017,-0.06673212353401609,0.03447405901788704,-0.02 (0.03)
+(a) No pretreatment,2b,Trump coal ash exec. order,Democrat,More-less,Simultaneous, More,0.03225806451612904,NA,0.01593112252660629,NA,NA,NA
+(a) No pretreatment,2b,Trump coal ash exec. order,Democrat,More-less,Simultaneous, Same,0.9193548387096777,NA,0.024551508696506574,NA,NA,NA
+(a) No pretreatment,2b,Trump coal ash exec. order,Democrat,More-less,Simultaneous,Less,0.04838709677419356,NA,0.019348281081601793,NA,NA,NA
+(a) No pretreatment,2b,Trump coal ash exec. order,Democrat,More-less,Change,  Diff,-0.03816793893129772,-0.03816793893129772,0.07302263595243048,-0.18263449105367624,0.1062986131910808,-0.04 (0.07)
+(a) No pretreatment,2b,Trump coal ash exec. order,Democrat,More-less,Change, More,0.32824427480916035,NA,0.04118438565806303,NA,NA,NA
+(a) No pretreatment,2b,Trump coal ash exec. order,Democrat,More-less,Change, Same,0.3053435114503817,NA,0.04039314978724566,NA,NA,NA
+(a) No pretreatment,2b,Trump coal ash exec. order,Democrat,More-less,Change,Less,0.36641221374045796,NA,0.042258754519696407,NA,NA,NA
+(a) No pretreatment,2b,Trump coal ash exec. order,Democrat,CATE,Diff. in means,NA,NA,-0.29390905298289555,0.06009816280744443,-0.41243870825585327,-0.1753793977099378,-0.29 (0.06)
+(a) No pretreatment,2b,Trump coal ash exec. order,Democrat,CATE,Counterfactual,NA,NA,-0.08205128205128205,0.028481333298773063,-0.13822409100110256,-0.025878473101461553,-0.08 (0.03)
+(a) No pretreatment,2b,Trump coal ash exec. order,Democrat,CATE,Simultaneous,NA,NA,-0.01612903225806452,0.02556436410838702,-0.06673212353401617,0.034474059017887124,-0.02 (0.03)
+(a) No pretreatment,2b,Trump coal ash exec. order,Republican,More-less,Counterfactual,  Diff,-0,-0,0.030934411244487304,-0.06098346298244781,0.06098346298244781,-0.00 (0.03)
+(a) No pretreatment,2b,Trump coal ash exec. order,Republican,More-less,Counterfactual, More,0.10000000000000002,NA,0.020751433915982238,NA,NA,NA
+(a) No pretreatment,2b,Trump coal ash exec. order,Republican,More-less,Counterfactual, Same,0.7999999999999996,NA,0.027668578554643004,NA,NA,NA
+(a) No pretreatment,2b,Trump coal ash exec. order,Republican,More-less,Counterfactual,Less,0.10000000000000002,NA,0.020751433915982238,NA,NA,NA
+(a) No pretreatment,2b,Trump coal ash exec. order,Republican,More-less,Simultaneous,  Diff,0.040404040404040394,0.040404040404040394,0.040404040404040414,-0.0397764628084234,0.1205845436165042,0.04 (0.04)
+(a) No pretreatment,2b,Trump coal ash exec. order,Republican,More-less,Simultaneous, More,0.10101010101010101,NA,0.030440148787487718,NA,NA,NA
+(a) No pretreatment,2b,Trump coal ash exec. order,Republican,More-less,Simultaneous, Same,0.8383838383838382,NA,0.037183546108874824,NA,NA,NA
+(a) No pretreatment,2b,Trump coal ash exec. order,Republican,More-less,Simultaneous,Less,0.0606060606060606,NA,0.024102876029567195,NA,NA,NA
+(a) No pretreatment,2b,Trump coal ash exec. order,Republican,More-less,Change,  Diff,0.15740740740740736,0.15740740740740736,0.06599091192272391,0.026588121029070932,0.2882266937857438,0.16 (0.07)
+(a) No pretreatment,2b,Trump coal ash exec. order,Republican,More-less,Change, More,0.324074074074074,NA,0.04524596007030055,NA,NA,NA
+(a) No pretreatment,2b,Trump coal ash exec. order,Republican,More-less,Change, Same,0.5092592592592592,NA,0.04832853553437054,NA,NA,NA
+(a) No pretreatment,2b,Trump coal ash exec. order,Republican,More-less,Change,Less,0.16666666666666663,NA,0.036028141763926415,NA,NA,NA
+(a) No pretreatment,2b,Trump coal ash exec. order,Republican,CATE,Diff. in means,NA,NA,0.06181818181818175,0.06605619346963301,-0.0684072873977711,0.1920436510341346,0.06 (0.07)
+(a) No pretreatment,2b,Trump coal ash exec. order,Republican,CATE,Counterfactual,NA,NA,-0,0.0309344112444873,-0.06098346298244763,0.06098346298244763,-0.00 (0.03)
+(a) No pretreatment,2b,Trump coal ash exec. order,Republican,CATE,Simultaneous,NA,NA,0.040404040404040394,0.040404040404040414,-0.03977646280842353,0.12058454361650431,0.04 (0.04)
+(b) Possible pretreatment,2b,Biden skeptical of Anita Hill,Democrat,More-less,Counterfactual,  Diff,-0.019607843137254905,-0.019607843137254905,0.03407368127389225,-0.08720086106510294,0.04798517479059314,-0.02 (0.03)
+(b) Possible pretreatment,2b,Biden skeptical of Anita Hill,Democrat,More-less,Counterfactual, More,0.04901960784313726,NA,0.02148374607571881,NA,NA,NA
+(b) Possible pretreatment,2b,Biden skeptical of Anita Hill,Democrat,More-less,Counterfactual, Same,0.8823529411764706,NA,0.032059077331445286,NA,NA,NA
+(b) Possible pretreatment,2b,Biden skeptical of Anita Hill,Democrat,More-less,Counterfactual,Less,0.06862745098039216,NA,0.025156485287162595,NA,NA,NA
+(b) Possible pretreatment,2b,Biden skeptical of Anita Hill,Democrat,More-less,Simultaneous,  Diff,0.12903225806451615,0.12903225806451615,0.0457586656918815,0.03845578501575503,0.21960873111327728,0.13 (0.05)
+(b) Possible pretreatment,2b,Biden skeptical of Anita Hill,Democrat,More-less,Simultaneous, More,0.2016129032258065,NA,0.03617540156913754,NA,NA,NA
+(b) Possible pretreatment,2b,Biden skeptical of Anita Hill,Democrat,More-less,Simultaneous, Same,0.7258064516129032,NA,0.04022411265777789,NA,NA,NA
+(b) Possible pretreatment,2b,Biden skeptical of Anita Hill,Democrat,More-less,Simultaneous,Less,0.07258064516129034,NA,0.0233935393605827,NA,NA,NA
+(b) Possible pretreatment,2b,Biden skeptical of Anita Hill,Democrat,More-less,Change,  Diff,-0.08333333333333334,-0.08333333333333334,0.04439646766664382,-0.17116013667718288,0.004493470010516212,-0.08 (0.04)
+(b) Possible pretreatment,2b,Biden skeptical of Anita Hill,Democrat,More-less,Change, More,0.09090909090909091,NA,0.02511722563616081,NA,NA,NA
+(b) Possible pretreatment,2b,Biden skeptical of Anita Hill,Democrat,More-less,Change, Same,0.7348484848484851,NA,0.03856650735812565,NA,NA,NA
+(b) Possible pretreatment,2b,Biden skeptical of Anita Hill,Democrat,More-less,Change,Less,0.17424242424242428,NA,0.033141151034356685,NA,NA,NA
+(b) Possible pretreatment,2b,Biden skeptical of Anita Hill,Democrat,CATE,Counterfactual,NA,NA,-0.019607843137254905,0.034073681273892244,-0.0872008610651028,0.047985174790593,-0.02 (0.03)
+(b) Possible pretreatment,2b,Biden skeptical of Anita Hill,Democrat,CATE,Simultaneous,NA,NA,0.12903225806451615,0.04575866569188151,0.038455785015754876,0.21960873111327744,0.13 (0.05)
+(b) Possible pretreatment,2b,Biden skeptical of Anita Hill,Republican,More-less,Counterfactual,  Diff,0.0303030303030303,0.0303030303030303,0.03030303030303031,-0.029832347106317544,0.09043840771237814,0.03 (0.03)
+(b) Possible pretreatment,2b,Biden skeptical of Anita Hill,Republican,More-less,Counterfactual, More,0.0606060606060606,NA,0.024102876029567195,NA,NA,NA
+(b) Possible pretreatment,2b,Biden skeptical of Anita Hill,Republican,More-less,Counterfactual, Same,0.9090909090909091,NA,0.029039843863633636,NA,NA,NA
+(b) Possible pretreatment,2b,Biden skeptical of Anita Hill,Republican,More-less,Counterfactual,Less,0.0303030303030303,NA,0.017316017316017316,NA,NA,NA
+(b) Possible pretreatment,2b,Biden skeptical of Anita Hill,Republican,More-less,Simultaneous,  Diff,0.07070707070707072,0.07070707070707072,0.04367314848606511,-0.015960871099441706,0.15737501251358316,0.07 (0.04)
+(b) Possible pretreatment,2b,Biden skeptical of Anita Hill,Republican,More-less,Simultaneous, More,0.1313131313131313,NA,0.034117144062155526,NA,NA,NA
+(b) Possible pretreatment,2b,Biden skeptical of Anita Hill,Republican,More-less,Simultaneous, Same,0.808080808080808,NA,0.03978080447933687,NA,NA,NA
+(b) Possible pretreatment,2b,Biden skeptical of Anita Hill,Republican,More-less,Simultaneous,Less,0.06060606060606061,NA,0.024102876029567195,NA,NA,NA
+(b) Possible pretreatment,2b,Biden skeptical of Anita Hill,Republican,More-less,Change,  Diff,-0.1388888888888889,-0.1388888888888889,0.05652069240257547,-0.25093456957856985,-0.026843208199207907,-0.14 (0.06)
+(b) Possible pretreatment,2b,Biden skeptical of Anita Hill,Republican,More-less,Change, More,0.1111111111111111,NA,0.030381596756651707,NA,NA,NA
+(b) Possible pretreatment,2b,Biden skeptical of Anita Hill,Republican,More-less,Change, Same,0.6388888888888888,NA,0.046434546089062716,NA,NA,NA
+(b) Possible pretreatment,2b,Biden skeptical of Anita Hill,Republican,More-less,Change,Less,0.24999999999999997,NA,0.04186091791394608,NA,NA,NA
+(b) Possible pretreatment,2b,Biden skeptical of Anita Hill,Republican,CATE,Counterfactual,NA,NA,0.0303030303030303,0.03030303030303031,-0.029832347106317648,0.09043840771237825,0.03 (0.03)
+(b) Possible pretreatment,2b,Biden skeptical of Anita Hill,Republican,CATE,Simultaneous,NA,NA,0.07070707070707072,0.04367314848606511,-0.01596087109944186,0.1573750125135833,0.07 (0.04)
+(b) Possible pretreatment,2b,DREAM Act helps economy,Democrat,More-less,Counterfactual,  Diff,-0.02,-0.02,0.031718458443950354,-0.08293630292267572,0.04293630292267571,-0.02 (0.03)
+(b) Possible pretreatment,2b,DREAM Act helps economy,Democrat,More-less,Counterfactual, More,0.04000000000000001,NA,0.019694638556693244,NA,NA,NA
+(b) Possible pretreatment,2b,DREAM Act helps economy,Democrat,More-less,Counterfactual, Same,0.9,NA,0.030151134457776365,NA,NA,NA
+(b) Possible pretreatment,2b,DREAM Act helps economy,Democrat,More-less,Counterfactual,Less,0.06,NA,0.023868325657594204,NA,NA,NA
+(b) Possible pretreatment,2b,DREAM Act helps economy,Democrat,More-less,Simultaneous,  Diff,0.09677419354838711,0.09677419354838711,0.035144889189292934,0.027207040303783903,0.1663413467929903,0.10 (0.04)
+(b) Possible pretreatment,2b,DREAM Act helps economy,Democrat,More-less,Simultaneous, More,0.12903225806451615,NA,0.03022717972037536,NA,NA,NA
+(b) Possible pretreatment,2b,DREAM Act helps economy,Democrat,More-less,Simultaneous, Same,0.838709677419355,NA,0.0331632760969653,NA,NA,NA
+(b) Possible pretreatment,2b,DREAM Act helps economy,Democrat,More-less,Simultaneous,Less,0.03225806451612904,NA,0.01593112252660629,NA,NA,NA
+(b) Possible pretreatment,2b,DREAM Act helps economy,Democrat,More-less,Change,  Diff,0.4809160305343511,0.4809160305343511,0.0534770408456957,0.3751181007839376,0.5867139602847646,0.48 (0.05)
+(b) Possible pretreatment,2b,DREAM Act helps economy,Democrat,More-less,Change, More,0.5419847328244274,NA,0.04369802690578756,NA,NA,NA
+(b) Possible pretreatment,2b,DREAM Act helps economy,Democrat,More-less,Change, Same,0.39694656488549623,NA,0.04291135671009222,NA,NA,NA
+(b) Possible pretreatment,2b,DREAM Act helps economy,Democrat,More-less,Change,Less,0.06106870229007633,NA,0.021001706137777396,NA,NA,NA
+(b) Possible pretreatment,2b,DREAM Act helps economy,Democrat,CATE,Counterfactual,NA,NA,-0.02,0.031718458443950354,-0.08293630292267563,0.042936302922675626,-0.02 (0.03)
+(b) Possible pretreatment,2b,DREAM Act helps economy,Democrat,CATE,Simultaneous,NA,NA,0.09677419354838711,0.03514488918929294,0.027207040303783778,0.16634134679299045,0.10 (0.04)
+(b) Possible pretreatment,2b,DREAM Act helps economy,Republican,More-less,Counterfactual,  Diff,-0,-0,0.031782086308186415,-0.06306255440948615,0.06306255440948615,-0.00 (0.03)
+(b) Possible pretreatment,2b,DREAM Act helps economy,Republican,More-less,Counterfactual, More,0.05000000000000002,NA,0.021904291355759033,NA,NA,NA
+(b) Possible pretreatment,2b,DREAM Act helps economy,Republican,More-less,Counterfactual, Same,0.9,NA,0.030151134457776372,NA,NA,NA
+(b) Possible pretreatment,2b,DREAM Act helps economy,Republican,More-less,Counterfactual,Less,0.05,NA,0.02190429135575903,NA,NA,NA
+(b) Possible pretreatment,2b,DREAM Act helps economy,Republican,More-less,Simultaneous,  Diff,-0.0101010101010101,-0.0101010101010101,0.039306893136727965,-0.08810426026868942,0.06790224006666923,-0.01 (0.04)
+(b) Possible pretreatment,2b,DREAM Act helps economy,Republican,More-less,Simultaneous, More,0.0707070707070707,NA,0.025893735129763874,NA,NA,NA
+(b) Possible pretreatment,2b,DREAM Act helps economy,Republican,More-less,Simultaneous, Same,0.8484848484848483,NA,0.0362190487677089,NA,NA,NA
+(b) Possible pretreatment,2b,DREAM Act helps economy,Republican,More-less,Simultaneous,Less,0.08080808080808079,NA,0.027530712883605937,NA,NA,NA
+(b) Possible pretreatment,2b,DREAM Act helps economy,Republican,More-less,Change,  Diff,-0.0462962962962963,-0.0462962962962963,0.07714203078980414,-0.19922137527558495,0.10662878268299233,-0.05 (0.08)
+(b) Possible pretreatment,2b,DREAM Act helps economy,Republican,More-less,Change, More,0.2962962962962962,NA,0.04414343666854929,NA,NA,NA
+(b) Possible pretreatment,2b,DREAM Act helps economy,Republican,More-less,Change, Same,0.3611111111111111,NA,0.04643454608906272,NA,NA,NA
+(b) Possible pretreatment,2b,DREAM Act helps economy,Republican,More-less,Change,Less,0.34259259259259256,NA,0.04587904741301815,NA,NA,NA
+(b) Possible pretreatment,2b,DREAM Act helps economy,Republican,CATE,Counterfactual,NA,NA,-0,0.031782086308186415,-0.06306255440948606,0.06306255440948606,-0.00 (0.03)
+(b) Possible pretreatment,2b,DREAM Act helps economy,Republican,CATE,Simultaneous,NA,NA,-0.0101010101010101,0.039306893136727965,-0.08810426026868955,0.06790224006666935,-0.01 (0.04)

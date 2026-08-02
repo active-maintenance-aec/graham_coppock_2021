@@ -1,0 +1,9 @@
+object,rows_archive,rows_rewrite,rows_joined,max_abs_diff,published_rows_reproduced
+grand comparison estimates,480,480,480,0,NA
+pretreated estimates,428,428,428,0,NA
+Figure 1b group means,7,7,7,2.7755575615628914e-17,NA
+Figure 3a estimates,30,40,30,5.551115123125783e-17,NA
+Table D.3 cells,336,336,336,7.105427357601002e-15,NA
+Table D.4 cells,216,216,216,4.440892098500626e-16,NA
+Table D.5 point estimates,60,60,60,1.1102230246251565e-16,NA
+Table D.5 bootstrap quantities,60,60,60,0.010922325704586622,60

@@ -1,0 +1,457 @@
+Study,Topic,Party,Format,Y1?,N,category,estimate_pct,se_pct
+1,"Blocked
+whistleblower",Democrat,Change,No,53,Diff,-22.641509433962277,10.989343510122465
+1,"Blocked
+whistleblower",Democrat,Change,No,53,Less,45.28301886792454,6.902828418342011
+1,"Blocked
+whistleblower",Democrat,Change,No,53,More,22.64150943396227,5.803700732404124
+1,"Blocked
+whistleblower",Democrat,Change,No,53,Same,32.07547169811322,6.472889149775837
+1,"Blocked
+whistleblower",Democrat,Change + level,Yes,46,Diff,-36.95652173913044,10.475965431015188
+1,"Blocked
+whistleblower",Democrat,Change + level,Yes,46,Less,49.99999999999999,7.453559924999298
+1,"Blocked
+whistleblower",Democrat,Change + level,Yes,46,More,13.043478260869565,5.020437123388049
+1,"Blocked
+whistleblower",Democrat,Change + level,Yes,46,Same,36.95652173913044,7.1954733839457425
+1,"Blocked
+whistleblower",Independent,Change,No,14,Diff,-7.142857142857144,16.4560210240351
+1,"Blocked
+whistleblower",Independent,Change,No,14,Less,21.42857142857143,11.38039295450988
+1,"Blocked
+whistleblower",Independent,Change,No,14,More,14.285714285714288,9.705231721239393
+1,"Blocked
+whistleblower",Independent,Change,No,14,Same,64.28571428571429,13.289435848843764
+1,"Blocked
+whistleblower",Independent,Change + level,Yes,10,Diff,-30,15.275252316519467
+1,"Blocked
+whistleblower",Independent,Change + level,Yes,10,Less,30,15.275252316519467
+1,"Blocked
+whistleblower",Independent,Change + level,Yes,10,More,-0,0
+1,"Blocked
+whistleblower",Independent,Change + level,Yes,10,Same,70,15.275252316519468
+1,"Blocked
+whistleblower",Republican,Change,No,37,Diff,-56.756756756756765,9.120926455548013
+1,"Blocked
+whistleblower",Republican,Change,No,37,Less,59.45945945945946,8.182838794858087
+1,"Blocked
+whistleblower",Republican,Change,No,37,More,2.7027027027027026,2.7027027027027026
+1,"Blocked
+whistleblower",Republican,Change,No,37,Same,37.83783783783784,8.083044344561426
+1,"Blocked
+whistleblower",Republican,Change + level,Yes,47,Diff,-31.914893617021278,8.659657428455231
+1,"Blocked
+whistleblower",Republican,Change + level,Yes,47,Less,38.297872340425535,7.16734777251339
+1,"Blocked
+whistleblower",Republican,Change + level,Yes,47,More,6.382978723404256,3.6042108674890208
+1,"Blocked
+whistleblower",Republican,Change + level,Yes,47,Same,55.319148936170215,7.33026284390658
+1,Death penalty,Democrat,Change,No,52,Diff,-25,8.629721694870586
+1,Death penalty,Democrat,Change,No,52,Less,34.61538461538462,6.661733875264912
+1,Death penalty,Democrat,Change,No,52,More,9.615384615384617,4.128055232750757
+1,Death penalty,Democrat,Change,No,52,Same,55.769230769230774,6.954637296657958
+1,Death penalty,Democrat,Change + level,Yes,45,Diff,-11.111111111111112,7.927845200140841
+1,Death penalty,Democrat,Change + level,Yes,45,Less,20.000000000000004,6.030226891555272
+1,Death penalty,Democrat,Change + level,Yes,45,More,8.888888888888888,4.290254662948546
+1,Death penalty,Democrat,Change + level,Yes,45,Same,71.1111111111111,6.8329432425405106
+1,Death penalty,Independent,Change,No,12,Diff,16.66666666666667,11.236664374387372
+1,Death penalty,Independent,Change,No,12,Less,-0,0
+1,Death penalty,Independent,Change,No,12,More,16.66666666666667,11.236664374387372
+1,Death penalty,Independent,Change,No,12,Same,83.33333333333334,11.236664374387372
+1,Death penalty,Independent,Change + level,Yes,10,Diff,29.999999999999993,21.343747458109497
+1,Death penalty,Independent,Change + level,Yes,10,Less,10,10
+1,Death penalty,Independent,Change + level,Yes,10,More,40,16.329931618554525
+1,Death penalty,Independent,Change + level,Yes,10,Same,49.999999999999986,16.666666666666668
+1,Death penalty,Republican,Change,No,37,Diff,16.21621621621622,9.098653097623496
+1,Death penalty,Republican,Change,No,37,Less,8.108108108108109,4.549326548811747
+1,Death penalty,Republican,Change,No,37,More,24.324324324324326,7.150679219093489
+1,Death penalty,Republican,Change,No,37,Same,67.56756756756758,7.802030664724674
+1,Death penalty,Republican,Change + level,Yes,47,Diff,19.148936170212767,8.405923791336553
+1,Death penalty,Republican,Change + level,Yes,47,Less,8.510638297872344,4.114219418674762
+1,Death penalty,Republican,Change + level,Yes,47,More,27.659574468085108,6.59529705144534
+1,Death penalty,Republican,Change + level,Yes,47,Same,63.829787234042556,7.0844854758726346
+1,"Disputed
+accusation",Democrat,Change,No,53,Diff,-84.90566037735852,5.6482695855704055
+1,"Disputed
+accusation",Democrat,Change,No,53,Less,86.79245283018872,4.69515997666816
+1,"Disputed
+accusation",Democrat,Change,No,53,More,1.886792452830189,1.8867924528301887
+1,"Disputed
+accusation",Democrat,Change,No,53,Same,11.320754716981135,4.393868070601047
+1,"Disputed
+accusation",Democrat,Change + level,Yes,46,Diff,-60.86956521739131,7.911503805191988
+1,"Disputed
+accusation",Democrat,Change + level,Yes,46,Less,63.04347826086957,7.195473383945744
+1,"Disputed
+accusation",Democrat,Change + level,Yes,46,More,2.1739130434782608,2.173913043478261
+1,"Disputed
+accusation",Democrat,Change + level,Yes,46,Same,34.78260869565217,7.099970268936747
+1,"Disputed
+accusation",Independent,Change,No,13,Diff,-38.46153846153847,18.040060614705496
+1,"Disputed
+accusation",Independent,Change,No,13,Less,46.15384615384615,14.390989949130544
+1,"Disputed
+accusation",Independent,Change,No,13,More,7.6923076923076925,7.6923076923076925
+1,"Disputed
+accusation",Independent,Change,No,13,Same,46.15384615384615,14.390989949130544
+1,"Disputed
+accusation",Independent,Change + level,Yes,10,Diff,-40,22.11083193570267
+1,"Disputed
+accusation",Independent,Change + level,Yes,10,Less,50,16.666666666666668
+1,"Disputed
+accusation",Independent,Change + level,Yes,10,More,10,10
+1,"Disputed
+accusation",Independent,Change + level,Yes,10,Same,40,16.329931618554525
+1,"Disputed
+accusation",Republican,Change,No,37,Diff,-5.405405405405405,10.922842930614541
+1,"Disputed
+accusation",Republican,Change,No,37,Less,24.32432432432433,7.150679219093489
+1,"Disputed
+accusation",Republican,Change,No,37,More,18.91891891891892,6.5276471829682174
+1,"Disputed
+accusation",Republican,Change,No,37,Same,56.75675675675676,8.256893144064577
+1,"Disputed
+accusation",Republican,Change + level,Yes,47,Diff,-29.787234042553195,9.081241717341385
+1,"Disputed
+accusation",Republican,Change + level,Yes,47,Less,38.297872340425535,7.16734777251339
+1,"Disputed
+accusation",Republican,Change + level,Yes,47,More,8.51063829787234,4.114219418674763
+1,"Disputed
+accusation",Republican,Change + level,Yes,47,Same,53.19148936170214,7.357064625618348
+1,Endorsed Trump,Democrat,Change,No,53,Diff,-73.58490566037739,7.690938345133104
+1,Endorsed Trump,Democrat,Change,No,53,Less,79.24528301886795,5.623975840347624
+1,Endorsed Trump,Democrat,Change,No,53,More,5.6603773584905674,3.20455764380546
+1,Endorsed Trump,Democrat,Change,No,53,Same,15.094339622641511,4.96447935456809
+1,Endorsed Trump,Democrat,Change + level,Yes,46,Diff,-73.91304347826086,7.246376811594201
+1,Endorsed Trump,Democrat,Change + level,Yes,46,Less,76.08695652173913,6.358669845936321
+1,Endorsed Trump,Democrat,Change + level,Yes,46,More,2.1739130434782608,2.173913043478261
+1,Endorsed Trump,Democrat,Change + level,Yes,46,Same,21.73913043478261,6.148754619013458
+1,Endorsed Trump,Independent,Change,No,14,Diff,-28.571428571428577,12.529400275814703
+1,Endorsed Trump,Independent,Change,No,14,Less,28.571428571428577,12.529400275814703
+1,Endorsed Trump,Independent,Change,No,14,More,-0,0
+1,Endorsed Trump,Independent,Change,No,14,Same,71.42857142857143,12.529400275814703
+1,Endorsed Trump,Independent,Change + level,Yes,10,Diff,-20,24.944382578492945
+1,Endorsed Trump,Independent,Change + level,Yes,10,Less,40,16.329931618554525
+1,Endorsed Trump,Independent,Change + level,Yes,10,More,20,13.333333333333336
+1,Endorsed Trump,Independent,Change + level,Yes,10,Same,40,16.329931618554525
+1,Endorsed Trump,Republican,Change,No,37,Diff,54.054054054054056,9.950775691159695
+1,Endorsed Trump,Republican,Change,No,37,Less,5.405405405405405,3.768738858261602
+1,Endorsed Trump,Republican,Change,No,37,More,59.45945945945946,8.182838794858087
+1,Endorsed Trump,Republican,Change,No,37,Same,35.13513513513514,7.956541321016081
+1,Endorsed Trump,Republican,Change + level,Yes,47,Diff,8.510638297872344,10.89423853453683
+1,Endorsed Trump,Republican,Change + level,Yes,47,Less,23.40425531914894,6.2426763436828825
+1,Endorsed Trump,Republican,Change + level,Yes,47,More,31.914893617021278,6.872960451806369
+1,Endorsed Trump,Republican,Change + level,Yes,47,Same,44.6808510638298,7.33026284390658
+1,Immigration,Democrat,Change,No,52,Diff,5.769230769230769,8.861878607096783
+1,Immigration,Democrat,Change,No,52,Less,17.30769230769231,5.297452250664297
+1,Immigration,Democrat,Change,No,52,More,23.076923076923077,5.8997306834413115
+1,Immigration,Democrat,Change,No,52,Same,59.615384615384606,6.870717031248967
+1,Immigration,Democrat,Change + level,Yes,45,Diff,6.666666666666667,8.040302522073697
+1,Immigration,Democrat,Change + level,Yes,45,Less,11.111111111111112,4.737793696791344
+1,Immigration,Democrat,Change + level,Yes,45,More,17.777777777777775,5.763774795025093
+1,Immigration,Democrat,Change + level,Yes,45,Same,71.1111111111111,6.83294324254051
+1,Immigration,Independent,Change,No,12,Diff,8.333333333333336,14.864709750264083
+1,Immigration,Independent,Change,No,12,Less,8.333333333333336,8.333333333333336
+1,Immigration,Independent,Change,No,12,More,16.66666666666667,11.236664374387372
+1,Immigration,Independent,Change,No,12,Same,75.00000000000003,13.055824196677342
+1,Immigration,Independent,Change + level,Yes,10,Diff,-7.021666937153402e-15,21.081851067789195
+1,Immigration,Independent,Change + level,Yes,10,Less,20,13.333333333333336
+1,Immigration,Independent,Change + level,Yes,10,More,20,13.333333333333336
+1,Immigration,Independent,Change + level,Yes,10,Same,59.999999999999986,16.32993161855452
+1,Immigration,Republican,Change,No,37,Diff,-35.13513513513514,11.107052257601762
+1,Immigration,Republican,Change,No,37,Less,45.94594594594595,8.30589590747107
+1,Immigration,Republican,Change,No,37,More,10.81081081081081,5.175281663547774
+1,Immigration,Republican,Change,No,37,Same,43.24324324324324,8.256893144064577
+1,Immigration,Republican,Change + level,Yes,47,Diff,-14.893617021276597,9.60781529526707
+1,Immigration,Republican,Change + level,Yes,47,Less,29.787234042553195,6.742861107915607
+1,Immigration,Republican,Change + level,Yes,47,More,14.893617021276597,5.249310253140096
+1,Immigration,Republican,Change + level,Yes,47,Same,55.319148936170215,7.33026284390658
+1,"Supports
+charters",Democrat,Change,No,53,Diff,-22.641509433962263,10.654049780910725
+1,"Supports
+charters",Democrat,Change,No,53,Less,43.396226415094354,6.873010445603237
+1,"Supports
+charters",Democrat,Change,No,53,More,20.75471698113208,5.623975840347625
+1,"Supports
+charters",Democrat,Change,No,53,Same,35.8490566037736,6.650261419090688
+1,"Supports
+charters",Democrat,Change + level,Yes,46,Diff,-21.73913043478261,10.728553926563333
+1,"Supports
+charters",Democrat,Change + level,Yes,46,Less,39.130434782608695,7.275304578557179
+1,"Supports
+charters",Democrat,Change + level,Yes,46,More,17.391304347826086,5.650315562208095
+1,"Supports
+charters",Democrat,Change + level,Yes,46,Same,43.47826086956522,7.389883353033023
+1,"Supports
+charters",Independent,Change,No,14,Diff,7.142857142857145,16.4560210240351
+1,"Supports
+charters",Independent,Change,No,14,Less,14.285714285714288,9.705231721239393
+1,"Supports
+charters",Independent,Change,No,14,More,21.42857142857143,11.38039295450988
+1,"Supports
+charters",Independent,Change,No,14,Same,64.28571428571429,13.289435848843764
+1,"Supports
+charters",Independent,Change + level,Yes,10,Diff,10,17.950549357115015
+1,"Supports
+charters",Independent,Change + level,Yes,10,Less,10,10
+1,"Supports
+charters",Independent,Change + level,Yes,10,More,20,13.333333333333336
+1,"Supports
+charters",Independent,Change + level,Yes,10,Same,70,15.275252316519468
+1,"Supports
+charters",Republican,Change,No,37,Diff,40.54054054054055,11.917798698489147
+1,"Supports
+charters",Republican,Change,No,37,Less,13.513513513513514,5.697797585888973
+1,"Supports
+charters",Republican,Change,No,37,More,54.054054054054056,8.30589590747107
+1,"Supports
+charters",Republican,Change,No,37,Same,32.432432432432435,7.802030664724674
+1,"Supports
+charters",Republican,Change + level,Yes,47,Diff,27.65957446808511,9.949980201438319
+1,"Supports
+charters",Republican,Change + level,Yes,47,Less,12.765957446808512,4.9202908961969305
+1,"Supports
+charters",Republican,Change + level,Yes,47,More,40.42553191489362,7.235674844413015
+1,"Supports
+charters",Republican,Change + level,Yes,47,Same,46.80851063829788,7.357064625618349
+1,Tax cuts,Democrat,Change,No,52,Diff,-46.15384615384615,9.694246735578528
+1,Tax cuts,Democrat,Change,No,52,Less,57.692307692307686,6.918047444081744
+1,Tax cuts,Democrat,Change,No,52,More,11.538461538461538,4.473692292598459
+1,Tax cuts,Democrat,Change,No,52,Same,30.769230769230766,6.462831157052353
+1,Tax cuts,Democrat,Change + level,Yes,45,Diff,-24.44444444444444,9.076307015852631
+1,Tax cuts,Democrat,Change + level,Yes,45,Less,33.333333333333336,7.106690545187015
+1,Tax cuts,Democrat,Change + level,Yes,45,More,8.888888888888888,4.290254662948546
+1,Tax cuts,Democrat,Change + level,Yes,45,Same,57.77777777777777,7.4460272702958035
+1,Tax cuts,Independent,Change,No,12,Diff,16.66666666666667,20.719385350268706
+1,Tax cuts,Independent,Change,No,12,Less,16.66666666666667,11.236664374387372
+1,Tax cuts,Independent,Change,No,12,More,33.33333333333334,14.213381090374034
+1,Tax cuts,Independent,Change,No,12,Same,50,15.075567228888184
+1,Tax cuts,Independent,Change + level,Yes,10,Diff,-0,25.819888974716115
+1,Tax cuts,Independent,Change + level,Yes,10,Less,30,15.275252316519467
+1,Tax cuts,Independent,Change + level,Yes,10,More,29.999999999999993,15.275252316519468
+1,Tax cuts,Independent,Change + level,Yes,10,Same,40,16.329931618554525
+1,Tax cuts,Republican,Change,No,37,Diff,70.27027027027027,7.617808344724218
+1,Tax cuts,Republican,Change,No,37,Less,-0,0
+1,Tax cuts,Republican,Change,No,37,More,70.27027027027027,7.617808344724218
+1,Tax cuts,Republican,Change,No,37,Same,29.729729729729726,7.617808344724218
+1,Tax cuts,Republican,Change + level,Yes,47,Diff,19.14893617021277,8.939253245534161
+1,Tax cuts,Republican,Change + level,Yes,47,Less,10.638297872340425,4.546036031565444
+1,Tax cuts,Republican,Change + level,Yes,47,More,29.787234042553195,6.742861107915607
+1,Tax cuts,Republican,Change + level,Yes,47,Same,59.57446808510639,7.235674844413015
+1,"Undisputed
+accusation",Democrat,Change,No,53,Diff,-79.24528301886795,6.235863877776731
+1,"Undisputed
+accusation",Democrat,Change,No,53,Less,81.13207547169814,5.425711362124455
+1,"Undisputed
+accusation",Democrat,Change,No,53,More,1.886792452830189,1.886792452830189
+1,"Undisputed
+accusation",Democrat,Change,No,53,Same,16.981132075471702,5.206789873629056
+1,"Undisputed
+accusation",Democrat,Change + level,Yes,45,Diff,-66.66666666666666,7.784989441615229
+1,"Undisputed
+accusation",Democrat,Change + level,Yes,45,Less,68.88888888888887,6.979205927323109
+1,"Undisputed
+accusation",Democrat,Change + level,Yes,45,More,2.222222222222222,2.222222222222222
+1,"Undisputed
+accusation",Democrat,Change + level,Yes,45,Same,28.888888888888886,6.8329432425405106
+1,"Undisputed
+accusation",Independent,Change,No,13,Diff,-38.46153846153847,21.299035545943777
+1,"Undisputed
+accusation",Independent,Change,No,13,Less,53.84615384615387,14.390989949130544
+1,"Undisputed
+accusation",Independent,Change,No,13,More,15.384615384615385,10.415433852097385
+1,"Undisputed
+accusation",Independent,Change,No,13,Same,30.76923076923077,13.323467750529824
+1,"Undisputed
+accusation",Independent,Change + level,Yes,10,Diff,-80,13.333333333333336
+1,"Undisputed
+accusation",Independent,Change + level,Yes,10,Less,80,13.333333333333336
+1,"Undisputed
+accusation",Independent,Change + level,Yes,10,More,-0,0
+1,"Undisputed
+accusation",Independent,Change + level,Yes,10,Same,20,13.333333333333336
+1,"Undisputed
+accusation",Republican,Change,No,37,Diff,-67.56756756756758,9.53423895879132
+1,"Undisputed
+accusation",Republican,Change,No,37,Less,72.97297297297298,7.401656182502244
+1,"Undisputed
+accusation",Republican,Change,No,37,More,5.405405405405405,3.7687388582616026
+1,"Undisputed
+accusation",Republican,Change,No,37,Same,21.62162162162162,6.861056852129647
+1,"Undisputed
+accusation",Republican,Change + level,Yes,47,Diff,-53.19148936170214,9.546160228786517
+1,"Undisputed
+accusation",Republican,Change + level,Yes,47,Less,61.702127659574465,7.16734777251339
+1,"Undisputed
+accusation",Republican,Change + level,Yes,47,More,8.51063829787234,4.114219418674763
+1,"Undisputed
+accusation",Republican,Change + level,Yes,47,Same,29.787234042553195,6.742861107915606
+2a,Biden / Hill,Democrat,Change,No,332,Diff,-11.74698795180723,3.2826687392834306
+2a,Biden / Hill,Democrat,Change,No,332,Less,24.397590361445783,2.360626562263555
+2a,Biden / Hill,Democrat,Change,No,332,More,12.650602409638553,1.8271388986048305
+2a,Biden / Hill,Democrat,Change,No,332,Same,62.951807228915655,2.654444309200997
+2a,Biden / Hill,Independent,Change,No,135,Diff,-11.111111111111112,3.434077374605582
+2a,Biden / Hill,Independent,Change,No,135,Less,14.074074074074073,3.0041362609516895
+2a,Biden / Hill,Independent,Change,No,135,More,2.9629629629629632,1.4648038602753801
+2a,Biden / Hill,Independent,Change,No,135,Same,82.96296296296303,3.2477811859955956
+2a,Biden / Hill,Republican,Change,No,355,Diff,-14.366197183098592,2.8443793886397515
+2a,Biden / Hill,Republican,Change,No,355,Less,22.535211267605643,2.2206563517220173
+2a,Biden / Hill,Republican,Change,No,355,More,8.16901408450704,1.4557198865028849
+2a,Biden / Hill,Republican,Change,No,355,Same,69.29577464788727,2.451606806624585
+2a,DREAM Act,Democrat,Change,No,332,Diff,42.16867469879518,3.478433948190839
+2a,DREAM Act,Democrat,Change,No,332,Less,7.83132530120482,1.4767103086902718
+2a,DREAM Act,Democrat,Change,No,332,More,50,2.7482485496465636
+2a,DREAM Act,Democrat,Change,No,332,Same,42.16867469879518,2.7143294053829607
+2a,DREAM Act,Independent,Change,No,135,Diff,19.259259259259263,5.2041035278175976
+2a,DREAM Act,Independent,Change,No,135,Less,10.37037037037037,2.633725661744443
+2a,DREAM Act,Independent,Change,No,135,More,29.629629629629633,3.944624162501109
+2a,DREAM Act,Independent,Change,No,135,Same,60.00000000000003,4.23207369515159
+2a,DREAM Act,Republican,Change,No,355,Diff,-3.098591549295775,3.728034044848067
+2a,DREAM Act,Republican,Change,No,355,Less,26.19718309859156,2.3370184222842814
+2a,DREAM Act,Republican,Change,No,355,More,23.098591549295776,2.2400528541032716
+2a,DREAM Act,Republican,Change,No,355,Same,50.70422535211269,2.6572064185904756
+2a,Obama Torture,Democrat,Change,No,332,Diff,35.54216867469879,3.3869284937263364
+2a,Obama Torture,Democrat,Change,No,332,Less,7.53012048192771,1.4503977303466218
+2a,Obama Torture,Democrat,Change,No,332,More,43.0722891566265,2.721741280244676
+2a,Obama Torture,Democrat,Change,No,332,Same,49.39759036144579,2.748049075971858
+2a,Obama Torture,Independent,Change,No,135,Diff,11.11111111111111,5.005984993625448
+2a,Obama Torture,Independent,Change,No,135,Less,11.851851851851853,2.7922050250639003
+2a,Obama Torture,Independent,Change,No,135,More,22.962962962962965,3.6333844140734683
+2a,Obama Torture,Independent,Change,No,135,Same,65.18518518518523,4.115324610336955
+2a,Obama Torture,Republican,Change,No,356,Diff,0.28089887640449446,3.194853520607579
+2a,Obama Torture,Republican,Change,No,356,Less,17.977528089887645,2.0380612803445377
+2a,Obama Torture,Republican,Change,No,356,More,18.258426966292145,2.0504019127456354
+2a,Obama Torture,Republican,Change,No,356,Same,63.76404494382027,2.5511947307727274
+2a,Opposed Kav,Democrat,Change,No,237,Diff,45.14767932489448,4.488656133457368
+2a,Opposed Kav,Democrat,Change,No,237,Less,11.39240506329114,2.068174513588452
+2a,Opposed Kav,Democrat,Change,No,237,More,56.54008438818563,3.2267599955101423
+2a,Opposed Kav,Democrat,Change,No,237,Same,32.067510548523195,3.038193194999034
+2a,Opposed Kav,Independent,Change,No,96,Diff,7.291666666666669,6.325385999362861
+2a,Opposed Kav,Independent,Change,No,96,Less,15.625000000000004,3.7252472542454362
+2a,Opposed Kav,Independent,Change,No,96,More,22.91666666666667,4.312153028672576
+2a,Opposed Kav,Independent,Change,No,96,Same,61.45833333333336,4.993370971094654
+2a,Opposed Kav,Republican,Change,No,225,Diff,-49.77777777777778,4.459893783188027
+2a,Opposed Kav,Republican,Change,No,225,Less,59.555555555555564,3.279189902971935
+2a,Opposed Kav,Republican,Change,No,225,More,9.777777777777777,1.9845078999435273
+2a,Opposed Kav,Republican,Change,No,225,Same,30.666666666666664,3.080919260880345
+2a,Supported Kav,Democrat,Change,No,95,Diff,-68.42105263157895,5.450203751132785
+2a,Supported Kav,Democrat,Change,No,95,Less,71.57894736842105,4.652097479896194
+2a,Supported Kav,Democrat,Change,No,95,More,3.157894736842106,1.8037112288197883
+2a,Supported Kav,Democrat,Change,No,95,Same,25.26315789473685,4.481746243373484
+2a,Supported Kav,Independent,Change,No,39,Diff,-17.94871794871795,8.901769276135212
+2a,Supported Kav,Independent,Change,No,39,Less,25.64102564102564,7.083413480167724
+2a,Supported Kav,Independent,Change,No,39,More,7.6923076923076925,4.322703745761665
+2a,Supported Kav,Independent,Change,No,39,Same,66.66666666666666,7.647191129018725
+2a,Supported Kav,Republican,Change,No,130,Diff,40.76923076923077,5.951118097834684
+2a,Supported Kav,Republican,Change,No,130,Less,10.769230769230772,2.7293221828873575
+2a,Supported Kav,Republican,Change,No,130,More,51.53846153846155,4.400170130691367
+2a,Supported Kav,Republican,Change,No,130,Same,37.69230769230769,4.266800546039562
+2a,Trump Coal,Democrat,Change,No,332,Diff,0.9036144578313245,4.233701080126343
+2a,Trump Coal,Democrat,Change,No,332,Less,29.216867469879514,2.499583894214365
+2a,Trump Coal,Democrat,Change,No,332,More,30.12048192771084,2.5216912521238295
+2a,Trump Coal,Democrat,Change,No,332,Same,40.66265060240964,2.6999014786922264
+2a,Trump Coal,Independent,Change,No,135,Diff,3.703703703703704,5.087124558266516
+2a,Trump Coal,Independent,Change,No,135,Less,15.555555555555555,3.1309483648783125
+2a,Trump Coal,Independent,Change,No,135,More,19.259259259259263,3.406542058502651
+2a,Trump Coal,Independent,Change,No,135,Same,65.18518518518523,4.115324610336955
+2a,Trump Coal,Republican,Change,No,356,Diff,14.88764044943821,3.1210929120237485
+2a,Trump Coal,Republican,Change,No,356,Less,10.955056179775285,1.65766878738286
+2a,Trump Coal,Republican,Change,No,356,More,25.842696629213485,2.3234412881114093
+2a,Trump Coal,Republican,Change,No,356,Same,63.20224719101125,2.5595447818788952
+2b,Biden / Hill,Democrat,Change,No,132,Diff,-8.333333333333334,4.4396467666643815
+2b,Biden / Hill,Democrat,Change,No,132,Less,17.42424242424243,3.3141151034356686
+2b,Biden / Hill,Democrat,Change,No,132,More,9.090909090909092,2.511722563616081
+2b,Biden / Hill,Democrat,Change,No,132,Same,73.48484848484851,3.856650735812565
+2b,Biden / Hill,Independent,Change,No,49,Diff,-20.40816326530612,5.817221556628254
+2b,Biden / Hill,Independent,Change,No,49,Less,20.40816326530612,5.817221556628254
+2b,Biden / Hill,Independent,Change,No,49,More,-0,0
+2b,Biden / Hill,Independent,Change,No,49,Same,79.59183673469387,5.817221556628255
+2b,Biden / Hill,Republican,Change,No,108,Diff,-13.88888888888889,5.652069240257547
+2b,Biden / Hill,Republican,Change,No,108,Less,24.999999999999996,4.186091791394608
+2b,Biden / Hill,Republican,Change,No,108,More,11.11111111111111,3.0381596756651708
+2b,Biden / Hill,Republican,Change,No,108,Same,63.888888888888886,4.643454608906271
+2b,DREAM Act,Democrat,Change,No,131,Diff,48.09160305343511,5.347704084569569
+2b,DREAM Act,Democrat,Change,No,131,Less,6.106870229007633,2.1001706137777396
+2b,DREAM Act,Democrat,Change,No,131,More,54.19847328244274,4.369802690578756
+2b,DREAM Act,Democrat,Change,No,131,Same,39.694656488549626,4.291135671009222
+2b,DREAM Act,Independent,Change,No,49,Diff,4.081632653061225,9.20255051596509
+2b,DREAM Act,Independent,Change,No,49,Less,18.36734693877551,5.589005688828227
+2b,DREAM Act,Independent,Change,No,49,More,22.448979591836732,6.022425581505365
+2b,DREAM Act,Independent,Change,No,49,Same,59.18367346938774,7.094099868916398
+2b,DREAM Act,Republican,Change,No,108,Diff,-4.62962962962963,7.714203078980414
+2b,DREAM Act,Republican,Change,No,108,Less,34.25925925925925,4.587904741301815
+2b,DREAM Act,Republican,Change,No,108,More,29.629629629629623,4.414343666854928
+2b,DREAM Act,Republican,Change,No,108,Same,36.11111111111111,4.643454608906272
+2b,Obama Torture,Democrat,Change,No,131,Diff,45.80152671755724,5.76089862835178
+2b,Obama Torture,Democrat,Change,No,131,Less,9.16030534351145,2.530003557864298
+2b,Obama Torture,Democrat,Change,No,131,More,54.961832061068684,4.363643698524778
+2b,Obama Torture,Democrat,Change,No,131,Same,35.87786259541985,4.206739313864908
+2b,Obama Torture,Independent,Change,No,49,Diff,10.204081632653061,9.333620907491321
+2b,Obama Torture,Independent,Change,No,49,Less,16.3265306122449,5.334825558285075
+2b,Obama Torture,Independent,Change,No,49,More,26.530612244897956,6.3724469371412225
+2b,Obama Torture,Independent,Change,No,49,Same,57.14285714285714,7.142857142857142
+2b,Obama Torture,Republican,Change,No,108,Diff,-9.25925925925926,7.387911345915063
+2b,Obama Torture,Republican,Change,No,108,Less,34.25925925925925,4.587904741301815
+2b,Obama Torture,Republican,Change,No,108,More,24.999999999999996,4.186091791394608
+2b,Obama Torture,Republican,Change,No,108,Same,40.74074074074073,4.750077341199986
+2b,Trump Coal,Democrat,Change,No,131,Diff,-3.8167938931297716,7.302263595243049
+2b,Trump Coal,Democrat,Change,No,131,Less,36.6412213740458,4.225875451969641
+2b,Trump Coal,Democrat,Change,No,131,More,32.824427480916036,4.118438565806303
+2b,Trump Coal,Democrat,Change,No,131,Same,30.53435114503817,4.039314978724566
+2b,Trump Coal,Independent,Change,No,49,Diff,-10.204081632653061,9.333620907491321
+2b,Trump Coal,Independent,Change,No,49,Less,26.530612244897956,6.3724469371412225
+2b,Trump Coal,Independent,Change,No,49,More,16.3265306122449,5.334825558285075
+2b,Trump Coal,Independent,Change,No,49,Same,57.14285714285714,7.142857142857142
+2b,Trump Coal,Republican,Change,No,108,Diff,15.740740740740735,6.599091192272391
+2b,Trump Coal,Republican,Change,No,108,Less,16.666666666666664,3.6028141763926413
+2b,Trump Coal,Republican,Change,No,108,More,32.407407407407405,4.5245960070300555
+2b,Trump Coal,Republican,Change,No,108,Same,50.92592592592592,4.832853553437054
+3,"Mueller
+comments",Democrat,Change,No,256,Diff,48.046875,4.533147934711758
+3,"Mueller
+comments",Democrat,Change,No,256,Less,10.15625,1.9197920533495543
+3,"Mueller
+comments",Democrat,Change,No,256,More,58.20312499999998,3.377483001473099
+3,"Mueller
+comments",Democrat,Change,No,256,Same,31.640625,3.1042802239337473
+3,"Mueller
+comments",Democrat,Change + level,Yes,240,Diff,29.16666666666665,4.62313461330102
+3,"Mueller
+comments",Democrat,Change + level,Yes,240,Less,12.916666666666664,2.243209015756407
+3,"Mueller
+comments",Democrat,Change + level,Yes,240,More,42.083333333333314,3.3583739357391504
+3,"Mueller
+comments",Democrat,Change + level,Yes,240,Same,44.99999999999998,3.353796462002998
+3,"Mueller
+comments",Independent,Change,No,131,Diff,16.793893129770993,6.446539877453028
+3,"Mueller
+comments",Independent,Change,No,131,Less,16.793893129770993,3.540447180713343
+3,"Mueller
+comments",Independent,Change,No,131,More,33.587786259541986,4.330005870756015
+3,"Mueller
+comments",Independent,Change,No,131,Same,49.61832061068702,4.583618414398513
+3,"Mueller
+comments",Independent,Change + level,Yes,114,Diff,9.649122807017545,5.707072815017211
+3,"Mueller
+comments",Independent,Change + level,Yes,114,Less,14.035087719298248,3.27236031630044
+3,"Mueller
+comments",Independent,Change + level,Yes,114,More,23.684210526315795,4.0104907151676885
+3,"Mueller
+comments",Independent,Change + level,Yes,114,Same,62.28070175438598,4.584111202444792
+3,"Mueller
+comments",Republican,Change,No,168,Diff,-20.833333333333336,5.521432452034103
+3,"Mueller
+comments",Republican,Change,No,168,Less,33.33333333333334,3.963779609157181
+3,"Mueller
+comments",Republican,Change,No,168,More,12.5,2.888208828057767
+3,"Mueller
+comments",Republican,Change,No,168,Same,54.1666666666667,4.1976638415321945
+3,"Mueller
+comments",Republican,Change + level,Yes,165,Diff,-14.545454545454545,5.335798211001302
+3,"Mueller
+comments",Republican,Change + level,Yes,165,Less,27.878787878787882,3.711662775374161
+3,"Mueller
+comments",Republican,Change + level,Yes,165,More,13.333333333333334,2.9684582798421437
+3,"Mueller
+comments",Republican,Change + level,Yes,165,Same,58.7878787878788,4.087251850081971

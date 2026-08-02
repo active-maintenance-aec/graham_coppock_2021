@@ -1,0 +1,20 @@
+stat,value
+N impeachment survey,4034
+"cor(Y1, Y0) impeachment",0.8284749964578377
+Share reporting exactly zero change,0.7208725830441249
+Mean tau_i impeachment,0.16013882002974697
+SE of mean tau_i impeachment,0.022609426788409655
+Mean tau_i in SD units of Y1,0.0644720104137926
+N study 1 (format conditions),417
+N study 2a (format conditions),2475
+N study 2b (format conditions),1110
+N study 3 (format conditions),1023
+N study 3 (respondents in the deposit),1023
+Fig 3a overall estimate,-0.09927086770759162
+Fig 3a overall SE,0.02443086819332483
+Fig 3a Democrat estimate,-0.13458773122560586
+Fig 3a Democrat SE,0.03188971787439478
+Fig 3a Republican estimate,-0.0794545541462172
+Fig 3a Republican SE,0.04279079554775755
+Fig 3a Independent estimate,-0.02232945821452077
+Fig 3a Independent SE,0.0617769594550296

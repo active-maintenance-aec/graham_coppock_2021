@@ -1,0 +1,29 @@
+study,Topic,Party,Estimator,Format,category,share,estimate,std.error,conf.low,conf.high,label
+1,Disputed accusation,Democrat,More-less,Counterfactual,  Diff,-0.20388349514563103,-0.20388349514563103,0.05407305748325547,-0.3111371482796661,-0.09662984201159598,-0.20 (0.05)
+1,Disputed accusation,Democrat,More-less,Counterfactual, More,0.06796116504854369,NA,0.024919959142514478,NA,NA,NA
+1,Disputed accusation,Democrat,More-less,Counterfactual, Same,0.6601941747572817,NA,0.04689765937278137,NA,NA,NA
+1,Disputed accusation,Democrat,More-less,Counterfactual,Less,0.2718446601941748,NA,0.04405268024140924,NA,NA,NA
+1,Disputed accusation,Democrat,More-less,Change + level,  Diff,-0.6086956521739131,-0.6086956521739131,0.07911503805191988,-0.768041518425722,-0.4493497859221042,-0.61 (0.08)
+1,Disputed accusation,Democrat,More-less,Change + level, More,0.021739130434782608,NA,0.02173913043478261,NA,NA,NA
+1,Disputed accusation,Democrat,More-less,Change + level, Same,0.34782608695652173,NA,0.07099970268936748,NA,NA,NA
+1,Disputed accusation,Democrat,More-less,Change + level,Less,0.6304347826086957,NA,0.07195473383945744,NA,NA,NA
+1,Disputed accusation,Democrat,More-less,Change,  Diff,-0.8490566037735852,-0.8490566037735852,0.056482695855704056,-0.9623974249537046,-0.7357157825934657,-0.85 (0.06)
+1,Disputed accusation,Democrat,More-less,Change, More,0.01886792452830189,NA,0.018867924528301886,NA,NA,NA
+1,Disputed accusation,Democrat,More-less,Change, Same,0.11320754716981135,NA,0.04393868070601047,NA,NA,NA
+1,Disputed accusation,Democrat,More-less,Change,Less,0.8679245283018872,NA,0.046951599766681604,NA,NA,NA
+1,Disputed accusation,Democrat,CATE,Diff. in means,NA,NA,0.020801232665639706,0.31859922512225264,-0.6112139277270053,0.6528163930582848,0.02 (0.32)
+1,Disputed accusation,Democrat,CATE,Counterfactual,NA,NA,-0.4854368932038836,0.11112158390543299,-0.7058460280043071,-0.26502775840346016,-0.49 (0.11)
+1,Disputed accusation,Republican,More-less,Counterfactual,  Diff,-0.4794520547945207,-0.4794520547945207,0.07582521417997998,-0.6306068566966436,-0.3282972528923977,-0.48 (0.08)
+1,Disputed accusation,Republican,More-less,Counterfactual, More,0.08219178082191782,NA,0.032368600179812385,NA,NA,NA
+1,Disputed accusation,Republican,More-less,Counterfactual, Same,0.3561643835616439,NA,0.05643473559044874,NA,NA,NA
+1,Disputed accusation,Republican,More-less,Counterfactual,Less,0.5616438356164385,NA,0.058476020433176706,NA,NA,NA
+1,Disputed accusation,Republican,More-less,Change + level,  Diff,-0.29787234042553196,-0.29787234042553196,0.09081241717341385,-0.480668255281132,-0.11507642556993192,-0.30 (0.09)
+1,Disputed accusation,Republican,More-less,Change + level, More,0.0851063829787234,NA,0.041142194186747624,NA,NA,NA
+1,Disputed accusation,Republican,More-less,Change + level, Same,0.5319148936170214,NA,0.07357064625618348,NA,NA,NA
+1,Disputed accusation,Republican,More-less,Change + level,Less,0.3829787234042554,NA,0.0716734777251339,NA,NA,NA
+1,Disputed accusation,Republican,More-less,Change,  Diff,-0.05405405405405406,-0.05405405405405406,0.10922842930614542,-0.2755795762663651,0.16747146815825695,-0.05 (0.11)
+1,Disputed accusation,Republican,More-less,Change, More,0.1891891891891892,NA,0.06527647182968217,NA,NA,NA
+1,Disputed accusation,Republican,More-less,Change, Same,0.5675675675675675,NA,0.08256893144064577,NA,NA,NA
+1,Disputed accusation,Republican,More-less,Change,Less,0.24324324324324328,NA,0.07150679219093489,NA,NA,NA
+1,Disputed accusation,Republican,CATE,Diff. in means,NA,NA,-2.0130568356374803,0.3263180509166467,-2.6637165490710393,-1.3623971222039215,-2.01 (0.33)
+1,Disputed accusation,Republican,CATE,Counterfactual,NA,NA,-1.0684931506849313,0.16930420677134625,-1.4059949185661984,-0.7309913828036644,-1.07 (0.17)

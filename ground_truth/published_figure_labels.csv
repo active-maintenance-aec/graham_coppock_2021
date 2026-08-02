@@ -1,0 +1,175 @@
+figure,study,Topic,Party,Estimator,Format,estimate,se
+Figure 4,1,Blocked whistleblower,Democrat,More-less,Change,-0.23,0.11
+Figure 4,1,Blocked whistleblower,Democrat,More-less,Change + level,-0.37,0.10
+Figure 4,1,Blocked whistleblower,Democrat,More-less,Counterfactual,-0.34,0.07
+Figure 4,1,Blocked whistleblower,Democrat,CATE,Counterfactual,-0.88,0.18
+Figure 4,1,Blocked whistleblower,Democrat,CATE,Diff. in means,-0.95,0.33
+Figure 4,1,Blocked whistleblower,Republican,More-less,Change,-0.57,0.09
+Figure 4,1,Blocked whistleblower,Republican,More-less,Change + level,-0.32,0.09
+Figure 4,1,Blocked whistleblower,Republican,More-less,Counterfactual,-0.15,0.07
+Figure 4,1,Blocked whistleblower,Republican,CATE,Counterfactual,-0.30,0.18
+Figure 4,1,Blocked whistleblower,Republican,CATE,Diff. in means,-0.37,0.41
+Figure 4,1,Death penalty,Democrat,More-less,Change,-0.25,0.09
+Figure 4,1,Death penalty,Democrat,More-less,Change + level,-0.11,0.08
+Figure 4,1,Death penalty,Democrat,More-less,Counterfactual,0.04,0.04
+Figure 4,1,Death penalty,Democrat,CATE,Counterfactual,0.06,0.09
+Figure 4,1,Death penalty,Democrat,CATE,Diff. in means,0.85,0.39
+Figure 4,1,Death penalty,Republican,More-less,Change,0.16,0.09
+Figure 4,1,Death penalty,Republican,More-less,Change + level,0.19,0.08
+Figure 4,1,Death penalty,Republican,More-less,Counterfactual,-0.08,0.06
+Figure 4,1,Death penalty,Republican,CATE,Counterfactual,-0.22,0.13
+Figure 4,1,Death penalty,Republican,CATE,Diff. in means,-0.32,0.40
+Figure 4,1,Disputed accusation,Democrat,More-less,Change,-0.85,0.06
+Figure 4,1,Disputed accusation,Democrat,More-less,Change + level,-0.61,0.08
+Figure 4,1,Disputed accusation,Democrat,More-less,Counterfactual,-0.20,0.05
+Figure 4,1,Disputed accusation,Democrat,CATE,Counterfactual,-0.49,0.11
+Figure 4,1,Disputed accusation,Democrat,CATE,Diff. in means,0.02,0.32
+Figure 4,1,Disputed accusation,Republican,More-less,Change,-0.05,0.11
+Figure 4,1,Disputed accusation,Republican,More-less,Change + level,-0.30,0.09
+Figure 4,1,Disputed accusation,Republican,More-less,Counterfactual,-0.48,0.08
+Figure 4,1,Disputed accusation,Republican,CATE,Counterfactual,-1.07,0.17
+Figure 4,1,Disputed accusation,Republican,CATE,Diff. in means,-2.01,0.33
+Figure 4,1,Endorsed Trump,Democrat,More-less,Change,-0.74,0.08
+Figure 4,1,Endorsed Trump,Democrat,More-less,Change + level,-0.74,0.07
+Figure 4,1,Endorsed Trump,Democrat,More-less,Counterfactual,-0.40,0.07
+Figure 4,1,Endorsed Trump,Democrat,CATE,Counterfactual,-0.88,0.16
+Figure 4,1,Endorsed Trump,Democrat,CATE,Diff. in means,-0.41,0.39
+Figure 4,1,Endorsed Trump,Republican,More-less,Change,0.54,0.10
+Figure 4,1,Endorsed Trump,Republican,More-less,Change + level,0.09,0.11
+Figure 4,1,Endorsed Trump,Republican,More-less,Counterfactual,-0.04,0.07
+Figure 4,1,Endorsed Trump,Republican,CATE,Counterfactual,-0.08,0.12
+Figure 4,1,Endorsed Trump,Republican,CATE,Diff. in means,-0.97,0.26
+Figure 4,1,Immigrant population,Democrat,More-less,Change,0.06,0.09
+Figure 4,1,Immigrant population,Democrat,More-less,Change + level,0.07,0.08
+Figure 4,1,Immigrant population,Democrat,More-less,Counterfactual,-0.02,0.05
+Figure 4,1,Immigrant population,Democrat,CATE,Counterfactual,-0.03,0.11
+Figure 4,1,Immigrant population,Democrat,CATE,Diff. in means,-0.50,0.33
+Figure 4,1,Immigrant population,Republican,More-less,Change,-0.35,0.11
+Figure 4,1,Immigrant population,Republican,More-less,Change + level,-0.15,0.10
+Figure 4,1,Immigrant population,Republican,More-less,Counterfactual,0.00,0.07
+Figure 4,1,Immigrant population,Republican,CATE,Counterfactual,0.01,0.16
+Figure 4,1,Immigrant population,Republican,CATE,Diff. in means,0.37,0.41
+Figure 4,1,Supports charters,Democrat,More-less,Change,-0.23,0.11
+Figure 4,1,Supports charters,Democrat,More-less,Change + level,-0.22,0.11
+Figure 4,1,Supports charters,Democrat,More-less,Counterfactual,-0.05,0.06
+Figure 4,1,Supports charters,Democrat,CATE,Counterfactual,-0.06,0.09
+Figure 4,1,Supports charters,Democrat,CATE,Diff. in means,0.01,0.36
+Figure 4,1,Supports charters,Republican,More-less,Change,0.41,0.12
+Figure 4,1,Supports charters,Republican,More-less,Change + level,0.28,0.10
+Figure 4,1,Supports charters,Republican,More-less,Counterfactual,-0.03,0.08
+Figure 4,1,Supports charters,Republican,CATE,Counterfactual,-0.12,0.14
+Figure 4,1,Supports charters,Republican,CATE,Diff. in means,-1.01,0.38
+Figure 4,1,Tax Cuts and Jobs Act,Democrat,More-less,Change,-0.46,0.10
+Figure 4,1,Tax Cuts and Jobs Act,Democrat,More-less,Change + level,-0.24,0.09
+Figure 4,1,Tax Cuts and Jobs Act,Democrat,More-less,Counterfactual,0.04,0.05
+Figure 4,1,Tax Cuts and Jobs Act,Democrat,CATE,Counterfactual,0.11,0.10
+Figure 4,1,Tax Cuts and Jobs Act,Democrat,CATE,Diff. in means,0.35,0.39
+Figure 4,1,Tax Cuts and Jobs Act,Republican,More-less,Change,0.70,0.08
+Figure 4,1,Tax Cuts and Jobs Act,Republican,More-less,Change + level,0.19,0.09
+Figure 4,1,Tax Cuts and Jobs Act,Republican,More-less,Counterfactual,0.00,0.08
+Figure 4,1,Tax Cuts and Jobs Act,Republican,CATE,Counterfactual,0.00,0.12
+Figure 4,1,Tax Cuts and Jobs Act,Republican,CATE,Diff. in means,-0.42,0.36
+Figure 4,1,Undisputed accusation,Democrat,More-less,Change,-0.79,0.06
+Figure 4,1,Undisputed accusation,Democrat,More-less,Change + level,-0.67,0.08
+Figure 4,1,Undisputed accusation,Democrat,More-less,Counterfactual,-0.48,0.07
+Figure 4,1,Undisputed accusation,Democrat,CATE,Counterfactual,-1.35,0.18
+Figure 4,1,Undisputed accusation,Democrat,CATE,Diff. in means,-1.36,0.39
+Figure 4,1,Undisputed accusation,Republican,More-less,Change,-0.68,0.10
+Figure 4,1,Undisputed accusation,Republican,More-less,Change + level,-0.53,0.10
+Figure 4,1,Undisputed accusation,Republican,More-less,Counterfactual,-0.53,0.07
+Figure 4,1,Undisputed accusation,Republican,CATE,Counterfactual,-1.12,0.18
+Figure 4,1,Undisputed accusation,Republican,CATE,Diff. in means,-1.19,0.35
+Figure 4,2a,Obama torture exec. order,Democrat,More-less,Change,0.36,0.03
+Figure 4,2a,Obama torture exec. order,Democrat,More-less,Counterfactual,0.09,0.02
+Figure 4,2a,Obama torture exec. order,Democrat,CATE,Counterfactual,0.21,0.05
+Figure 4,2a,Obama torture exec. order,Democrat,CATE,Diff. in means,0.82,0.14
+Figure 4,2a,Obama torture exec. order,Republican,More-less,Change,0.00,0.03
+Figure 4,2a,Obama torture exec. order,Republican,More-less,Counterfactual,0.01,0.02
+Figure 4,2a,Obama torture exec. order,Republican,CATE,Counterfactual,0.04,0.05
+Figure 4,2a,Obama torture exec. order,Republican,CATE,Diff. in means,0.02,0.12
+Figure 4,2a,Trump coal ash exec. order,Democrat,More-less,Change,0.01,0.04
+Figure 4,2a,Trump coal ash exec. order,Democrat,More-less,Counterfactual,-0.05,0.02
+Figure 4,2a,Trump coal ash exec. order,Democrat,CATE,Counterfactual,-0.22,0.05
+Figure 4,2a,Trump coal ash exec. order,Democrat,CATE,Diff. in means,-0.88,0.13
+Figure 4,2a,Trump coal ash exec. order,Republican,More-less,Change,0.15,0.03
+Figure 4,2a,Trump coal ash exec. order,Republican,More-less,Counterfactual,-0.01,0.02
+Figure 4,2a,Trump coal ash exec. order,Republican,CATE,Counterfactual,0.00,0.05
+Figure 4,2a,Trump coal ash exec. order,Republican,CATE,Diff. in means,-0.17,0.10
+Figure 5,2a,Biden skeptical of Anita Hill,Democrat,More-less,Change,-0.12,0.03
+Figure 5,2a,Biden skeptical of Anita Hill,Democrat,More-less,Counterfactual,-0.14,0.03
+Figure 5,2a,Biden skeptical of Anita Hill,Democrat,CATE,Counterfactual,-0.21,0.04
+Figure 5,2a,Biden skeptical of Anita Hill,Republican,More-less,Change,-0.14,0.03
+Figure 5,2a,Biden skeptical of Anita Hill,Republican,More-less,Counterfactual,0.04,0.02
+Figure 5,2a,Biden skeptical of Anita Hill,Republican,CATE,Counterfactual,0.07,0.04
+Figure 5,2a,DREAM Act helps economy,Democrat,More-less,Change,0.42,0.03
+Figure 5,2a,DREAM Act helps economy,Democrat,More-less,Counterfactual,0.05,0.02
+Figure 5,2a,DREAM Act helps economy,Democrat,CATE,Counterfactual,0.05,0.03
+Figure 5,2a,DREAM Act helps economy,Republican,More-less,Change,-0.03,0.04
+Figure 5,2a,DREAM Act helps economy,Republican,More-less,Counterfactual,0.06,0.02
+Figure 5,2a,DREAM Act helps economy,Republican,CATE,Counterfactual,0.10,0.04
+Figure 5,2a,Senator opposed Kavanaugh,Democrat,More-less,Change,0.45,0.04
+Figure 5,2a,Senator opposed Kavanaugh,Democrat,More-less,Counterfactual,0.09,0.03
+Figure 5,2a,Senator opposed Kavanaugh,Democrat,CATE,Counterfactual,0.09,0.05
+Figure 5,2a,Senator opposed Kavanaugh,Republican,More-less,Change,-0.50,0.04
+Figure 5,2a,Senator opposed Kavanaugh,Republican,More-less,Counterfactual,-0.01,0.03
+Figure 5,2a,Senator opposed Kavanaugh,Republican,CATE,Counterfactual,0.02,0.05
+Figure 5,2a,Senator supported Kavanaugh,Democrat,More-less,Change,-0.68,0.05
+Figure 5,2a,Senator supported Kavanaugh,Democrat,More-less,Counterfactual,-0.03,0.05
+Figure 5,2a,Senator supported Kavanaugh,Democrat,CATE,Counterfactual,-0.03,0.09
+Figure 5,2a,Senator supported Kavanaugh,Republican,More-less,Change,0.41,0.06
+Figure 5,2a,Senator supported Kavanaugh,Republican,More-less,Counterfactual,-0.02,0.04
+Figure 5,2a,Senator supported Kavanaugh,Republican,CATE,Counterfactual,-0.04,0.07
+Figure E.2a,2b,Obama torture exec. order,Democrat,More-less,Change,0.46,0.06
+Figure E.2a,2b,Obama torture exec. order,Democrat,More-less,Simultaneous,0.03,0.03
+Figure E.2a,2b,Obama torture exec. order,Democrat,More-less,Counterfactual,0.11,0.03
+Figure E.2a,2b,Obama torture exec. order,Democrat,CATE,Simultaneous,0.03,0.03
+Figure E.2a,2b,Obama torture exec. order,Democrat,CATE,Counterfactual,0.11,0.03
+Figure E.2a,2b,Obama torture exec. order,Democrat,CATE,Diff. in means,0.26,0.06
+Figure E.2a,2b,Obama torture exec. order,Republican,More-less,Change,-0.09,0.07
+Figure E.2a,2b,Obama torture exec. order,Republican,More-less,Simultaneous,-0.07,0.04
+Figure E.2a,2b,Obama torture exec. order,Republican,More-less,Counterfactual,0.02,0.03
+Figure E.2a,2b,Obama torture exec. order,Republican,CATE,Simultaneous,-0.07,0.04
+Figure E.2a,2b,Obama torture exec. order,Republican,CATE,Counterfactual,0.02,0.03
+Figure E.2a,2b,Obama torture exec. order,Republican,CATE,Diff. in means,0.03,0.07
+Figure E.2a,2b,Trump coal ash exec. order,Democrat,More-less,Change,-0.04,0.07
+Figure E.2a,2b,Trump coal ash exec. order,Democrat,More-less,Simultaneous,-0.02,0.03
+Figure E.2a,2b,Trump coal ash exec. order,Democrat,More-less,Counterfactual,-0.08,0.03
+Figure E.2a,2b,Trump coal ash exec. order,Democrat,CATE,Simultaneous,-0.02,0.03
+Figure E.2a,2b,Trump coal ash exec. order,Democrat,CATE,Counterfactual,-0.08,0.03
+Figure E.2a,2b,Trump coal ash exec. order,Democrat,CATE,Diff. in means,-0.29,0.06
+Figure E.2a,2b,Trump coal ash exec. order,Republican,More-less,Change,0.16,0.07
+Figure E.2a,2b,Trump coal ash exec. order,Republican,More-less,Simultaneous,0.04,0.04
+Figure E.2a,2b,Trump coal ash exec. order,Republican,More-less,Counterfactual,0.00,0.03
+Figure E.2a,2b,Trump coal ash exec. order,Republican,CATE,Simultaneous,0.04,0.04
+Figure E.2a,2b,Trump coal ash exec. order,Republican,CATE,Counterfactual,0.00,0.03
+Figure E.2a,2b,Trump coal ash exec. order,Republican,CATE,Diff. in means,0.06,0.07
+Figure E.2b,2b,Biden skeptical of Anita Hill,Democrat,More-less,Change,-0.08,0.04
+Figure E.2b,2b,Biden skeptical of Anita Hill,Democrat,More-less,Simultaneous,0.13,0.05
+Figure E.2b,2b,Biden skeptical of Anita Hill,Democrat,More-less,Counterfactual,-0.02,0.03
+Figure E.2b,2b,Biden skeptical of Anita Hill,Democrat,CATE,Simultaneous,0.13,0.05
+Figure E.2b,2b,Biden skeptical of Anita Hill,Democrat,CATE,Counterfactual,-0.02,0.03
+Figure E.2b,2b,Biden skeptical of Anita Hill,Republican,More-less,Change,-0.14,0.06
+Figure E.2b,2b,Biden skeptical of Anita Hill,Republican,More-less,Simultaneous,0.07,0.04
+Figure E.2b,2b,Biden skeptical of Anita Hill,Republican,More-less,Counterfactual,0.03,0.03
+Figure E.2b,2b,Biden skeptical of Anita Hill,Republican,CATE,Simultaneous,0.07,0.04
+Figure E.2b,2b,Biden skeptical of Anita Hill,Republican,CATE,Counterfactual,0.03,0.03
+Figure E.2b,2b,DREAM Act helps economy,Democrat,More-less,Change,0.48,0.05
+Figure E.2b,2b,DREAM Act helps economy,Democrat,More-less,Simultaneous,0.10,0.04
+Figure E.2b,2b,DREAM Act helps economy,Democrat,More-less,Counterfactual,-0.02,0.03
+Figure E.2b,2b,DREAM Act helps economy,Democrat,CATE,Simultaneous,0.10,0.04
+Figure E.2b,2b,DREAM Act helps economy,Democrat,CATE,Counterfactual,-0.02,0.03
+Figure E.2b,2b,DREAM Act helps economy,Republican,More-less,Change,-0.05,0.08
+Figure E.2b,2b,DREAM Act helps economy,Republican,More-less,Simultaneous,-0.01,0.04
+Figure E.2b,2b,DREAM Act helps economy,Republican,More-less,Counterfactual,0.00,0.03
+Figure E.2b,2b,DREAM Act helps economy,Republican,CATE,Simultaneous,-0.01,0.04
+Figure E.2b,2b,DREAM Act helps economy,Republican,CATE,Counterfactual,0.00,0.03
+Figure 2,1,Disputed accusation,Democrat,More-less,Change,-0.85,0.06
+Figure 2,1,Disputed accusation,Democrat,More-less,Change + level,-0.61,0.08
+Figure 2,1,Disputed accusation,Democrat,More-less,Counterfactual,-0.20,0.05
+Figure 2,1,Disputed accusation,Democrat,CATE,Counterfactual,-0.49,0.11
+Figure 2,1,Disputed accusation,Democrat,CATE,Diff. in means,0.02,0.32
+Figure 2,1,Disputed accusation,Republican,More-less,Change,-0.05,0.11
+Figure 2,1,Disputed accusation,Republican,More-less,Change + level,-0.30,0.09
+Figure 2,1,Disputed accusation,Republican,More-less,Counterfactual,-0.48,0.08
+Figure 2,1,Disputed accusation,Republican,CATE,Counterfactual,-1.07,0.17
+Figure 2,1,Disputed accusation,Republican,CATE,Diff. in means,-2.01,0.33
