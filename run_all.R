@@ -29,8 +29,8 @@ source(here::here("maintained", "figure_5_pretreat_comparison.R"))
 source(here::here("maintained", "figure_e2_study2b_simultaneous.R"))
 
 # Appendix tables ----
-# table_d5_ate_vs_self.R is the slow step, about 105 seconds: 20 cells by 10,000
-# bootstrap resamples. Everything else in this file together takes under a minute.
+# table_d5_ate_vs_self.R is the slow step, about 65 of the run's 75 seconds: 20 cells
+# by 10,000 bootstrap resamples.
 source(here::here("maintained", "table_d3_change_distribution.R"))
 source(here::here("maintained", "table_d4_counterfactual_accuracy.R"))
 source(here::here("maintained", "table_d5_ate_vs_self.R"))

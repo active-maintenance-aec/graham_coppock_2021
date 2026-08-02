@@ -68,11 +68,12 @@ source("run_all.R")
 That fetches the deposited archive from Dataverse, verifies its 12
 checksums, produces every published figure, appendix table and in-text
 number into `maintained/output/`, rebuilds the ground truth from those
-outputs, and re-checks the deposit. It takes about three minutes, most
-of it the 10,000-resample bootstrap behind Table D.5. Individual scripts
-run on their own in any order, subject to the dependencies in each
-script’s header: `clean_studies.R` first, then the two estimation
-scripts, then the figures, tables and in-text scripts that read them.
+outputs, and re-checks the deposit. It takes about 75 seconds, of which
+roughly 65 are the 10,000-resample bootstrap behind Table D.5.
+Individual scripts run on their own in any order, subject to the
+dependencies in each script’s header: `clean_studies.R` first, then the
+two estimation scripts, then the figures, tables and in-text scripts
+that read them.
 
 Required packages: tidyverse, estimatr, ggh4x, gridExtra, rsample,
 knitr, kableExtra, here. Paths resolve through `here`, so nothing
