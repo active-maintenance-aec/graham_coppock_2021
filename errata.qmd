@@ -1,0 +1,173 @@
+---
+title: "Errata"
+subtitle: "On Graham and Coppock (2021), *Public Opinion Quarterly* 85(1)"
+format:
+  pdf:
+    output-file: graham_coppock_2021_errata.pdf
+    geometry: margin=1.25in
+    fontsize: 11pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(here)
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+here::i_am("errata.qmd")
+
+out <- function(f) read_csv(here("maintained", "output", f), show_col_types = FALSE)
+pub <- function(f) read_csv(here("ground_truth", f), col_types = cols(.default = col_character()))
+
+txt <- out("text_intext_stats.csv")
+fig4 <- out("figure_4_grand_comparison.csv")
+signs <- out("text_sign_comparison.csv")
+grand <- out("estimates_grand_comparison.csv")
+d3_table <- out("table_d3_change_distribution.csv")
+d3_published <- pub("published_table_d3.csv")
+d5_published <- pub("published_table_d5.csv")
+
+# Every number inside a corrected sentence below is computed here, from the deposited
+# data, at the time this document is rendered. That includes the numbers that were not
+# wrong: a token carried over from the published sentence is inherited on trust, and
+# rendering the whole sentence from the pipeline is what verifies it.
+norm <- function(x) str_squish(str_replace_all(x, "\n", " "))
+
+stat <- function(which_stat) {
+  value <- txt$value[txt$stat == which_stat]
+  stopifnot(length(value) == 1)
+  value
+}
+
+topic_label <- function(key) {
+  labels <- unique(norm(grand$Topic[grand$topic == key]))
+  stopifnot(length(labels) == 1)
+  labels
+}
+
+cell <- function(topic_string, party, estimator, format, column) {
+  rows <- fig4 |>
+    filter(norm(Topic) == topic_string, Party == party, Estimator == estimator,
+           Format == format, is.na(category) | category == "Diff")
+  stopifnot(nrow(rows) == 1)
+  rows[[column]]
+}
+
+# The article's own Table D.5 cell, quoted from the transcription of the published page
+# rather than retyped here.
+d5_cell <- function(topic_string, party, estimator, column) {
+  rows <- d5_published |>
+    filter(topic == topic_string, party == !!party, estimator == !!estimator)
+  stopifnot(nrow(rows) == 1)
+  str_replace(rows[[column]], "^-", "–")
+}
+
+# One decimal place on the percentage-point scale everywhere, and the article's own en
+# dash for the minus sign, so a corrected sentence reads like the published one.
+pts <- function(x) str_replace(sprintf("%.1f", x), "^-", "–")
+
+# Fuller precision, for a reason line rather than a sentence.
+pts2 <- function(x) str_replace(sprintf("%.2f", x), "^-", "–")
+
+# A spelled-out count stays spelled out when it is corrected.
+spelled <- function(n) {
+  words <- c("one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten")
+  stopifnot(n >= 1, n <= length(words))
+  words[n]
+}
+
+# The three cells in which the counterfactual format's sign is opposite the experiment's.
+wrong_sign <- signs |>
+  filter(counterfactual_wrong_sign) |>
+  mutate(label = map_chr(topic, topic_label)) |>
+  rowwise() |>
+  mutate(
+    cf_low = cell(label, Party, "CATE", "Counterfactual", "conf.low"),
+    cf_high = cell(label, Party, "CATE", "Counterfactual", "conf.high"),
+    dim_low = cell(label, Party, "CATE", "Diff. in means", "conf.low"),
+    dim_high = cell(label, Party, "CATE", "Diff. in means", "conf.high"),
+    both_null = cf_low <= 0 & cf_high >= 0 & dim_low <= 0 & dim_high >= 0
+  ) |>
+  ungroup()
+
+# Table D.3's own Difference column against More minus each of the two candidate columns.
+# Every cell on the page is rounded to one decimal on its own, so the difference of two
+# printed cells can sit one unit in the last printed digit away from the printed
+# difference. The tolerance is that unit, set clear of the boundary so a discrepancy of
+# exactly 0.1 does not turn on the representation of 0.1 as a double.
+d3_check <- d3_published |>
+  transmute(
+    difference = as.numeric(difference),
+    more_minus_no_change = as.numeric(more) - as.numeric(no_change),
+    more_minus_less = as.numeric(more) - as.numeric(less)
+  ) |>
+  summarize(
+    rows = n(),
+    matches_no_change = sum(abs(difference - more_minus_no_change) < 0.15),
+    matches_less = sum(abs(difference - more_minus_less) < 0.15)
+  )
+```
+
+This note lists four corrections to "Asking About Attitude Change," published in *Public Opinion Quarterly* 85(1), doi [10.1093/poq/nfab009](https://doi.org/10.1093/poq/nfab009): one appendix table whose column headings are in the wrong order, one sentence that describes the estimates incorrectly, and two misstated numbers. **None of them changes a conclusion of the paper.** The evidence behind the paper's argument, that the change format gets the sign of an effect wrong far more often than the counterfactual format does, is unaffected.
+
+Every number in a corrected sentence below is computed from the deposited replication archive ([10.7910/DVN/GFF78K](https://doi.org/10.7910/DVN/GFF78K)) at the time this document is rendered, including the numbers that were not wrong. The code and output supporting each correction are at [github.com/active-maintenance-aec/graham_coppock_2021](https://github.com/active-maintenance-aec/graham_coppock_2021).
+
+**Every quantity on the percentage scale is stated to one decimal place, and bold marks the corrections.** A corrected sentence therefore differs from the published one in more places than it is wrong: the article states these quantities in whole points, and setting a whole number to one decimal is not a correction. Only what is bold has changed.
+
+## 1. Table D.3's second and third value columns are headed in the wrong order
+
+Table D.3 is headed `More | No change | Less | Difference`. Its body is in the order `More | Less | No change | Difference`, so every reader of the published table who takes the second column for the share reporting no change is reading the share reporting less, and the reverse.
+
+The table's own Difference column is what settles which side is wrong. In `r d3_check$matches_no_change` of its `r d3_check$rows` rows the printed Difference equals More minus the column headed "No change", to within the one unit in the last printed digit that rounding each cell separately allows. It equals More minus the column headed "Less" in `r d3_check$matches_less` of them. Since the difference the article defines is the share reporting more minus the share reporting less, the column headed "No change" holds the share reporting less. The main text reads the body the same way: of the Study 1 disputed accusation row for Democrats it says that "a huge majority of Democratic respondents (87 percent) report that the accusation made them less likely to vote for Cornish," and `r d3_published$no_change[d3_published$study == "1" & d3_published$topic == "Disputed accusation" & d3_published$party == "Democrat" & d3_published$level_q == "No"]` is the entry under "No change"; of the Republican row it says "most Republicans (57 percent) reported that the information had no effect," and `r d3_published$less[d3_published$study == "1" & d3_published$topic == "Disputed accusation" & d3_published$party == "Republican" & d3_published$level_q == "No"]` is the entry under "Less".
+
+**The table is what is corrected, not any sentence.** Every cell in the published body is right and sits in the right place; the two headings over the second and third value columns are transposed. Table D.3 is reprinted below with the headings in the order the body uses. The numbers are unchanged: they are recomputed from the deposited data and reproduce the published table cell for cell.
+
+```{r d3-corrected}
+d3_corrected <- d3_table |>
+  transmute(
+    Treatment = str_c(norm(Topic), " (Study ", Study, ")"),
+    Party,
+    `Level Q?` = `Y1?`,
+    N,
+    More,
+    Less,
+    `No change` = Same,
+    Difference = Diff
+  )
+
+kable(d3_corrected, booktabs = TRUE, longtable = TRUE, linesep = "",
+      align = c("l", "l", "c", "r", "r", "r", "r", "r"),
+      caption = "Table D.3 corrected: Distribution of Change Format by Study and Treatment. Standard errors in parentheses. Only the headings over the third and fourth value columns differ from the published table.") |>
+  kable_styling(latex_options = c("repeat_header"), font_size = 7) |>
+  column_spec(1, width = "3.4cm")
+```
+
+## 2. The counterfactual format's three sign errors are not all cases in which nothing can be distinguished from zero
+
+> The more-minus-less estimates derived from the change format have the opposite sign as the experimental difference-in-means estimates in 12 out of 20 opportunities, compared with 3 of 20 for the counterfactual format. **In all three of those cases**, neither the counterfactual estimate nor the difference in means estimate can be distinguished from zero.
+
+Corrected:
+
+> The more-minus-less estimates derived from the change format have the opposite sign as the experimental difference-in-means estimates in `r sum(signs$change_wrong_sign)` out of `r nrow(signs)` opportunities, compared with `r sum(signs$counterfactual_wrong_sign)` of `r nrow(signs)` for the counterfactual format. **In `r spelled(sum(wrong_sign$both_null))` of those `r spelled(nrow(wrong_sign))` cases**, neither the counterfactual estimate nor the difference in means estimate can be distinguished from zero.
+
+The exception is the disputed accusation among Democrats, where the counterfactual estimate is `r pts2(cell("Disputed accusation", "Democrat", "CATE", "Counterfactual", "estimate"))` scale points with a 95 per cent interval of (`r pts2(cell("Disputed accusation", "Democrat", "CATE", "Counterfactual", "conf.low"))`, `r pts2(cell("Disputed accusation", "Democrat", "CATE", "Counterfactual", "conf.high"))`), which excludes zero. The article's own Table D.5 prints `r d5_cell("Disputed accusation", "Democrat", "Guess", "estimate")` with an interval of (`r d5_cell("Disputed accusation", "Democrat", "Guess", "ci_low")`, `r d5_cell("Disputed accusation", "Democrat", "Guess", "ci_high")`) for the same cell, so the sentence disagrees with the appendix as well as with the data. The other half of the sentence holds there: the difference in means for that cell is `r pts2(cell("Disputed accusation", "Democrat", "CATE", "Diff. in means", "estimate"))` with an interval of (`r pts2(cell("Disputed accusation", "Democrat", "CATE", "Diff. in means", "conf.low"))`, `r pts2(cell("Disputed accusation", "Democrat", "CATE", "Diff. in means", "conf.high"))`). Figure 4 and Table D.5 both carry the correct estimates and are not reprinted.
+
+## 3. The effect of asking the level question first among Democrats
+
+> The effect is larger among Democrats (**14** points, SE: 3 points) and Republicans (8 points, SE: 4 points) than among pure independents (2 points, SE: 6 points).
+
+Corrected:
+
+> The effect is larger among Democrats (**`r pts(abs(100 * stat("Fig 3a Democrat estimate")))`** points, SE: `r pts(100 * stat("Fig 3a Democrat SE"))` points) and Republicans (`r pts(abs(100 * stat("Fig 3a Republican estimate")))` points, SE: `r pts(100 * stat("Fig 3a Republican SE"))` points) than among pure independents (`r pts(abs(100 * stat("Fig 3a Independent estimate")))` points, SE: `r pts(100 * stat("Fig 3a Independent SE"))` points).
+
+The Democratic estimate is `r sprintf("%.4f", abs(100 * stat("Fig 3a Democrat estimate")))` points, which rounds to `r sprintf("%.0f", abs(100 * stat("Fig 3a Democrat estimate")))` rather than 14 at the whole-point precision the article uses. The comparison the sentence makes, that the effect is larger among Democrats and Republicans than among pure independents, holds.
+
+## 4. The correlation between the two impeachment questions
+
+> Panel (a) offers prima facie evidence that subjects are not bewildered by the nonstandard question format: the strong correlation (**0.82**) of the two responses indicates that most subjects believe their counterfactual attitudes would have been very close to their actual attitudes (72 percent report exactly zero change).
+
+Corrected:
+
+> Panel (a) offers prima facie evidence that subjects are not bewildered by the nonstandard question format: the strong correlation (**`r sprintf("%.2f", stat("cor(Y1, Y0) impeachment"))`**) of the two responses indicates that most subjects believe their counterfactual attitudes would have been very close to their actual attitudes (`r pts(100 * stat("Share reporting exactly zero change"))` percent report exactly zero change).
+
+The correlation is `r sprintf("%.4f", stat("cor(Y1, Y0) impeachment"))`, which rounds up rather than down at two decimals. The share reporting exactly zero change is `r sprintf("%.4f", 100 * stat("Share reporting exactly zero change"))` per cent and is correct as published at whole-percent precision.

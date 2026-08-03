@@ -24,11 +24,15 @@ mean_tau <- tidy(lm_robust(impeach_tau_i ~ 1, data = dat_impeach))
 effect_size <- mean_tau$estimate[1] / sd(dat_impeach$impeach_Y1, na.rm = TRUE)
 
 # Sample sizes ----
-# Each study's N is the number of distinct respondents assigned to one of its
-# question format conditions, which is the count the archive prints. For Studies 1,
-# 2a and 2b it is also the N the article reports. For Study 3 it is not: the deposited
-# data hold 1,023 distinct respondents and the article reports 1,074, so the deposit
-# is short of the full survey and the article's figure cannot be recovered from it.
+# For Studies 1, 2a and 2b the N is the number of distinct respondents assigned to one
+# of the question format conditions, which is both the count the archive prints and the
+# N the article reports.
+#
+# Study 3 needs its own count, because its id column is not a key: the deposited extract
+# carries 1,081 rows against 1,023 distinct id values, so a count of distinct ids is not
+# the survey's N. The quantity the analysis uses, and the one the article reports, is the
+# number of rows carrying an answer to the change question. The published Table D.3 gives
+# that number back directly, since its six Study 3 sample sizes sum to the same figure.
 n_study1 <- all |>
   filter(study == "1", format %in% c("Counterfactual", "Change + level", "Change")) |>
   distinct(id) |> nrow()
@@ -38,10 +42,12 @@ n_study2a <- all |>
 n_study2b <- all |>
   filter(study == "2b", format %in% c("Counterfactual", "Change", "Simultaneous")) |>
   distinct(id) |> nrow()
-n_study3_formats <- all |>
-  filter(study == "3", format %in% c("Counterfactual", "Change", "Change + level")) |>
-  distinct(id) |> nrow()
-n_study3_deposit <- all |> filter(study == "3") |> distinct(id) |> nrow()
+n_study3_responses <- all |>
+  filter(study == "3", format %in% c("Counterfactual", "Change", "Change + level"),
+         !is.na(YC)) |>
+  nrow()
+n_study3_rows <- all |> filter(study == "3") |> nrow()
+n_study3_ids <- all |> filter(study == "3") |> distinct(id) |> nrow()
 
 # Response substitution, the effects quoted beside Figure 3 ----
 # Figure 3's panel (a) estimates these; the pooled rows are what the text quotes.
@@ -70,8 +76,9 @@ stats <- bind_rows(tibble(
     "N study 1 (format conditions)",
     "N study 2a (format conditions)",
     "N study 2b (format conditions)",
-    "N study 3 (format conditions)",
-    "N study 3 (respondents in the deposit)",
+    "N study 3 (change responses)",
+    "N study 3 (rows in the deposit)",
+    "N study 3 (distinct id values in the deposit)",
     "Fig 3a overall estimate",
     "Fig 3a overall SE"
   ),
@@ -82,7 +89,7 @@ stats <- bind_rows(tibble(
     mean_tau$estimate[1],
     mean_tau$std.error[1],
     effect_size,
-    n_study1, n_study2a, n_study2b, n_study3_formats, n_study3_deposit,
+    n_study1, n_study2a, n_study2b, n_study3_responses, n_study3_rows, n_study3_ids,
     fit_overall$estimate[1],
     fit_overall$std.error[1]
   )

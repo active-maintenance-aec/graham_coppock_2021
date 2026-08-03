@@ -44,7 +44,7 @@ panel,study,Topic,Party,Estimator,Format,category,share,estimate,std.error,conf.
 (a) No pretreatment,2b,Trump coal ash exec. order,Democrat,CATE,Diff. in means,NA,NA,-0.29390905298289555,0.06009816280744443,-0.41243870825585327,-0.1753793977099378,-0.29 (0.06)
 (a) No pretreatment,2b,Trump coal ash exec. order,Democrat,CATE,Counterfactual,NA,NA,-0.08205128205128205,0.028481333298773063,-0.13822409100110256,-0.025878473101461553,-0.08 (0.03)
 (a) No pretreatment,2b,Trump coal ash exec. order,Democrat,CATE,Simultaneous,NA,NA,-0.01612903225806452,0.02556436410838702,-0.06673212353401617,0.034474059017887124,-0.02 (0.03)
-(a) No pretreatment,2b,Trump coal ash exec. order,Republican,More-less,Counterfactual,  Diff,-0,-0,0.030934411244487304,-0.06098346298244781,0.06098346298244781,-0.00 (0.03)
+(a) No pretreatment,2b,Trump coal ash exec. order,Republican,More-less,Counterfactual,  Diff,-0,-0,0.030934411244487304,-0.06098346298244781,0.06098346298244781,0.00 (0.03)
 (a) No pretreatment,2b,Trump coal ash exec. order,Republican,More-less,Counterfactual, More,0.10000000000000002,NA,0.020751433915982238,NA,NA,NA
 (a) No pretreatment,2b,Trump coal ash exec. order,Republican,More-less,Counterfactual, Same,0.7999999999999996,NA,0.027668578554643004,NA,NA,NA
 (a) No pretreatment,2b,Trump coal ash exec. order,Republican,More-less,Counterfactual,Less,0.10000000000000002,NA,0.020751433915982238,NA,NA,NA
@@ -57,7 +57,7 @@ panel,study,Topic,Party,Estimator,Format,category,share,estimate,std.error,conf.
 (a) No pretreatment,2b,Trump coal ash exec. order,Republican,More-less,Change, Same,0.5092592592592592,NA,0.04832853553437054,NA,NA,NA
 (a) No pretreatment,2b,Trump coal ash exec. order,Republican,More-less,Change,Less,0.16666666666666663,NA,0.036028141763926415,NA,NA,NA
 (a) No pretreatment,2b,Trump coal ash exec. order,Republican,CATE,Diff. in means,NA,NA,0.06181818181818175,0.06605619346963301,-0.0684072873977711,0.1920436510341346,0.06 (0.07)
-(a) No pretreatment,2b,Trump coal ash exec. order,Republican,CATE,Counterfactual,NA,NA,-0,0.0309344112444873,-0.06098346298244763,0.06098346298244763,-0.00 (0.03)
+(a) No pretreatment,2b,Trump coal ash exec. order,Republican,CATE,Counterfactual,NA,NA,-0,0.0309344112444873,-0.06098346298244763,0.06098346298244763,0.00 (0.03)
 (a) No pretreatment,2b,Trump coal ash exec. order,Republican,CATE,Simultaneous,NA,NA,0.040404040404040394,0.040404040404040414,-0.03977646280842353,0.12058454361650431,0.04 (0.04)
 (b) Possible pretreatment,2b,Biden skeptical of Anita Hill,Democrat,More-less,Counterfactual,  Diff,-0.019607843137254905,-0.019607843137254905,0.03407368127389225,-0.08720086106510294,0.04798517479059314,-0.02 (0.03)
 (b) Possible pretreatment,2b,Biden skeptical of Anita Hill,Democrat,More-less,Counterfactual, More,0.04901960784313726,NA,0.02148374607571881,NA,NA,NA
@@ -101,7 +101,7 @@ panel,study,Topic,Party,Estimator,Format,category,share,estimate,std.error,conf.
 (b) Possible pretreatment,2b,DREAM Act helps economy,Democrat,More-less,Change,Less,0.06106870229007633,NA,0.021001706137777396,NA,NA,NA
 (b) Possible pretreatment,2b,DREAM Act helps economy,Democrat,CATE,Counterfactual,NA,NA,-0.02,0.031718458443950354,-0.08293630292267563,0.042936302922675626,-0.02 (0.03)
 (b) Possible pretreatment,2b,DREAM Act helps economy,Democrat,CATE,Simultaneous,NA,NA,0.09677419354838711,0.03514488918929294,0.027207040303783778,0.16634134679299045,0.10 (0.04)
-(b) Possible pretreatment,2b,DREAM Act helps economy,Republican,More-less,Counterfactual,  Diff,-0,-0,0.031782086308186415,-0.06306255440948615,0.06306255440948615,-0.00 (0.03)
+(b) Possible pretreatment,2b,DREAM Act helps economy,Republican,More-less,Counterfactual,  Diff,-0,-0,0.031782086308186415,-0.06306255440948615,0.06306255440948615,0.00 (0.03)
 (b) Possible pretreatment,2b,DREAM Act helps economy,Republican,More-less,Counterfactual, More,0.05000000000000002,NA,0.021904291355759033,NA,NA,NA
 (b) Possible pretreatment,2b,DREAM Act helps economy,Republican,More-less,Counterfactual, Same,0.9,NA,0.030151134457776372,NA,NA,NA
 (b) Possible pretreatment,2b,DREAM Act helps economy,Republican,More-less,Counterfactual,Less,0.05,NA,0.02190429135575903,NA,NA,NA
@@ -113,5 +113,5 @@ panel,study,Topic,Party,Estimator,Format,category,share,estimate,std.error,conf.
 (b) Possible pretreatment,2b,DREAM Act helps economy,Republican,More-less,Change, More,0.2962962962962962,NA,0.04414343666854929,NA,NA,NA
 (b) Possible pretreatment,2b,DREAM Act helps economy,Republican,More-less,Change, Same,0.3611111111111111,NA,0.04643454608906272,NA,NA,NA
 (b) Possible pretreatment,2b,DREAM Act helps economy,Republican,More-less,Change,Less,0.34259259259259256,NA,0.04587904741301815,NA,NA,NA
-(b) Possible pretreatment,2b,DREAM Act helps economy,Republican,CATE,Counterfactual,NA,NA,-0,0.031782086308186415,-0.06306255440948606,0.06306255440948606,-0.00 (0.03)
+(b) Possible pretreatment,2b,DREAM Act helps economy,Republican,CATE,Counterfactual,NA,NA,-0,0.031782086308186415,-0.06306255440948606,0.06306255440948606,0.00 (0.03)
 (b) Possible pretreatment,2b,DREAM Act helps economy,Republican,CATE,Simultaneous,NA,NA,-0.0101010101010101,0.039306893136727965,-0.08810426026868955,0.06790224006666935,-0.01 (0.04)

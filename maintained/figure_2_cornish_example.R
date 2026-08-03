@@ -42,7 +42,7 @@ fig2_values <-
   filter(str_detect(topic, "Disputed"), str_detect(study, "1")) |>
   select(study, Topic, Party, Estimator, Format, category, share = value,
          estimate, std.error, conf.low, conf.high, label = lab_outside) |>
-  arrange(Party, Estimator, Format, category)
+  arrange(Party, Estimator, Format, category, .locale = "en")
 
 write_csv(fig2_values, here::here(out_dir, "figure_2_cornish_example.csv"))
 print(fig2_values |> filter(!is.na(label)), n = 20)

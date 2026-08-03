@@ -1,0 +1,178 @@
+claim_id,location,claim_type,value_paper,needs_block
+abstract_studies,Abstract,structural,4,TRUE
+intro_moore_election_year,"Introduction, p. 28",transcribed,2017,FALSE
+intro_moore_underage_women,"Introduction, p. 28",transcribed,4,FALSE
+intro_moore_n,"Introduction, p. 28",transcribed,575,FALSE
+intro_moore_more,"Introduction, p. 28",transcribed,29,FALSE
+intro_moore_less,"Introduction, p. 28",transcribed,38,FALSE
+intro_moore_no_difference,"Introduction, p. 28",transcribed,33,FALSE
+intro_moore_more_restated,"Introduction, p. 29",transcribed,29,FALSE
+intro_questions_documented,"Introduction, p. 29",structural,200,FALSE
+intro_poll_year_first,"Introduction, p. 29",structural,2017,FALSE
+intro_poll_year_last,"Introduction, p. 29",structural,2018,FALSE
+intro_kavanaugh_questions,"Introduction, p. 29",structural,15,FALSE
+intro_supplement_section,"Introduction, p. 29",structural,B,FALSE
+intro_footnote_mccarthy_year,"Introduction, p. 29, footnote 1",transcribed,1954,FALSE
+table1_candidate_positions_polls,Table 1,structural,25,FALSE
+table1_candidate_positions_questions,Table 1,structural,68,FALSE
+table1_endorsements_polls,Table 1,structural,25,FALSE
+table1_endorsements_questions,Table 1,structural,33,FALSE
+table1_behavior_polls,Table 1,structural,13,FALSE
+table1_behavior_questions,Table 1,structural,17,FALSE
+table1_attitudes_polls,Table 1,structural,12,FALSE
+table1_attitudes_questions,Table 1,structural,30,FALSE
+table1_misconduct_polls,Table 1,structural,10,FALSE
+table1_misconduct_questions,Table 1,structural,13,FALSE
+table1_attributes_polls,Table 1,structural,9,FALSE
+table1_attributes_questions,Table 1,structural,12,FALSE
+table1_participation_polls,Table 1,structural,6,FALSE
+table1_participation_questions,Table 1,structural,7,FALSE
+table1_example_debt,Table 1,transcribed,200000,FALSE
+table1_example_debt_years,Table 1,transcribed,10,FALSE
+table1_search_window_start,Table 1 note,structural,2017,FALSE
+table1_search_window_end,Table 1 note,structural,2018,FALSE
+intro_impeach_n,"Introduction, p. 31",pipeline,4034,TRUE
+intro_impeach_field_dates,"Introduction, p. 31",definitional,November 21 through December 10 2019,FALSE
+intro_impeach_cooperation_rate,"Introduction, p. 31",definitional,97.7,FALSE
+intro_impeach_scale_low,"Introduction, p. 32",definitional,1,TRUE
+intro_impeach_scale_high,"Introduction, p. 32",definitional,7,TRUE
+intro_impeach_correlation,"Introduction, p. 32",pipeline,0.82,TRUE
+intro_impeach_zero_change,"Introduction, p. 32",pipeline,72,TRUE
+intro_impeach_mean_tau,"Introduction, p. 32",pipeline,0.16,TRUE
+intro_impeach_mean_tau_se,"Introduction, p. 32",pipeline,0.02,TRUE
+fig1b_pid1,Figure 1b,pipeline,0.17,TRUE
+fig1b_pid2,Figure 1b,pipeline,0.19,TRUE
+fig1b_pid3,Figure 1b,pipeline,0.29,TRUE
+fig1b_pid4,Figure 1b,pipeline,0.19,TRUE
+fig1b_pid5,Figure 1b,pipeline,0.14,TRUE
+fig1b_pid6,Figure 1b,pipeline,0.17,TRUE
+fig1b_pid7,Figure 1b,pipeline,0.06,TRUE
+intro_impeach_all_but_strong_republicans,"Introduction, p. 32",descriptive,6,TRUE
+change_town_hall_year,"The Change Format, p. 33",transcribed,2010,FALSE
+change_gallup_more,"The Change Format, p. 33",transcribed,35,FALSE
+change_gallup_less,"The Change Format, p. 33",transcribed,21,FALSE
+change_gallup_republican_more,"The Change Format, p. 33",transcribed,51,FALSE
+change_gallup_republican_less,"The Change Format, p. 33",transcribed,8,FALSE
+change_gallup_democrat_more,"The Change Format, p. 33",transcribed,17,FALSE
+change_gallup_democrat_less,"The Change Format, p. 33",transcribed,39,FALSE
+change_brinol_petty_page,"The Change Format, p. 34",transcribed,168,FALSE
+cornish_elected_year,"Detailed Example, p. 38",transcribed,2002,FALSE
+cornish_vignette_points,"Detailed Example, p. 38",structural,3,FALSE
+cornish_democrat_less_share,"Detailed Example, p. 38",pipeline,87,TRUE
+cornish_republican_same_share,"Detailed Example, p. 38",pipeline,57,TRUE
+cornish_scoring_low,"Detailed Example, p. 39",definitional,-1,FALSE
+cornish_scoring_high,"Detailed Example, p. 39",definitional,1,FALSE
+cornish_democrat_change_score,"Detailed Example, p. 39",pipeline,-0.85,TRUE
+cornish_democrat_change_level_score,"Detailed Example, p. 39",pipeline,-0.61,TRUE
+cornish_democrat_level_effect,"Detailed Example, p. 39",pipeline,0.24,TRUE
+cornish_democrat_level_effect_se,"Detailed Example, p. 39",pipeline,0.10,TRUE
+cornish_republican_level_effect,"Detailed Example, p. 39",pipeline,-0.24,TRUE
+cornish_republican_level_effect_se,"Detailed Example, p. 39",pipeline,0.14,TRUE
+cornish_democrat_dim,"Detailed Example, p. 39",pipeline,0.02,TRUE
+cornish_democrat_dim_se,"Detailed Example, p. 39",pipeline,0.32,TRUE
+cornish_outcome_scale_points,"Detailed Example, p. 39",definitional,7,TRUE
+cornish_republican_dim,"Detailed Example, p. 39",pipeline,-2.01,TRUE
+cornish_republican_dim_se,"Detailed Example, p. 39",pipeline,0.33,TRUE
+cornish_experiment_direction,"Detailed Example, p. 39",descriptive,1,TRUE
+cornish_democrat_counterfactual,"Detailed Example, p. 39",pipeline,-0.49,TRUE
+cornish_democrat_counterfactual_se,"Detailed Example, p. 39",pipeline,0.11,TRUE
+cornish_republican_counterfactual,"Detailed Example, p. 40",pipeline,-1.07,TRUE
+cornish_republican_counterfactual_se,"Detailed Example, p. 40",pipeline,0.17,TRUE
+cornish_democrat_overstatement,"Detailed Example, p. 40",descriptive,0.5,TRUE
+cornish_republican_understatement,"Detailed Example, p. 40",descriptive,1,TRUE
+design_treatments_total,"Research Design, p. 40",structural,11,TRUE
+design_study1_treatments,"Research Design, p. 40",structural,8,TRUE
+design_study3_treatments,"Research Design, p. 40",structural,1,TRUE
+design_study2_treatments,"Research Design, p. 40",structural,2,TRUE
+design_pretreated_cases,"Research Design, p. 40",structural,4,TRUE
+design_surveys,"Research Design, p. 40",structural,4,TRUE
+design_study1_dates,"Research Design, p. 40",definitional,May 8-9 2018,FALSE
+design_study1_n,"Research Design, p. 40",pipeline,417,TRUE
+design_study1_cooperation_rate,"Research Design, p. 40",definitional,97.0,FALSE
+design_study2a_dates,"Research Design, p. 40",definitional,October 19-31 2018,FALSE
+design_study2a_n,"Research Design, p. 40",pipeline,2475,TRUE
+design_study2a_cooperation_rate,"Research Design, p. 40",definitional,97.2,FALSE
+design_study2a_extra_treatments,"Research Design, p. 40",structural,4,TRUE
+table2_study1_scale_low,Table 2,definitional,1,TRUE
+table2_study1_scale_high,Table 2,definitional,7,TRUE
+table2_study2a_scale_low,Table 2,definitional,1,TRUE
+table2_study2a_scale_high,Table 2,definitional,6,TRUE
+table2_mueller_scale_low,Table 2,definitional,0,FALSE
+table2_mueller_scale_high,Table 2,definitional,100,FALSE
+table2_tcja_year,Table 2,transcribed,2017,FALSE
+table2_mueller_election_year,Table 2,transcribed,2016,FALSE
+design_study2b_n,"Research Design, p. 44",pipeline,1110,TRUE
+design_study2b_cooperation_rate,"Research Design, p. 44",definitional,96.8,FALSE
+design_study2b_dates,"Research Design, p. 44",definitional,November 20-December 7 2018,FALSE
+design_study2b_replications,"Research Design, p. 44",structural,4,TRUE
+design_study3_date,"Research Design, p. 44",definitional,May 28 2019,FALSE
+design_study3_election_year,"Research Design, p. 44",transcribed,2016,FALSE
+design_study3_n,"Research Design, p. 44",pipeline,1074,TRUE
+design_study3_cooperation_rate,"Research Design, p. 44",definitional,99.7,FALSE
+design_se_exceptions,"Research Design, p. 44",structural,2,FALSE
+results_level_first_overall,"Results, p. 44",pipeline,10,TRUE
+results_level_first_overall_se,"Results, p. 44",pipeline,2,TRUE
+results_level_first_democrat,"Results, p. 44",pipeline,14,TRUE
+results_level_first_democrat_se,"Results, p. 44",pipeline,3,TRUE
+results_level_first_republican,"Results, p. 44",pipeline,8,TRUE
+results_level_first_republican_se,"Results, p. 44",pipeline,4,TRUE
+results_level_first_independent,"Results, p. 44",pipeline,2,TRUE
+results_level_first_independent_se,"Results, p. 44",pipeline,6,TRUE
+results_level_first_ordering,"Results, p. 44",descriptive,2,TRUE
+results_scoring_more,"Results, p. 45",definitional,1,FALSE
+results_scoring_less,"Results, p. 45",definitional,-1,FALSE
+results_scoring_no_change,"Results, p. 45",definitional,0,FALSE
+results_endorsed_trump_republican,"Results, p. 45",descriptive,-1,TRUE
+results_mueller_democrat,"Results, p. 45",descriptive,-1,TRUE
+results_treatments_evaluated,"Results, p. 46",structural,10,TRUE
+results_change_wrong_sign,"Results, p. 46",pipeline,12,TRUE
+results_sign_opportunities,"Results, p. 46",pipeline,20,TRUE
+results_counterfactual_wrong_sign,"Results, p. 46",pipeline,3,TRUE
+results_wrong_sign_cases_null,"Results, p. 46",descriptive,3,TRUE
+results_tcja_bill_year,"Results, p. 46",transcribed,2017,FALSE
+results_tcja_experiment_null,"Results, p. 46",descriptive,2,TRUE
+results_ate_opportunities,"Results, p. 46",pipeline,20,TRUE
+results_parties,"Results, p. 46",structural,2,TRUE
+results_significant_differences,"Results, p. 46",pipeline,6,TRUE
+results_significant_share,"Results, p. 46",pipeline,30,TRUE
+results_potential_outcomes,"Results, p. 46",structural,2,TRUE
+results_outcome_opportunities,"Results, p. 46",pipeline,40,TRUE
+results_footnote8_ci_level,"Results, p. 46, footnote 8",definitional,95,FALSE
+results_dim_rejections,"Results, p. 47",pipeline,12,TRUE
+results_dim_rejection_share,"Results, p. 47",pipeline,30.0,TRUE
+fig4_caption_treatments,Figure 4 caption,structural,10,TRUE
+fig4_axis_study1,Figure 4,definitional,3,FALSE
+fig4_axis_study2a,Figure 4,definitional,2.5,FALSE
+fig4_labels_agreeing,Figure 4,pipeline,96,TRUE
+fig4_undisputed_republican_counterfactual,Figure 4,pipeline,-1.12,TRUE
+fig2_labels_agreeing,Figure 2,pipeline,10,TRUE
+fig2_axis_study1,Figure 2,definitional,3,FALSE
+fig3a_facets,Figure 3a,structural,30,TRUE
+fig3b_facets,Figure 3b,structural,36,TRUE
+table3_dream_benefit,Table 3,transcribed,30000,FALSE
+table3_scale_low,Table 3,definitional,1,TRUE
+table3_scale_high,Table 3,definitional,6,TRUE
+nonrand_figure5_scale_share,"The Nonrandomized Counterfactual Format, p. 49",structural,40,FALSE
+nonrand_senate_election_year,"The Nonrandomized Counterfactual Format, p. 49",transcribed,2018,FALSE
+nonrand_kavanaugh_poll_questions,"The Nonrandomized Counterfactual Format, p. 49",structural,15,FALSE
+nonrand_kavanaugh_change_majorities,"The Nonrandomized Counterfactual Format, p. 49",descriptive,4,TRUE
+nonrand_kavanaugh_counterfactual_small,"The Nonrandomized Counterfactual Format, p. 49",descriptive,1,TRUE
+nonrand_biden_pattern,"The Nonrandomized Counterfactual Format, p. 49",descriptive,1,TRUE
+nonrand_dream_pattern,"The Nonrandomized Counterfactual Format, p. 49",descriptive,1,TRUE
+fig5_labels_agreeing,Figure 5,pipeline,24,TRUE
+fig5_axis_study2a,Figure 5,definitional,1,FALSE
+discussion_treatments,"Discussion, p. 50",structural,10,TRUE
+appendix_d3_cells,Table D.3,pipeline,336,TRUE
+appendix_d3_cells_as_printed,Table D.3,pipeline,336,TRUE
+appendix_d3_sample_sizes,Table D.3,pipeline,84,TRUE
+appendix_d4_cells,Table D.4,pipeline,216,TRUE
+appendix_d4_p_values,Table D.4,pipeline,72,TRUE
+appendix_d4_sample_sizes,Table D.4,pipeline,72,TRUE
+appendix_d5_estimates,Table D.5,pipeline,60,TRUE
+appendix_d5_sample_sizes,Table D.5,pipeline,60,TRUE
+appendix_d5_intervals,Table D.5,pipeline,60,TRUE
+appendix_e_simultaneous_less_accurate,"Supplementary Material, Section E.2",descriptive,3,TRUE
+appendix_e_biden_doubles,"Supplementary Material, Section E.2",descriptive,2,TRUE
+fige2a_labels_agreeing,Figure E.2a,pipeline,24,TRUE
+fige2b_labels_agreeing,Figure E.2b,pipeline,20,TRUE
+fige2_axis_study2b,Figure E.2,definitional,0.5,FALSE

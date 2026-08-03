@@ -89,7 +89,7 @@ tab_estimates <-
   left_join(tab_n, by = c("study", "topic", "pid_3")) |>
   transmute(Study = study, Topic = topic, Outcome = outcome, Party = pid_3, N,
             quantity, estimate, std.error, p.value) |>
-  arrange(Study, Topic, Outcome, Party, quantity)
+  arrange(Study, Topic, Outcome, Party, quantity, .locale = "en")
 
 write_csv(tab_estimates, here::here(out_dir, "table_d4_counterfactual_accuracy_estimates.csv"))
 

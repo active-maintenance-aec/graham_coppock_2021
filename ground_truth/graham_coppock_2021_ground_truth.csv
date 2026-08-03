@@ -1,58 +1,83 @@
-paper_id,table_figure,claim,value_script,value_paper,match,value_rewrite,match_rewrite,defect_locus,notes
-graham_coppock_2021,"Text, p. 31",Survey responses obtained from Lucid,4034,4034,1,4034,1,NA,
-graham_coppock_2021,"Text, p. 32",Correlation of the two impeachment questions,0.8284749964578377,0.82,0,0.8284749964578377,0,paper_internal,"The article gives 0.82; the data give 0.828, which prints as 0.83"
-graham_coppock_2021,"Text, p. 32",Share reporting exactly zero change,0.7208725830441249,0.72,1,0.7208725830441249,1,NA,
-graham_coppock_2021,"Text, p. 32",Average difference between the two questions,0.16013882002974697,0.16,1,0.16013882002974697,1,NA,
-graham_coppock_2021,"Text, p. 32",Standard error of that average,0.02260942678840965,0.02,1,0.02260942678840965,1,NA,
-graham_coppock_2021,"Text, p. 38","Cornish, Democrats reporting less likely (per cent)",86.79245283018872,87,1,86.79245283018872,1,NA,
-graham_coppock_2021,"Text, p. 38","Cornish, Republicans reporting no effect (per cent)",56.75675675675676,57,1,56.75675675675676,1,NA,
-graham_coppock_2021,"Text, p. 39","Cornish, effect of the level question on Democrats' more-minus-less score",0.2403609515996718,0.24,1,0.2403609515996718,1,NA,
-graham_coppock_2021,"Text, p. 39",Standard error of that effect,0.09720845733311836,0.10,1,0.09720845733311836,1,NA,
-graham_coppock_2021,"Text, p. 39","Cornish, same effect among Republicans",-0.24381828637147776,-0.24,1,-0.24381828637147776,1,NA,
-graham_coppock_2021,"Text, p. 39",Standard error of that effect,0.14204838922552315,0.14,1,0.14204838922552315,1,NA,
-graham_coppock_2021,"Text, p. 40",Study 1 N,417,417,1,417,1,NA,
-graham_coppock_2021,"Text, p. 40",Study 2a N,2475,2475,1,2475,1,NA,
-graham_coppock_2021,"Text, p. 44",Study 2b N,1110,1110,1,1110,1,NA,
-graham_coppock_2021,"Text, p. 44",Study 3 N,1023,1074,0,1023,0,archive,"The deposit holds 1023 distinct Study 3 respondents, in data_study3.csv and in the merged file alike. The article's 1,074 is the full Mechanical Turk survey; the deposited extract covers only the respondents in a question format condition, and Table D.3's Study 3 rows reproduce exactly from it"
-graham_coppock_2021,"Text, p. 44","Decrease in reporting any change, all respondents (points)",9.927086770759162,10,1,9.927086770759162,1,NA,
-graham_coppock_2021,"Text, p. 44",Standard error of that effect (points),2.443086819332483,2,1,2.443086819332483,1,NA,
-graham_coppock_2021,"Text, p. 44",Same decrease among Democrats (points),13.458773122560586,14,0,13.458773122560586,0,paper_internal,"The article gives 14 points. The estimate is 13.5, which prints as 13"
-graham_coppock_2021,"Text, p. 44","Standard error, Democrats (points)",3.1889717874394776,3,1,3.1889717874394776,1,NA,
-graham_coppock_2021,"Text, p. 44",Same decrease among Republicans (points),7.94545541462172,8,1,7.94545541462172,1,NA,
-graham_coppock_2021,"Text, p. 44","Standard error, Republicans (points)",4.2790795547757545,4,1,4.2790795547757545,1,NA,
-graham_coppock_2021,"Text, p. 44",Same decrease among pure independents (points),2.232945821452077,2,1,2.232945821452077,1,NA,
-graham_coppock_2021,"Text, p. 44","Standard error, independents (points)",6.177695945502959,6,1,6.177695945502959,1,NA,
-graham_coppock_2021,"Text, p. 46","Cells compared, change format against the experiment",20,20,1,20,1,NA,
-graham_coppock_2021,"Text, p. 46",Change format has the opposite sign,12,12,1,12,1,NA,
-graham_coppock_2021,"Text, p. 46",Counterfactual format has the opposite sign,3,3,1,3,1,NA,
-graham_coppock_2021,"Text, p. 46",Opportunities to evaluate a counterfactual guess,40,40,1,40,1,NA,
-graham_coppock_2021,"Text, p. 47",Difference in means tests rejecting at p < 0.05,12,12,1,12,1,NA,
-graham_coppock_2021,"Text, p. 46",Comparisons of the experiment against the counterfactual guess,20,20,1,20,1,NA,
-graham_coppock_2021,"Text, p. 46",Differences whose bootstrap interval excludes zero,6,6,1,6,1,NA,
-graham_coppock_2021,Figure 1b,"Average change, party ID 1",0.16703056768558955,0.17,1,0.16703056768558955,1,NA,Printed beside each point in the published panel
-graham_coppock_2021,Figure 1b,"Average change, party ID 2",0.18903591682419657,0.19,1,0.18903591682419657,1,NA,Printed beside each point in the published panel
-graham_coppock_2021,Figure 1b,"Average change, party ID 3",0.2857142857142857,0.29,1,0.2857142857142857,1,NA,Printed beside each point in the published panel
-graham_coppock_2021,Figure 1b,"Average change, party ID 4",0.1921397379912664,0.19,1,0.1921397379912664,1,NA,Printed beside each point in the published panel
-graham_coppock_2021,Figure 1b,"Average change, party ID 5",0.13666666666666663,0.14,1,0.13666666666666663,1,NA,Printed beside each point in the published panel
-graham_coppock_2021,Figure 1b,"Average change, party ID 6",0.1677148846960168,0.17,1,0.1677148846960168,1,NA,Printed beside each point in the published panel
-graham_coppock_2021,Figure 1b,"Average change, party ID 7",0.05778894472361805,0.06,1,0.05778894472361805,1,NA,Printed beside each point in the published panel
-graham_coppock_2021,Figure 3a,"Estimates plotted (ten facets by All, Democrat, Republican)",30,30,1,30,1,NA,The panel draws a Pooled facet and one per treatment in Studies 1 and 3
-graham_coppock_2021,Figure 3a,"Pooled decrease in reporting any change, all respondents",0.09927086770759162,0.10,1,0.09927086770759162,1,NA,The panel's Pooled facet plots what the surrounding text quotes as a 10 point decrease
-graham_coppock_2021,Figure 3b,Means plotted (nine facets by two formats by two parties),36,36,1,36,1,NA,
-graham_coppock_2021,Figure 3b,"Endorsed Trump, Republicans: sign of the level question's effect",-1,-1,1,-1,1,NA,"The text says asking the level question first reduced Republican claims that their support increased, so the effect on the more-minus-less score is negative"
-graham_coppock_2021,Figure 3b,"Mueller comments, Democrats: sign of the level question's effect",-1,-1,1,-1,1,NA,"The text says Democrats became less likely to claim the comments moved them, so the effect on the more-minus-less score is negative"
-graham_coppock_2021,Figure 2,Printed labels agreeing with the published figure,10,10,1,10,1,NA,Each label is an estimate and a standard error; a label counts as agreeing only if both halves do at the two decimals the figure prints
-graham_coppock_2021,Figure 4,Printed labels agreeing with the published figure,95,96,0,95,0,environment,Each label is an estimate and a standard error; a label counts as agreeing only if both halves do at the two decimals the figure prints. The one label that disagrees has its own row below.
-graham_coppock_2021,Figure 5,Printed labels agreeing with the published figure,24,24,1,24,1,NA,Each label is an estimate and a standard error; a label counts as agreeing only if both halves do at the two decimals the figure prints
-graham_coppock_2021,Figure E.2a,Printed labels agreeing with the published figure,24,24,1,24,1,NA,Each label is an estimate and a standard error; a label counts as agreeing only if both halves do at the two decimals the figure prints
-graham_coppock_2021,Figure E.2b,Printed labels agreeing with the published figure,20,20,1,20,1,NA,Each label is an estimate and a standard error; a label counts as agreeing only if both halves do at the two decimals the figure prints
-graham_coppock_2021,Figure 4,"Undisputed accusation, Republican, CATE, Counterfactual",-1.1250000000000002,-1.12,0,-1.1250000000000002,0,environment,"Printed label disagrees. Rewrite estimate -1.1250000000000002 and standard error 0.1844 against a published -1.12 (0.18). The quantity is a mean of 72 values that comes to -1.125 exactly, which is a tie at the second decimal. lm_robust returns it one unit in the last place away from that tie, so it prints as -1.13; the mean of the same 72 values, which the appendix's Table D.5 reports for the same cell, lands on the tie and prints as -1.12, which is what the published figure shows. The deposited script produces the same bits as the rewrite and prints -1.13 too."
-graham_coppock_2021,Table D.3,Cells agreeing with the published table,336,336,1,336,1,NA,Each cell is a percentage and its standard error at one decimal. Compared with the table's 'No change' and 'Less' headings read in the transposed order its own Difference column implies
-graham_coppock_2021,Table D.3,Cells agreeing if the column headings are read as printed,172,336,0,172,0,paper_internal,The same comparison with 'No change' taken to mean the share reporting no change. The shortfall is the size of the transposition: in all 84 rows the printed Difference equals More minus the column headed 'No change'
-graham_coppock_2021,Table D.3,Sample sizes agreeing,84,84,1,84,1,NA,
-graham_coppock_2021,Table D.4,Cells agreeing with the published table,216,216,1,216,1,NA,Each cell is an estimate and its standard error at the two decimals the published table prints. The deposited script formats these cells to three decimals instead
-graham_coppock_2021,Table D.4,p-values agreeing,72,72,1,72,1,NA,"One p-value per difference in means test, printed to three decimals"
-graham_coppock_2021,Table D.4,Sample sizes agreeing,72,72,1,72,1,NA,
-graham_coppock_2021,Table D.5,Point estimates agreeing with the published table,60,60,1,60,1,NA,
-graham_coppock_2021,Table D.5,Sample sizes agreeing,60,60,1,60,1,NA,
-graham_coppock_2021,Table D.5,Bootstrap standard errors and interval endpoints agreeing,60,60,1,53,0,rewrite,"The deposited script resamples with replicate() and sample() over every cell in the counterfactual data; the rewrite uses rsample::bootstraps() at the same seed and the same 10,000 draws over the twenty cells the table reports, so the two walk different random streams. The deposited script reproduces all sixty published rows exactly; the rewrite differs on seven of them by a unit in the second decimal, which is Monte Carlo variation rather than a difference in the estimator"
+paper_id,claim_id,table_figure,claim,value_script,value_paper,match,value_rewrite,match_rewrite,holds,comparison,digits,defect_locus,notes
+graham_coppock_2021,intro_impeach_n,"Text, p. 31",Survey responses obtained from Lucid,4034,4034,1,4034,1,NA,==,0,NA,
+graham_coppock_2021,intro_impeach_correlation,"Text, p. 32",Correlation of the two impeachment questions,0.8284749964578377,0.82,0,0.8284749964578377,0,NA,==,2,paper_internal,"The article gives 0.82; the data give 0.828, which prints as 0.83"
+graham_coppock_2021,intro_impeach_zero_change,"Text, p. 32",Share reporting exactly zero change (per cent),72.0872583044125,72,1,72.0872583044125,1,NA,==,0,NA,
+graham_coppock_2021,intro_impeach_mean_tau,"Text, p. 32",Average difference between the two questions,0.16013882002974697,0.16,1,0.16013882002974697,1,NA,==,2,NA,
+graham_coppock_2021,intro_impeach_mean_tau_se,"Text, p. 32",Standard error of that average,0.02260942678840965,0.02,1,0.02260942678840965,1,NA,==,2,NA,
+graham_coppock_2021,cornish_democrat_less_share,"Text, p. 38","Cornish, Democrats reporting less likely (per cent)",86.79245283018872,87,1,86.79245283018872,1,NA,==,0,NA,
+graham_coppock_2021,cornish_republican_same_share,"Text, p. 38","Cornish, Republicans reporting no effect (per cent)",56.75675675675676,57,1,56.75675675675676,1,NA,==,0,NA,
+graham_coppock_2021,cornish_democrat_change_score,"Text, p. 39","Cornish, Democrats' more-minus-less score, change format",-0.8490566037735852,-0.85,1,-0.8490566037735852,1,NA,==,2,NA,
+graham_coppock_2021,cornish_democrat_change_level_score,"Text, p. 39",The same score with the level question asked first,-0.6086956521739131,-0.61,1,-0.6086956521739131,1,NA,==,2,NA,
+graham_coppock_2021,cornish_democrat_level_effect,"Text, p. 39","Cornish, effect of the level question on Democrats' more-minus-less score",0.2403609515996718,0.24,1,0.2403609515996718,1,NA,==,2,NA,
+graham_coppock_2021,cornish_democrat_level_effect_se,"Text, p. 39","Standard error of the level question's effect, Democrats",0.09720845733311836,0.10,1,0.09720845733311836,1,NA,==,2,NA,
+graham_coppock_2021,cornish_republican_level_effect,"Text, p. 39","Cornish, same effect among Republicans",-0.24381828637147776,-0.24,1,-0.24381828637147776,1,NA,==,2,NA,
+graham_coppock_2021,cornish_republican_level_effect_se,"Text, p. 39","Standard error of the level question's effect, Republicans",0.14204838922552315,0.14,1,0.14204838922552315,1,NA,==,2,NA,
+graham_coppock_2021,cornish_democrat_dim,"Text, p. 39","Cornish, difference in means among Democrats",0.0208012326656397,0.02,1,0.0208012326656397,1,NA,==,2,NA,
+graham_coppock_2021,cornish_democrat_dim_se,"Text, p. 39","Standard error of that difference in means, Democrats",0.31859922512225264,0.32,1,0.31859922512225264,1,NA,==,2,NA,
+graham_coppock_2021,cornish_republican_dim,"Text, p. 39","Cornish, difference in means among Republicans",-2.0130568356374803,-2.01,1,-2.0130568356374803,1,NA,==,2,NA,
+graham_coppock_2021,cornish_republican_dim_se,"Text, p. 39","Standard error of that difference in means, Republicans",0.3263180509166467,0.33,1,0.3263180509166467,1,NA,==,2,NA,
+graham_coppock_2021,cornish_experiment_direction,"Text, p. 39",Parties of two whose experimental estimate is negative with an interval excluding zero,1,1,NA,1,NA,TRUE,==,0,NA,"The article says Cornish lost support among Republicans, not Democrats, so exactly one of the two experimental estimates should be negative and distinguishable from zero"
+graham_coppock_2021,cornish_democrat_counterfactual,"Text, p. 39","Cornish, counterfactual format estimate among Democrats",-0.4854368932038836,-0.49,1,-0.4854368932038836,1,NA,==,2,NA,
+graham_coppock_2021,cornish_democrat_counterfactual_se,"Text, p. 39","Standard error of the counterfactual estimate, Democrats",0.111121583905433,0.11,1,0.111121583905433,1,NA,==,2,NA,
+graham_coppock_2021,cornish_republican_counterfactual,"Text, p. 40","Cornish, counterfactual format estimate among Republicans",-1.0684931506849311,-1.07,1,-1.0684931506849311,1,NA,==,2,NA,
+graham_coppock_2021,cornish_republican_counterfactual_se,"Text, p. 40","Standard error of the counterfactual estimate, Republicans",0.16930420677134625,0.17,1,0.16930420677134625,1,NA,==,2,NA,
+graham_coppock_2021,cornish_democrat_overstatement,"Text, p. 40",Democrats overstate negative change by approximately half a point,0.5062381258695233,0.5,NA,0.5062381258695233,NA,NA,approximate,2,NA,"The article hedges with 'approximately', so the two numbers are recorded and no verdict is returned"
+graham_coppock_2021,cornish_republican_understatement,"Text, p. 40",Republicans understate negative change by almost a full point,0.9445636849525492,1,NA,0.9445636849525492,NA,NA,approximate,2,NA,"The article hedges with 'almost', so the two numbers are recorded and no verdict is returned"
+graham_coppock_2021,design_study1_n,"Text, p. 40",Study 1 N,417,417,1,417,1,NA,==,0,NA,
+graham_coppock_2021,design_study2a_n,"Text, p. 40",Study 2a N,2475,2475,1,2475,1,NA,==,0,NA,
+graham_coppock_2021,design_study2b_n,"Text, p. 44",Study 2b N,1110,1110,1,1110,1,NA,==,0,NA,
+graham_coppock_2021,design_study3_n,"Text, p. 44",Study 3 N,1074,1074,1,1074,1,NA,==,0,NA,"The Study 3 extract carries 1081 rows against 1023 distinct id values, so a count of distinct ids is not the survey's N. The quantity the analysis uses is the number of answers to the change question, and the published Table D.3's six Study 3 sample sizes sum to the same figure"
+graham_coppock_2021,results_level_first_overall,"Text, p. 44","Decrease in reporting any change, all respondents (points)",9.927086770759162,10,1,9.927086770759162,1,NA,==,0,NA,
+graham_coppock_2021,results_level_first_overall_se,"Text, p. 44",Standard error of that effect (points),2.443086819332483,2,1,2.443086819332483,1,NA,==,0,NA,
+graham_coppock_2021,results_level_first_democrat,"Text, p. 44",Same decrease among Democrats (points),13.458773122560586,14,0,13.458773122560586,0,NA,==,0,paper_internal,"The article gives 14 points. The estimate is 13.5, which prints as 13"
+graham_coppock_2021,results_level_first_democrat_se,"Text, p. 44","Standard error, Democrats (points)",3.1889717874394776,3,1,3.1889717874394776,1,NA,==,0,NA,
+graham_coppock_2021,results_level_first_republican,"Text, p. 44",Same decrease among Republicans (points),7.94545541462172,8,1,7.94545541462172,1,NA,==,0,NA,
+graham_coppock_2021,results_level_first_republican_se,"Text, p. 44","Standard error, Republicans (points)",4.2790795547757545,4,1,4.2790795547757545,1,NA,==,0,NA,
+graham_coppock_2021,results_level_first_independent,"Text, p. 44",Same decrease among pure independents (points),2.232945821452077,2,1,2.232945821452077,1,NA,==,0,NA,
+graham_coppock_2021,results_level_first_independent_se,"Text, p. 44","Standard error, independents (points)",6.177695945502959,6,1,6.177695945502959,1,NA,==,0,NA,
+graham_coppock_2021,results_level_first_ordering,"Text, p. 44",Party groups of two whose decrease exceeds the independents',2,2,NA,2,NA,TRUE,==,0,NA,
+graham_coppock_2021,results_sign_opportunities,"Text, p. 46","Cells compared, change format against the experiment",20,20,1,20,1,NA,==,0,NA,
+graham_coppock_2021,results_change_wrong_sign,"Text, p. 46",Change format has the opposite sign,12,12,1,12,1,NA,==,0,NA,
+graham_coppock_2021,results_counterfactual_wrong_sign,"Text, p. 46",Counterfactual format has the opposite sign,3,3,1,3,1,NA,==,0,NA,
+graham_coppock_2021,results_wrong_sign_cases_null,"Text, p. 46",Sign-miss cells in which neither estimate is distinguishable from zero,2,3,NA,2,NA,FALSE,==,0,paper_internal,"The article says all three. The counterfactual estimate for the disputed accusation among Democrats is -0.49 with a 95 per cent interval of (-0.71, -0.27), which excludes zero, as the article's own Table D.5 also shows"
+graham_coppock_2021,results_tcja_experiment_null,"Text, p. 46",Tax Cuts and Jobs Act parties of two whose experimental estimate contains zero,2,2,NA,2,NA,TRUE,==,0,NA,
+graham_coppock_2021,results_outcome_opportunities,"Text, p. 46",Opportunities to evaluate a counterfactual guess,40,40,1,40,1,NA,==,0,NA,
+graham_coppock_2021,results_dim_rejections,"Text, p. 47",Difference in means tests rejecting at p < 0.05,12,12,1,12,1,NA,==,0,NA,
+graham_coppock_2021,results_dim_rejection_share,"Text, p. 47",The same count as a percentage of the forty tests,30,30.0,1,30,1,NA,==,1,NA,
+graham_coppock_2021,results_ate_opportunities,"Text, p. 46",Comparisons of the experiment against the counterfactual guess,20,20,1,20,1,NA,==,0,NA,
+graham_coppock_2021,results_significant_differences,"Text, p. 46",Differences whose bootstrap interval excludes zero,6,6,1,6,1,NA,==,0,NA,
+graham_coppock_2021,results_significant_share,"Text, p. 46",The same count as a percentage of the twenty comparisons,30,30,1,30,1,NA,==,0,NA,
+graham_coppock_2021,nonrand_kavanaugh_change_majorities,"Text, p. 49",Kavanaugh cells of four in which most respondents report the vote changed their preference,4,4,NA,4,NA,TRUE,==,0,NA,
+graham_coppock_2021,nonrand_kavanaugh_counterfactual_small,"Text, p. 49",Sign of the counterfactual estimate for Democrats whose Senator opposed Kavanaugh,1,1,NA,1,NA,TRUE,==,0,NA,
+graham_coppock_2021,nonrand_biden_pattern,"Text, p. 49",Parties of two whose counterfactual estimate of Biden's loss excludes zero,1,1,NA,1,NA,TRUE,==,0,NA,
+graham_coppock_2021,nonrand_dream_pattern,"Text, p. 49",Of one: whether the DREAM Act counterfactual boost is larger for Republicans,1,1,NA,1,NA,TRUE,==,0,NA,
+graham_coppock_2021,fig1b_pid1,Figure 1b,"Average change, party ID 1",0.16703056768558955,0.17,1,0.16703056768558955,1,NA,==,2,NA,Printed beside each point in the published panel
+graham_coppock_2021,fig1b_pid2,Figure 1b,"Average change, party ID 2",0.18903591682419657,0.19,1,0.18903591682419657,1,NA,==,2,NA,Printed beside each point in the published panel
+graham_coppock_2021,fig1b_pid3,Figure 1b,"Average change, party ID 3",0.2857142857142857,0.29,1,0.2857142857142857,1,NA,==,2,NA,Printed beside each point in the published panel
+graham_coppock_2021,fig1b_pid4,Figure 1b,"Average change, party ID 4",0.1921397379912664,0.19,1,0.1921397379912664,1,NA,==,2,NA,Printed beside each point in the published panel
+graham_coppock_2021,fig1b_pid5,Figure 1b,"Average change, party ID 5",0.13666666666666663,0.14,1,0.13666666666666663,1,NA,==,2,NA,Printed beside each point in the published panel
+graham_coppock_2021,fig1b_pid6,Figure 1b,"Average change, party ID 6",0.1677148846960168,0.17,1,0.1677148846960168,1,NA,==,2,NA,Printed beside each point in the published panel
+graham_coppock_2021,fig1b_pid7,Figure 1b,"Average change, party ID 7",0.05778894472361805,0.06,1,0.05778894472361805,1,NA,==,2,NA,Printed beside each point in the published panel
+graham_coppock_2021,intro_impeach_all_but_strong_republicans,Figure 1b,Partisan groups of seven whose average change is positive with an interval excluding zero,6,6,NA,6,NA,TRUE,==,0,NA,"The article says every group except strong Republicans. Group 7's estimate is 0.058 with an interval of (-0.041, 0.156)"
+graham_coppock_2021,fig3a_facets,Figure 3a,"Estimates plotted (ten facets by All, Democrat, Republican)",30,30,1,30,1,NA,==,0,NA,The panel draws a Pooled facet and one per treatment in Studies 1 and 3
+graham_coppock_2021,NA,Figure 3a,"Pooled decrease in reporting any change, all respondents (points)",9.927086770759162,10,1,9.927086770759162,1,NA,==,0,NA,The panel's Pooled facet plots what the surrounding text quotes as a 10 point decrease
+graham_coppock_2021,fig3b_facets,Figure 3b,Means plotted (nine facets by two formats by two parties),36,36,1,36,1,NA,==,0,NA,
+graham_coppock_2021,results_endorsed_trump_republican,Figure 3b,"Endorsed Trump, Republicans: sign of the level question's effect",-1,-1,NA,-1,NA,TRUE,==,0,NA,"The text says asking the level question first reduced Republican claims that their support increased, so the effect on the more-minus-less score is negative"
+graham_coppock_2021,results_mueller_democrat,Figure 3b,"Mueller comments, Democrats: sign of the level question's effect",-1,-1,NA,-1,NA,TRUE,==,0,NA,"The text says Democrats became less likely to claim the comments moved them, so the effect on the more-minus-less score is negative"
+graham_coppock_2021,fig2_labels_agreeing,Figure 2,Printed labels agreeing with the published figure,10,10,1,10,1,NA,==,0,NA,Each label is an estimate and a standard error; a label counts as agreeing only if both halves do at the two decimals the figure prints
+graham_coppock_2021,fig4_labels_agreeing,Figure 4,Printed labels agreeing with the published figure,95,96,0,95,0,NA,==,0,environment,Each label is an estimate and a standard error; a label counts as agreeing only if both halves do at the two decimals the figure prints. The one label that disagrees has its own row below.
+graham_coppock_2021,fig5_labels_agreeing,Figure 5,Printed labels agreeing with the published figure,24,24,1,24,1,NA,==,0,NA,Each label is an estimate and a standard error; a label counts as agreeing only if both halves do at the two decimals the figure prints
+graham_coppock_2021,fige2a_labels_agreeing,Figure E.2a,Printed labels agreeing with the published figure,24,24,1,24,1,NA,==,0,NA,Each label is an estimate and a standard error; a label counts as agreeing only if both halves do at the two decimals the figure prints
+graham_coppock_2021,fige2b_labels_agreeing,Figure E.2b,Printed labels agreeing with the published figure,20,20,1,20,1,NA,==,0,NA,Each label is an estimate and a standard error; a label counts as agreeing only if both halves do at the two decimals the figure prints
+graham_coppock_2021,fig4_undisputed_republican_counterfactual,Figure 4,"Undisputed accusation, Republican, CATE, Counterfactual",-1.1250000000000002,-1.12,0,-1.1250000000000002,0,NA,==,2,environment,"The quantity is a mean of 72 values that comes to -1.125 exactly, which is a tie at the second decimal. lm_robust returns it one unit in the last place away from that tie, so it prints as -1.13; the mean of the same 72 values, which the appendix's Table D.5 reports for the same cell, lands on the tie and prints as -1.12, which is what the published figure shows. The deposited script produces the same bits as the rewrite and prints -1.13 too."
+graham_coppock_2021,appendix_d3_cells,Table D.3,Cells agreeing with the published table,336,336,1,336,1,NA,==,0,NA,Each cell is a percentage and its standard error at one decimal. Compared with the table's 'No change' and 'Less' headings read in the transposed order its own Difference column implies
+graham_coppock_2021,appendix_d3_cells_as_printed,Table D.3,Cells agreeing if the column headings are read as printed,172,336,0,172,0,NA,==,0,paper_internal,"The same comparison with 'No change' taken to mean the share reporting no change. The shortfall is the size of the transposition: in 84 of the table's 84 rows the printed Difference equals More minus the column headed 'No change', against 2 for the column headed 'Less'"
+graham_coppock_2021,appendix_d3_sample_sizes,Table D.3,Sample sizes agreeing,84,84,1,84,1,NA,==,0,NA,
+graham_coppock_2021,appendix_d4_cells,Table D.4,Cells agreeing with the published table,216,216,1,216,1,NA,==,0,NA,Each cell is an estimate and its standard error at the two decimals the published table prints. The deposited script formats these cells to three decimals instead
+graham_coppock_2021,appendix_d4_p_values,Table D.4,p-values agreeing,72,72,1,72,1,NA,==,0,NA,"One p-value per difference in means test, printed to three decimals"
+graham_coppock_2021,appendix_d4_sample_sizes,Table D.4,Sample sizes agreeing,72,72,1,72,1,NA,==,0,NA,
+graham_coppock_2021,appendix_d5_estimates,Table D.5,Point estimates agreeing with the published table,60,60,1,60,1,NA,==,0,NA,
+graham_coppock_2021,appendix_d5_sample_sizes,Table D.5,Sample sizes agreeing,60,60,1,60,1,NA,==,0,NA,
+graham_coppock_2021,appendix_d5_intervals,Table D.5,Bootstrap standard errors and interval endpoints agreeing,60,60,1,53,0,NA,==,0,rewrite,"The deposited script resamples with replicate() and sample() over every cell in the counterfactual data; the rewrite uses rsample::bootstraps() at the same seed and the same 10,000 draws over the twenty cells the table reports, so the two walk different random streams. The deposited script reproduces all sixty published rows exactly; the rewrite differs on seven of them by a unit in the second decimal, which is Monte Carlo variation rather than a difference in the estimator"
+graham_coppock_2021,appendix_e_simultaneous_less_accurate,Figure E.2a,No-pretreatment cells of four in which the simultaneous format sits further from the experiment,3,3,NA,3,NA,TRUE,==,0,NA,"The article claims this for both Democratic cells and for Republicans on the Obama torture treatment, and reports no advantage either way on Trump coal ash"
+graham_coppock_2021,appendix_e_biden_doubles,Figure E.2b,Ratio of the simultaneous to the change format share of Democrats reporting more support,2.217741935483871,2,NA,2.217741935483871,NA,NA,approximate,2,NA,"The article says the simultaneous format doubles the share, so the ratio is recorded and no verdict is returned"

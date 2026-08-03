@@ -87,7 +87,7 @@ tab_out <-
     std.error = format_num(std.error, 2),
     estimator = factor(estimator, c("Experiment", "Guess", "Difference"))
   ) |>
-  arrange(study, topic, pid_3, estimator) |>
+  arrange(study, topic, pid_3, estimator, .locale = "en") |>
   select(
     Study = study, Topic = topic, Party = pid_3, N,
     Estimator = estimator, Estimate = estimate, SE = std.error, CI
@@ -102,7 +102,7 @@ tab_estimates <-
   transmute(Study = study, Topic = topic, Party = pid_3, N,
             Estimator = factor(estimator, c("Experiment", "Guess", "Difference")),
             estimate, std.error, conf.low, conf.high) |>
-  arrange(Study, Topic, Party, Estimator)
+  arrange(Study, Topic, Party, Estimator, .locale = "en")
 
 write_csv(tab_estimates, here::here(out_dir, "table_d5_ate_vs_self_estimates.csv"))
 

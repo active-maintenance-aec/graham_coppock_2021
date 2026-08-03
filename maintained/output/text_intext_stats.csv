@@ -8,8 +8,9 @@ Mean tau_i in SD units of Y1,0.0644720104137926
 N study 1 (format conditions),417
 N study 2a (format conditions),2475
 N study 2b (format conditions),1110
-N study 3 (format conditions),1023
-N study 3 (respondents in the deposit),1023
+N study 3 (change responses),1074
+N study 3 (rows in the deposit),1081
+N study 3 (distinct id values in the deposit),1023
 Fig 3a overall estimate,-0.09927086770759162
 Fig 3a overall SE,0.02443086819332483
 Fig 3a Democrat estimate,-0.13458773122560586

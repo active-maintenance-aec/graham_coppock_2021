@@ -38,8 +38,12 @@ theme_poself <- function() {
 }
 
 # Formatting ----
+# A quantity that rounds to zero from below prints as "-0.0", which no published table in
+# this article does, so the sign goes when nothing but zeros is left. Eight of Table D.3's
+# cells are exactly this case.
 format_num <- function(x, digits = 3) {
-  sprintf(paste0("%.", digits, "f"), as.numeric(x))
+  s <- sprintf(paste0("%.", digits, "f"), as.numeric(x))
+  if_else(str_detect(s, "^-0\\.?0*$"), str_remove(s, "^-"), s)
 }
 
 # The grand comparison panel ----

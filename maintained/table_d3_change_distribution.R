@@ -36,7 +36,7 @@ tab_out <-
   ) |>
   select(Study, Topic, Format, Party, category, entry) |>
   pivot_wider(names_from = category, values_from = entry) |>
-  arrange(Study, Topic, Party, Format) |>
+  arrange(Study, Topic, Party, Format, .locale = "en") |>
   left_join(tab_selfpct_n, by = c("Study", "Topic", "Party", "Format")) |>
   mutate(`Y1?` = recode_values(Format, "Change" ~ "No", "Change + level" ~ "Yes")) |>
   select(Study, Topic, Party, `Y1?`, N, More, Less, Same, Diff)
@@ -50,7 +50,7 @@ tab_estimates <-
   transmute(Study, Topic, Party, Format,
             `Y1?` = recode_values(Format, "Change" ~ "No", "Change + level" ~ "Yes"),
             N, category, estimate_pct = 100 * estimate, se_pct = 100 * std.error) |>
-  arrange(Study, Topic, Party, Format, category)
+  arrange(Study, Topic, Party, Format, category, .locale = "en")
 
 write_csv(tab_estimates, here::here(out_dir, "table_d3_change_distribution_estimates.csv"))
 

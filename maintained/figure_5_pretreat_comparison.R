@@ -55,7 +55,7 @@ fig5_values <-
   filter(study == "2a", str_detect(topic, "DREAM|Biden|Kav")) |>
   select(study, Topic, Party, Estimator, Format, category, share = value,
          estimate, std.error, conf.low, conf.high, label = lab_outside) |>
-  arrange(Topic, Party, Estimator, Format, category)
+  arrange(Topic, Party, Estimator, Format, category, .locale = "en")
 
 write_csv(fig5_values, here::here(out_dir, "figure_5_pretreat_comparison.csv"))
 print(fig5_values |> filter(!is.na(label)), n = 40)

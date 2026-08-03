@@ -64,7 +64,7 @@ fig_e2_values <-
   ) |>
   select(panel, study, Topic, Party, Estimator, Format, category, share = value,
          estimate, std.error, conf.low, conf.high, label = lab_outside) |>
-  arrange(panel, Topic, Party, Estimator, Format, category)
+  arrange(panel, Topic, Party, Estimator, Format, category, .locale = "en")
 
 write_csv(fig_e2_values, here::here(out_dir, "figure_e2_study2b_simultaneous.csv"))
 print(fig_e2_values |> filter(!is.na(label)), n = 40)

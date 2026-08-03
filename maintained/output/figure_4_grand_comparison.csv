@@ -125,7 +125,7 @@ study,Topic,Party,Estimator,Format,category,share,estimate,std.error,conf.low,co
 1,Immigrant population,Democrat,More-less,Change,Less,0.1730769230769231,NA,0.052974522506642974,NA,NA,NA
 1,Immigrant population,Democrat,CATE,Diff. in means,NA,NA,-0.5029562475364605,0.33324975117074185,-1.164114262414273,0.15820176734135194,-0.50 (0.33)
 1,Immigrant population,Democrat,CATE,Counterfactual,NA,NA,-0.02941176470588234,0.10561399587012077,-0.2389215226594662,0.18009799324770154,-0.03 (0.11)
-1,Immigrant population,Republican,More-less,Counterfactual,  Diff,-0,-0,0.06851887098275317,-0.1366227483683309,0.1366227483683309,-0.00 (0.07)
+1,Immigrant population,Republican,More-less,Counterfactual,  Diff,-0,-0,0.06851887098275317,-0.1366227483683309,0.1366227483683309,0.00 (0.07)
 1,Immigrant population,Republican,More-less,Counterfactual, More,0.16666666666666669,NA,0.0442287410361896,NA,NA,NA
 1,Immigrant population,Republican,More-less,Counterfactual, Same,0.6666666666666667,NA,0.05594542388644594,NA,NA,NA
 1,Immigrant population,Republican,More-less,Counterfactual,Less,0.16666666666666669,NA,0.0442287410361896,NA,NA,NA
@@ -181,7 +181,7 @@ study,Topic,Party,Estimator,Format,category,share,estimate,std.error,conf.low,co
 1,Tax Cuts and Jobs Act,Democrat,More-less,Change,Less,0.5769230769230769,NA,0.06918047444081744,NA,NA,NA
 1,Tax Cuts and Jobs Act,Democrat,CATE,Diff. in means,NA,NA,0.3492313756405201,0.38802228755016765,-0.4205937914113682,1.1190565426924084,0.35 (0.39)
 1,Tax Cuts and Jobs Act,Democrat,CATE,Counterfactual,NA,NA,0.10784313725490198,0.09843155817790668,-0.0874185963718399,0.30310487088164384,0.11 (0.10)
-1,Tax Cuts and Jobs Act,Republican,More-less,Counterfactual,  Diff,-0,-0,0.07911877721292357,-0.15775836109576474,0.15775836109576474,-0.00 (0.08)
+1,Tax Cuts and Jobs Act,Republican,More-less,Counterfactual,  Diff,-0,-0,0.07911877721292357,-0.15775836109576474,0.15775836109576474,0.00 (0.08)
 1,Tax Cuts and Jobs Act,Republican,More-less,Counterfactual, More,0.22222222222222224,NA,0.04933922619854286,NA,NA,NA
 1,Tax Cuts and Jobs Act,Republican,More-less,Counterfactual, Same,0.5555555555555557,NA,0.05897165471491947,NA,NA,NA
 1,Tax Cuts and Jobs Act,Republican,More-less,Counterfactual,Less,0.22222222222222224,NA,0.04933922619854286,NA,NA,NA
@@ -194,7 +194,7 @@ study,Topic,Party,Estimator,Format,category,share,estimate,std.error,conf.low,co
 1,Tax Cuts and Jobs Act,Republican,More-less,Change, Same,0.29729729729729726,NA,0.07617808344724218,NA,NA,NA
 1,Tax Cuts and Jobs Act,Republican,More-less,Change,Less,-0,NA,0,NA,NA,NA
 1,Tax Cuts and Jobs Act,Republican,CATE,Diff. in means,NA,NA,-0.42014162077104605,0.3602010382491069,-1.1385399391535773,0.29825669761148516,-0.42 (0.36)
-1,Tax Cuts and Jobs Act,Republican,CATE,Counterfactual,NA,NA,-5.4847800920457326e-18,0.11533444597688497,-0.22997035363975937,0.22997035363975937,-0.00 (0.12)
+1,Tax Cuts and Jobs Act,Republican,CATE,Counterfactual,NA,NA,-5.4847800920457326e-18,0.11533444597688497,-0.22997035363975937,0.22997035363975937,0.00 (0.12)
 1,Undisputed accusation,Democrat,More-less,Counterfactual,  Diff,-0.48039215686274495,-0.48039215686274495,0.06642899610386169,-0.6121694159291928,-0.3486148977962971,-0.48 (0.07)
 1,Undisputed accusation,Democrat,More-less,Counterfactual, More,0.09803921568627451,NA,0.029589188531613256,NA,NA,NA
 1,Undisputed accusation,Democrat,More-less,Counterfactual, Same,0.32352941176470584,NA,0.046550104113196135,NA,NA,NA
@@ -262,4 +262,4 @@ study,Topic,Party,Estimator,Format,category,share,estimate,std.error,conf.low,co
 2a,Trump coal ash exec. order,Republican,More-less,Change, Same,0.6320224719101125,NA,0.02559544781878895,NA,NA,NA
 2a,Trump coal ash exec. order,Republican,More-less,Change,Less,0.10955056179775285,NA,0.0165766878738286,NA,NA,NA
 2a,Trump coal ash exec. order,Republican,CATE,Diff. in means,NA,NA,-0.16854101064627366,0.10447265747076008,-0.3736629399786448,0.036580918686097474,-0.17 (0.10)
-2a,Trump coal ash exec. order,Republican,CATE,Counterfactual,NA,NA,-0,0.04584696607711451,-0.09001584260361675,0.09001584260361675,-0.00 (0.05)
+2a,Trump coal ash exec. order,Republican,CATE,Counterfactual,NA,NA,-0,0.04584696607711451,-0.09001584260361675,0.09001584260361675,0.00 (0.05)

@@ -8,6 +8,8 @@
     paper?](#does-the-maintained-rewrite-reproduce-the-paper)
 - [Original Archive Reproducibility](#original-archive-reproducibility)
 - [Ground Truth](#ground-truth)
+  - [Published claims, and the two instruments that check
+    them](#published-claims-and-the-two-instruments-that-check-them)
 - [Maintained Rewrite](#maintained-rewrite)
 - [Figures](#figures)
 - [Rewrite Verification](#rewrite-verification)
@@ -29,6 +31,7 @@ to a set of published archives.
 | Replication archive | [10.7910/DVN/GFF78K](https://doi.org/10.7910/DVN/GFF78K) |
 | Mirror deposit | [10.60600/YU/2ADPVK](https://doi.org/10.60600/YU/2ADPVK) |
 | Pre-analysis plans | none |
+| Errata | `graham_coppock_2021_errata.pdf`, built from `errata.qmd` |
 
 **The data are not redistributed here.** The deposit lives at Harvard
 Dataverse and that is the only copy this repository points at.
@@ -50,9 +53,18 @@ the problem this project exists to document rather than to add to.
 script per published table or figure, writing to `output/`, which is
 committed so a reader can compare a fresh run against it without
 downloading anything. `ground_truth/` ties every published number to the
-code that produces it. `original/` is created by the download script and
-is deliberately absent from the repository. This README is the
-reproducibility report, also available as a PDF in `report/`.
+code that produces it: `published_claims.csv` is the extraction of every
+numeric token in the article and its supplementary materials, and
+`build_ground_truth.R` assembles the comparison table by reading every
+rewrite value back out of `maintained/output/`, so it cannot drift from
+the scripts. `maintained/in_text_claims.R` is a second, independent
+instrument that recomputes each of those numbers by its own path and
+prints it beside the sentence that states it; the build compares the two
+and stops if they disagree. `errata.qmd` builds the note listing the
+sentences in the article that its own data do not support. `original/`
+is created by the download script and is deliberately absent from the
+repository. This README is the reproducibility report, also available as
+a PDF in `report/`.
 
 **License.** CC0 1.0 Universal, matching the terms of the deposit this
 repository maintains, so nothing in the chain is more restrictive than
@@ -68,12 +80,12 @@ source("run_all.R")
 That fetches the deposited archive from Dataverse, verifies its 12
 checksums, produces every published figure, appendix table and in-text
 number into `maintained/output/`, rebuilds the ground truth from those
-outputs, and re-checks the deposit. It takes about 75 seconds, of which
-roughly 65 are the 10,000-resample bootstrap behind Table D.5.
-Individual scripts run on their own in any order, subject to the
-dependencies in each script’s header: `clean_studies.R` first, then the
-two estimation scripts, then the figures, tables and in-text scripts
-that read them.
+outputs, runs the claims audit and its coverage gates, and re-checks the
+deposit. It takes about 75 seconds, of which roughly 65 are the
+10,000-resample bootstrap behind Table D.5. Individual scripts run on
+their own in any order, subject to the dependencies in each script’s
+header: `clean_studies.R` first, then the two estimation scripts, then
+the figures, tables and in-text scripts that read them.
 
 Required packages: tidyverse, estimatr, ggh4x, gridExtra, rsample,
 knitr, kableExtra, here. Paths resolve through `here`, so nothing
@@ -157,8 +169,12 @@ and `ggrepel` and never calls a function from any of them.
 
 ### Does the maintained rewrite reproduce the paper?
 
-Almost entirely. Every appendix table reproduces cell for cell, and 50
-of the 57 recorded claims match.
+Almost entirely. Every appendix table reproduces cell for cell. Of the
+82 recorded claims, 67 compare a published number against a rewrite
+number and 61 of those match at the precision the page prints; 12 are
+claims about sign, shape or count rather than about a value, and 11 of
+those hold; the remaining 3 are magnitudes the article itself hedges,
+which are recorded without a verdict.
 
 | Component | Verdict |
 |:---|:---|
@@ -173,6 +189,7 @@ of the 57 recorded claims match.
 | Table D.5 (60 point estimates) | All reproduce |
 | Table D.5 (bootstrap intervals) | 53 of 60 rows; the deposited script reproduces all 60 |
 | In-text numbers | All but two reproduce; both are the article rounding its own estimate |
+| In-text claims about sign and shape | All but one hold; the exception is the sentence about the three sign misses |
 
 Reproduction verdict by component
 
@@ -185,20 +202,21 @@ the level question reducing Democrats’ reports of change by 14 points;
 the estimate is 13.5 points, which prints as 13. Both are one unit in
 the last printed digit, and neither touches a conclusion.
 
-**Study 3’s published N cannot be recovered from the deposit.** The
-article reports 1,074 respondents. The deposited data hold 1,023
-distinct Study 3 respondents, in the standalone `data_study3.csv` and in
-the merged file alike. The published figure is the full Mechanical Turk
-survey and the deposit carries only the respondents in a question format
-condition; Table D.3’s Study 3 rows reproduce exactly from what is
-there.
+**Study 3’s N is a count of answers, not of respondents.** The article
+reports 1,074. The deposited Study 3 extract carries 1,074 rows that
+answer the change question, which is the published figure, but only
+1,023 distinct `id` values across 1,081 rows, so the `id` column is not
+a key and a count of distinct respondents gives 1,023 instead. The
+published Table D.3 settles which of the two the article means: its six
+Study 3 sample sizes sum to 1,074.
 
 **Table D.3’s column headings are transposed relative to its own body.**
 The published table heads its second and third value columns “No change”
-and “Less”, but in all 84 rows the printed Difference equals More minus
-the column headed “No change”. Read in that corrected order all 336
-cells reproduce. Read as printed, 172 do. The numbers in the table are
-right; the two headings are swapped.
+and “Less”, but in 84 of its 84 rows the printed Difference equals More
+minus the column headed “No change”, against 2 for the column headed
+“Less”. Read in that corrected order all 336 cells reproduce. Read as
+printed, 172 do. The numbers in the table are right; the two headings
+are swapped.
 
 **One printed label in Figure 4 differs, and it is a rounding tie.** For
 the Undisputed accusation treatment among Republicans, the
@@ -219,6 +237,19 @@ deposited script reproduces all sixty published rows exactly. The
 rewrite differs on seven rows by a unit in the second decimal, which is
 Monte Carlo variation rather than a difference in the estimator, and no
 interval changes whether it covers zero.
+
+**One sentence in the results section is not supported by the article’s
+own appendix.** The text says that in all three cells where the
+counterfactual format gets the sign wrong, neither estimate can be
+distinguished from zero. In one of the three it can: the counterfactual
+estimate for the disputed accusation among Democrats has a 95 per cent
+interval that excludes zero in Figure 4, in Table D.5 and in the rewrite
+alike. That sentence, the two rounded numbers above and the transposed
+Table D.3 headings are the 4 claims whose fault lies with the article
+rather than with any code, and they are collected in
+`graham_coppock_2021_errata.pdf` at the root of this repository, which
+quotes each published sentence and prints the corrected one with every
+number in it computed at render time.
 
 ------------------------------------------------------------------------
 
@@ -317,28 +348,77 @@ and the surrounding text quotes.
 
 | Where the difference lies | Rows |
 |:--------------------------|-----:|
-| matches                   |   50 |
-| paper_internal            |    3 |
+| no disagreement           |   75 |
+| paper_internal            |    4 |
 | environment               |    2 |
-| archive                   |    1 |
 | rewrite                   |    1 |
 
-Ground truth: 50 of 57 claims match
+Ground truth: 75 of 82 rows record no disagreement between the article
+and the rewrite
 
 | Claim | Published | Rewrite | Locus |
-|:---|---:|---:|:---|
+|:---|:---|---:|:---|
 | Text, p. 32: Correlation of the two impeachment questions | 0.82 | 0.8285 | paper_internal |
-| Text, p. 44: Study 3 N | 1074.00 | 1023.0000 | archive |
-| Text, p. 44: Same decrease among Democrats (points) | 14.00 | 13.4590 | paper_internal |
-| Figure 4: Printed labels agreeing with the published figure | 96.00 | 95.0000 | environment |
+| Text, p. 44: Same decrease among Democrats (points) | 14 | 13.4590 | paper_internal |
+| Text, p. 46: Sign-miss cells in which neither estimate is distinguishable from zero | 3 | 2.0000 | paper_internal |
+| Figure 4: Printed labels agreeing with the published figure | 96 | 95.0000 | environment |
 | Figure 4: Undisputed accusation, Republican, CATE, Counterfactual | -1.12 | -1.1250 | environment |
-| Table D.3: Cells agreeing if the column headings are read as printed | 336.00 | 172.0000 | paper_internal |
-| Table D.5: Bootstrap standard errors and interval endpoints agreeing | 60.00 | 53.0000 | rewrite |
+| Table D.3: Cells agreeing if the column headings are read as printed | 336 | 172.0000 | paper_internal |
+| Table D.5: Bootstrap standard errors and interval endpoints agreeing | 60 | 53.0000 | rewrite |
 
-The 7 claims that do not match
+The 7 claims the rewrite does not reproduce, and where the fault lies
 
-The full table, all 57 rows with their notes, is
+Every row that fails carries a locus, because a bare zero reads as a
+failure of the rewrite and here it is one only once, on the Table D.5
+bootstrap intervals. The build stops on any row carrying a verdict
+without a locus or a locus without a verdict.
+
+The full table, all 82 rows with their notes, is
 `ground_truth/graham_coppock_2021_ground_truth.csv`.
+
+### Published claims, and the two instruments that check them
+
+The table above starts from the pipeline and asks what each output
+corresponds to in the article. That question cannot find a claim the
+pipeline never reaches, so the repository also works in the other
+direction. `ground_truth/published_claims.csv` is an exhaustive
+extraction: every numeric token in the body, the footnotes, the tables,
+the figures and the supplementary materials, read off the typeset page
+rather than searched for by pattern, together with a companion pass for
+numbers the article spells out in words. Each of the 177 resulting
+claims is classified by hand.
+
+| Claim type   | Claims | Needs a block |
+|:-------------|-------:|--------------:|
+| pipeline     |     64 |            64 |
+| structural   |     41 |            16 |
+| definitional |     32 |             9 |
+| transcribed  |     25 |             0 |
+| descriptive  |     15 |            15 |
+
+The extraction: 177 published claims by type
+
+A `pipeline` claim is one the analysis code produces; a `descriptive`
+claim is about sign, shape or count rather than about a value. Each of
+those 79 needs a row in the ground truth. A `definitional` or
+`structural` claim (a scale endpoint, a panel count, a field date) gets
+a block only where the pipeline can reach the quantity, and a
+`transcribed` claim is quoted from another source and cannot drift. All
+told 104 of the 177 claims require a block.
+
+`maintained/in_text_claims.R` carries one block per such claim. Each
+block quotes the article’s sentence verbatim, then recomputes the number
+from `maintained/output/`, including the cleaned data written there, and
+prints it at the precision the page uses, with the evidence beneath it
+where the claim is about shape rather than value. It never reads the
+ground truth, so the two instruments reach each number by separate
+paths, and `build_ground_truth.R` runs it as a program, counts what it
+printed, and compares the two value by value. The build halts if the
+claims script prints a claim the extraction does not list, if the
+extraction lists a claim the script does not print, if a `pipeline` or
+`descriptive` claim has no row in the ground truth, or if the two
+instruments disagree on any number. All 104 claims that require a block
+print one.
 
 ------------------------------------------------------------------------
 
@@ -361,6 +441,7 @@ The full table, all 57 rows with their notes, is
 | table_d5_ate_vs_self.R | output/table_d5_ate_vs_self{,\_estimates}.csv |
 | text_intext_stats.R | output/text_intext_stats.csv |
 | text_sign_comparison.R | output/text_sign_comparison.csv |
+| in_text_claims.R | Printed to the console: every published number beside its sentence |
 
 Maintained rewrite scripts
 
@@ -447,67 +528,93 @@ alt="Figure E.2. Study 2b, setting the simultaneous outcomes format against the 
 
 ## Rewrite Verification
 
-| Table or figure | Claim | Published | Rewrite | Match | Locus |
-|:---|:---|---:|---:|---:|:---|
-| Text, p. 31 | Survey responses obtained from Lucid | 4034.00 | 4034.0000 | 1 | NA |
-| Text, p. 32 | Correlation of the two impeachment questions | 0.82 | 0.8285 | 0 | paper_internal |
-| Text, p. 32 | Share reporting exactly zero change | 0.72 | 0.7209 | 1 | NA |
-| Text, p. 32 | Average difference between the two questions | 0.16 | 0.1601 | 1 | NA |
-| Text, p. 32 | Standard error of that average | 0.02 | 0.0226 | 1 | NA |
-| Text, p. 38 | Cornish, Democrats reporting less likely (per cent) | 87.00 | 86.7920 | 1 | NA |
-| Text, p. 38 | Cornish, Republicans reporting no effect (per cent) | 57.00 | 56.7570 | 1 | NA |
-| Text, p. 39 | Cornish, effect of the level question on Democrats’ more-minus-less score | 0.24 | 0.2404 | 1 | NA |
-| Text, p. 39 | Standard error of that effect | 0.10 | 0.0972 | 1 | NA |
-| Text, p. 39 | Cornish, same effect among Republicans | -0.24 | -0.2438 | 1 | NA |
-| Text, p. 39 | Standard error of that effect | 0.14 | 0.1421 | 1 | NA |
-| Text, p. 40 | Study 1 N | 417.00 | 417.0000 | 1 | NA |
-| Text, p. 40 | Study 2a N | 2475.00 | 2475.0000 | 1 | NA |
-| Text, p. 44 | Study 2b N | 1110.00 | 1110.0000 | 1 | NA |
-| Text, p. 44 | Study 3 N | 1074.00 | 1023.0000 | 0 | archive |
-| Text, p. 44 | Decrease in reporting any change, all respondents (points) | 10.00 | 9.9271 | 1 | NA |
-| Text, p. 44 | Standard error of that effect (points) | 2.00 | 2.4431 | 1 | NA |
-| Text, p. 44 | Same decrease among Democrats (points) | 14.00 | 13.4590 | 0 | paper_internal |
-| Text, p. 44 | Standard error, Democrats (points) | 3.00 | 3.1890 | 1 | NA |
-| Text, p. 44 | Same decrease among Republicans (points) | 8.00 | 7.9455 | 1 | NA |
-| Text, p. 44 | Standard error, Republicans (points) | 4.00 | 4.2791 | 1 | NA |
-| Text, p. 44 | Same decrease among pure independents (points) | 2.00 | 2.2329 | 1 | NA |
-| Text, p. 44 | Standard error, independents (points) | 6.00 | 6.1777 | 1 | NA |
-| Text, p. 46 | Cells compared, change format against the experiment | 20.00 | 20.0000 | 1 | NA |
-| Text, p. 46 | Change format has the opposite sign | 12.00 | 12.0000 | 1 | NA |
-| Text, p. 46 | Counterfactual format has the opposite sign | 3.00 | 3.0000 | 1 | NA |
-| Text, p. 46 | Opportunities to evaluate a counterfactual guess | 40.00 | 40.0000 | 1 | NA |
-| Text, p. 47 | Difference in means tests rejecting at p \< 0.05 | 12.00 | 12.0000 | 1 | NA |
-| Text, p. 46 | Comparisons of the experiment against the counterfactual guess | 20.00 | 20.0000 | 1 | NA |
-| Text, p. 46 | Differences whose bootstrap interval excludes zero | 6.00 | 6.0000 | 1 | NA |
-| Figure 1b | Average change, party ID 1 | 0.17 | 0.1670 | 1 | NA |
-| Figure 1b | Average change, party ID 2 | 0.19 | 0.1890 | 1 | NA |
-| Figure 1b | Average change, party ID 3 | 0.29 | 0.2857 | 1 | NA |
-| Figure 1b | Average change, party ID 4 | 0.19 | 0.1921 | 1 | NA |
-| Figure 1b | Average change, party ID 5 | 0.14 | 0.1367 | 1 | NA |
-| Figure 1b | Average change, party ID 6 | 0.17 | 0.1677 | 1 | NA |
-| Figure 1b | Average change, party ID 7 | 0.06 | 0.0578 | 1 | NA |
-| Figure 3a | Estimates plotted (ten facets by All, Democrat, Republican) | 30.00 | 30.0000 | 1 | NA |
-| Figure 3a | Pooled decrease in reporting any change, all respondents | 0.10 | 0.0993 | 1 | NA |
-| Figure 3b | Means plotted (nine facets by two formats by two parties) | 36.00 | 36.0000 | 1 | NA |
-| Figure 3b | Endorsed Trump, Republicans: sign of the level question’s effect | -1.00 | -1.0000 | 1 | NA |
-| Figure 3b | Mueller comments, Democrats: sign of the level question’s effect | -1.00 | -1.0000 | 1 | NA |
-| Figure 2 | Printed labels agreeing with the published figure | 10.00 | 10.0000 | 1 | NA |
-| Figure 4 | Printed labels agreeing with the published figure | 96.00 | 95.0000 | 0 | environment |
-| Figure 5 | Printed labels agreeing with the published figure | 24.00 | 24.0000 | 1 | NA |
-| Figure E.2a | Printed labels agreeing with the published figure | 24.00 | 24.0000 | 1 | NA |
-| Figure E.2b | Printed labels agreeing with the published figure | 20.00 | 20.0000 | 1 | NA |
-| Figure 4 | Undisputed accusation, Republican, CATE, Counterfactual | -1.12 | -1.1250 | 0 | environment |
-| Table D.3 | Cells agreeing with the published table | 336.00 | 336.0000 | 1 | NA |
-| Table D.3 | Cells agreeing if the column headings are read as printed | 336.00 | 172.0000 | 0 | paper_internal |
-| Table D.3 | Sample sizes agreeing | 84.00 | 84.0000 | 1 | NA |
-| Table D.4 | Cells agreeing with the published table | 216.00 | 216.0000 | 1 | NA |
-| Table D.4 | p-values agreeing | 72.00 | 72.0000 | 1 | NA |
-| Table D.4 | Sample sizes agreeing | 72.00 | 72.0000 | 1 | NA |
-| Table D.5 | Point estimates agreeing with the published table | 60.00 | 60.0000 | 1 | NA |
-| Table D.5 | Sample sizes agreeing | 60.00 | 60.0000 | 1 | NA |
-| Table D.5 | Bootstrap standard errors and interval endpoints agreeing | 60.00 | 53.0000 | 0 | rewrite |
+| Table or figure | Claim | Published | Rewrite | Match | Holds | Locus |
+|:---|:---|:---|---:|---:|:---|:---|
+| Text, p. 31 | Survey responses obtained from Lucid | 4034 | 4034.0000 | 1 | NA | NA |
+| Text, p. 32 | Correlation of the two impeachment questions | 0.82 | 0.8285 | 0 | NA | paper_internal |
+| Text, p. 32 | Share reporting exactly zero change (per cent) | 72 | 72.0870 | 1 | NA | NA |
+| Text, p. 32 | Average difference between the two questions | 0.16 | 0.1601 | 1 | NA | NA |
+| Text, p. 32 | Standard error of that average | 0.02 | 0.0226 | 1 | NA | NA |
+| Text, p. 38 | Cornish, Democrats reporting less likely (per cent) | 87 | 86.7920 | 1 | NA | NA |
+| Text, p. 38 | Cornish, Republicans reporting no effect (per cent) | 57 | 56.7570 | 1 | NA | NA |
+| Text, p. 39 | Cornish, Democrats’ more-minus-less score, change format | -0.85 | -0.8491 | 1 | NA | NA |
+| Text, p. 39 | The same score with the level question asked first | -0.61 | -0.6087 | 1 | NA | NA |
+| Text, p. 39 | Cornish, effect of the level question on Democrats’ more-minus-less score | 0.24 | 0.2404 | 1 | NA | NA |
+| Text, p. 39 | Standard error of the level question’s effect, Democrats | 0.10 | 0.0972 | 1 | NA | NA |
+| Text, p. 39 | Cornish, same effect among Republicans | -0.24 | -0.2438 | 1 | NA | NA |
+| Text, p. 39 | Standard error of the level question’s effect, Republicans | 0.14 | 0.1421 | 1 | NA | NA |
+| Text, p. 39 | Cornish, difference in means among Democrats | 0.02 | 0.0208 | 1 | NA | NA |
+| Text, p. 39 | Standard error of that difference in means, Democrats | 0.32 | 0.3186 | 1 | NA | NA |
+| Text, p. 39 | Cornish, difference in means among Republicans | -2.01 | -2.0131 | 1 | NA | NA |
+| Text, p. 39 | Standard error of that difference in means, Republicans | 0.33 | 0.3263 | 1 | NA | NA |
+| Text, p. 39 | Parties of two whose experimental estimate is negative with an interval excluding zero | 1 | 1.0000 | NA | TRUE | NA |
+| Text, p. 39 | Cornish, counterfactual format estimate among Democrats | -0.49 | -0.4854 | 1 | NA | NA |
+| Text, p. 39 | Standard error of the counterfactual estimate, Democrats | 0.11 | 0.1111 | 1 | NA | NA |
+| Text, p. 40 | Cornish, counterfactual format estimate among Republicans | -1.07 | -1.0685 | 1 | NA | NA |
+| Text, p. 40 | Standard error of the counterfactual estimate, Republicans | 0.17 | 0.1693 | 1 | NA | NA |
+| Text, p. 40 | Democrats overstate negative change by approximately half a point | 0.5 | 0.5062 | NA | NA | NA |
+| Text, p. 40 | Republicans understate negative change by almost a full point | 1 | 0.9446 | NA | NA | NA |
+| Text, p. 40 | Study 1 N | 417 | 417.0000 | 1 | NA | NA |
+| Text, p. 40 | Study 2a N | 2475 | 2475.0000 | 1 | NA | NA |
+| Text, p. 44 | Study 2b N | 1110 | 1110.0000 | 1 | NA | NA |
+| Text, p. 44 | Study 3 N | 1074 | 1074.0000 | 1 | NA | NA |
+| Text, p. 44 | Decrease in reporting any change, all respondents (points) | 10 | 9.9271 | 1 | NA | NA |
+| Text, p. 44 | Standard error of that effect (points) | 2 | 2.4431 | 1 | NA | NA |
+| Text, p. 44 | Same decrease among Democrats (points) | 14 | 13.4590 | 0 | NA | paper_internal |
+| Text, p. 44 | Standard error, Democrats (points) | 3 | 3.1890 | 1 | NA | NA |
+| Text, p. 44 | Same decrease among Republicans (points) | 8 | 7.9455 | 1 | NA | NA |
+| Text, p. 44 | Standard error, Republicans (points) | 4 | 4.2791 | 1 | NA | NA |
+| Text, p. 44 | Same decrease among pure independents (points) | 2 | 2.2329 | 1 | NA | NA |
+| Text, p. 44 | Standard error, independents (points) | 6 | 6.1777 | 1 | NA | NA |
+| Text, p. 44 | Party groups of two whose decrease exceeds the independents’ | 2 | 2.0000 | NA | TRUE | NA |
+| Text, p. 46 | Cells compared, change format against the experiment | 20 | 20.0000 | 1 | NA | NA |
+| Text, p. 46 | Change format has the opposite sign | 12 | 12.0000 | 1 | NA | NA |
+| Text, p. 46 | Counterfactual format has the opposite sign | 3 | 3.0000 | 1 | NA | NA |
+| Text, p. 46 | Sign-miss cells in which neither estimate is distinguishable from zero | 3 | 2.0000 | NA | FALSE | paper_internal |
+| Text, p. 46 | Tax Cuts and Jobs Act parties of two whose experimental estimate contains zero | 2 | 2.0000 | NA | TRUE | NA |
+| Text, p. 46 | Opportunities to evaluate a counterfactual guess | 40 | 40.0000 | 1 | NA | NA |
+| Text, p. 47 | Difference in means tests rejecting at p \< 0.05 | 12 | 12.0000 | 1 | NA | NA |
+| Text, p. 47 | The same count as a percentage of the forty tests | 30.0 | 30.0000 | 1 | NA | NA |
+| Text, p. 46 | Comparisons of the experiment against the counterfactual guess | 20 | 20.0000 | 1 | NA | NA |
+| Text, p. 46 | Differences whose bootstrap interval excludes zero | 6 | 6.0000 | 1 | NA | NA |
+| Text, p. 46 | The same count as a percentage of the twenty comparisons | 30 | 30.0000 | 1 | NA | NA |
+| Text, p. 49 | Kavanaugh cells of four in which most respondents report the vote changed their preference | 4 | 4.0000 | NA | TRUE | NA |
+| Text, p. 49 | Sign of the counterfactual estimate for Democrats whose Senator opposed Kavanaugh | 1 | 1.0000 | NA | TRUE | NA |
+| Text, p. 49 | Parties of two whose counterfactual estimate of Biden’s loss excludes zero | 1 | 1.0000 | NA | TRUE | NA |
+| Text, p. 49 | Of one: whether the DREAM Act counterfactual boost is larger for Republicans | 1 | 1.0000 | NA | TRUE | NA |
+| Figure 1b | Average change, party ID 1 | 0.17 | 0.1670 | 1 | NA | NA |
+| Figure 1b | Average change, party ID 2 | 0.19 | 0.1890 | 1 | NA | NA |
+| Figure 1b | Average change, party ID 3 | 0.29 | 0.2857 | 1 | NA | NA |
+| Figure 1b | Average change, party ID 4 | 0.19 | 0.1921 | 1 | NA | NA |
+| Figure 1b | Average change, party ID 5 | 0.14 | 0.1367 | 1 | NA | NA |
+| Figure 1b | Average change, party ID 6 | 0.17 | 0.1677 | 1 | NA | NA |
+| Figure 1b | Average change, party ID 7 | 0.06 | 0.0578 | 1 | NA | NA |
+| Figure 1b | Partisan groups of seven whose average change is positive with an interval excluding zero | 6 | 6.0000 | NA | TRUE | NA |
+| Figure 3a | Estimates plotted (ten facets by All, Democrat, Republican) | 30 | 30.0000 | 1 | NA | NA |
+| Figure 3a | Pooled decrease in reporting any change, all respondents (points) | 10 | 9.9271 | 1 | NA | NA |
+| Figure 3b | Means plotted (nine facets by two formats by two parties) | 36 | 36.0000 | 1 | NA | NA |
+| Figure 3b | Endorsed Trump, Republicans: sign of the level question’s effect | -1 | -1.0000 | NA | TRUE | NA |
+| Figure 3b | Mueller comments, Democrats: sign of the level question’s effect | -1 | -1.0000 | NA | TRUE | NA |
+| Figure 2 | Printed labels agreeing with the published figure | 10 | 10.0000 | 1 | NA | NA |
+| Figure 4 | Printed labels agreeing with the published figure | 96 | 95.0000 | 0 | NA | environment |
+| Figure 5 | Printed labels agreeing with the published figure | 24 | 24.0000 | 1 | NA | NA |
+| Figure E.2a | Printed labels agreeing with the published figure | 24 | 24.0000 | 1 | NA | NA |
+| Figure E.2b | Printed labels agreeing with the published figure | 20 | 20.0000 | 1 | NA | NA |
+| Figure 4 | Undisputed accusation, Republican, CATE, Counterfactual | -1.12 | -1.1250 | 0 | NA | environment |
+| Table D.3 | Cells agreeing with the published table | 336 | 336.0000 | 1 | NA | NA |
+| Table D.3 | Cells agreeing if the column headings are read as printed | 336 | 172.0000 | 0 | NA | paper_internal |
+| Table D.3 | Sample sizes agreeing | 84 | 84.0000 | 1 | NA | NA |
+| Table D.4 | Cells agreeing with the published table | 216 | 216.0000 | 1 | NA | NA |
+| Table D.4 | p-values agreeing | 72 | 72.0000 | 1 | NA | NA |
+| Table D.4 | Sample sizes agreeing | 72 | 72.0000 | 1 | NA | NA |
+| Table D.5 | Point estimates agreeing with the published table | 60 | 60.0000 | 1 | NA | NA |
+| Table D.5 | Sample sizes agreeing | 60 | 60.0000 | 1 | NA | NA |
+| Table D.5 | Bootstrap standard errors and interval endpoints agreeing | 60 | 53.0000 | 0 | NA | rewrite |
+| Figure E.2a | No-pretreatment cells of four in which the simultaneous format sits further from the experiment | 3 | 3.0000 | NA | TRUE | NA |
+| Figure E.2b | Ratio of the simultaneous to the change format share of Democrats reporting more support | 2 | 2.2177 | NA | NA | NA |
 
-Rewrite verification: 50 of 57 claims match the published values
+Rewrite verification: 61 of 67 value claims match the published values,
+and 11 of 12 descriptive claims hold
 
 ------------------------------------------------------------------------
 

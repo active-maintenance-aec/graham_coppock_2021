@@ -40,8 +40,15 @@ source(here::here("maintained", "text_intext_stats.R"))
 source(here::here("maintained", "text_sign_comparison.R"))
 
 # Ground truth ----
-# Rebuilt last, from the outputs above, so it cannot drift from the pipeline.
+# Rebuilt last, from the outputs above, so it cannot drift from the pipeline. It also runs
+# maintained/in_text_claims.R non-interactively and counts what that file printed, which is
+# the coverage gate over ground_truth/published_claims.csv.
 source(here::here("ground_truth", "build_ground_truth.R"))
+
+# In-text claims ----
+# Run a second time, for the readable log: every number the article prints, beside the
+# sentence that prints it. The run above is captured for the gate and prints nothing.
+source(here::here("maintained", "in_text_claims.R"))
 
 # Deposited archive, again ----
 # The check at the top of this file is a precondition: it says original/ was intact

@@ -24,14 +24,50 @@ here::i_am("README.qmd")
 # build takes plain pipe tables and the PNG copies.
 latex_out <- knitr::is_latex_output()
 
+# value_paper carries the string the article prints, so its column type is forced rather
+# than guessed: a column whose entries all look numeric comes back as a double, and a
+# published 0.10 then renders as 0.1, which is not what the page says.
 gt <- read_csv(here("ground_truth", "graham_coppock_2021_ground_truth.csv"),
-               show_col_types = FALSE)
+               col_types = cols(.default = col_guess(), value_paper = col_character()))
+claims <- read_csv(here("ground_truth", "published_claims.csv"),
+                   col_types = cols(.default = col_character()))
 manifest <- read_csv(here("original_manifest.csv"), show_col_types = FALSE)
 archive_values <- read_csv(here("ground_truth", "archive_values.csv"), show_col_types = FALSE)
 
 n_claims <- nrow(gt)
 n_match <- sum(gt$match_rewrite == 1, na.rm = TRUE)
 n_miss <- sum(gt$match_rewrite == 0, na.rm = TRUE)
+n_verifiable <- sum(!is.na(gt$match_rewrite))
+n_holds <- sum(gt$holds, na.rm = TRUE)
+n_holds_total <- sum(!is.na(gt$holds))
+n_approximate <- sum(gt$comparison == "approximate")
+n_extraction <- nrow(claims)
+n_needs_block <- sum(claims$needs_block == "TRUE")
+n_needs_row <- sum(claims$claim_type %in% c("pipeline", "descriptive"))
+n_paper_internal <- sum(gt$defect_locus == "paper_internal", na.rm = TRUE)
+
+# The published Table D.3's own Study 3 sample sizes, read off the transcription of the
+# page rather than restated from the rewrite, so the two sides of the Study 3 count below
+# come from different places.
+published_d3 <- read_csv(here("ground_truth", "published_table_d3.csv"),
+                         col_types = cols(.default = col_character()))
+d3_study3_n <- sum(as.numeric(published_d3$N[published_d3$study == "3"]))
+
+# Which of the two candidate columns the published Difference column is actually built
+# from. Each cell is rounded to one decimal on its own, so the difference of two printed
+# cells can sit one unit in the last printed digit from the printed difference, and the
+# tolerance is that unit set clear of the boundary.
+d3_difference_rows <- published_d3 |>
+  transmute(gap_no_change = abs(as.numeric(difference) -
+                                  (as.numeric(more) - as.numeric(no_change))),
+            gap_less = abs(as.numeric(difference) -
+                             (as.numeric(more) - as.numeric(less)))) |>
+  summarize(rows = n(), from_no_change = sum(gap_no_change < 0.15),
+            from_less = sum(gap_less < 0.15))
+# which(), not a bare logical index: claim_id is NA on the rows that record something the
+# article does not state, and a bare index turns each of those into an NA element.
+n_study3 <- gt$value_rewrite[which(gt$claim_id == "design_study3_n")]
+stopifnot(length(n_study3) == 1)
 
 fig_path <- function(stem) {
   here("maintained", "output", paste0(stem, if (latex_out) ".pdf" else ".png"))
@@ -55,10 +91,11 @@ This repository holds the actively maintained replication code for Graham and Co
 | Replication archive | [10.7910/DVN/GFF78K](https://doi.org/10.7910/DVN/GFF78K) |
 | Mirror deposit | [10.60600/YU/2ADPVK](https://doi.org/10.60600/YU/2ADPVK) |
 | Pre-analysis plans | none |
+| Errata | `graham_coppock_2021_errata.pdf`, built from `errata.qmd` |
 
 **The data are not redistributed here.** The deposit lives at Harvard Dataverse and that is the only copy this repository points at. `download_original.R` fetches it and verifies every file; `original_manifest.csv` records the Dataverse file identifiers, the UNF of each ingested data file, and two checksums per file: the MD5 of the bytes Dataverse serves, which is what this code was written against, and the MD5 Dataverse publishes. Here the two agree for all `r nrow(manifest)` files. They do not always, so the script verifies against the served bytes and reports any disagreement. It also checks byte sizes and stops if `original/` holds anything the manifest does not list, because an archive script that writes into its own directory adds files as well as overwriting them. Either way the exact bytes are pinned in version control even though the bytes themselves are not. Re-hosting a copy would create a second archive that can drift from the first, which is the problem this project exists to document rather than to add to.
 
-**Repository layout.** `maintained/` is the maintained rewrite: one script per published table or figure, writing to `output/`, which is committed so a reader can compare a fresh run against it without downloading anything. `ground_truth/` ties every published number to the code that produces it. `original/` is created by the download script and is deliberately absent from the repository. This README is the reproducibility report, also available as a PDF in `report/`.
+**Repository layout.** `maintained/` is the maintained rewrite: one script per published table or figure, writing to `output/`, which is committed so a reader can compare a fresh run against it without downloading anything. `ground_truth/` ties every published number to the code that produces it: `published_claims.csv` is the extraction of every numeric token in the article and its supplementary materials, and `build_ground_truth.R` assembles the comparison table by reading every rewrite value back out of `maintained/output/`, so it cannot drift from the scripts. `maintained/in_text_claims.R` is a second, independent instrument that recomputes each of those numbers by its own path and prints it beside the sentence that states it; the build compares the two and stops if they disagree. `errata.qmd` builds the note listing the sentences in the article that its own data do not support. `original/` is created by the download script and is deliberately absent from the repository. This README is the reproducibility report, also available as a PDF in `report/`.
 
 **License.** CC0 1.0 Universal, matching the terms of the deposit this repository maintains, so nothing in the chain is more restrictive than the archive itself. See `LICENSE`.
 
@@ -68,7 +105,7 @@ This repository holds the actively maintained replication code for Graham and Co
 source("run_all.R")
 ```
 
-That fetches the deposited archive from Dataverse, verifies its `r nrow(manifest)` checksums, produces every published figure, appendix table and in-text number into `maintained/output/`, rebuilds the ground truth from those outputs, and re-checks the deposit. It takes about 75 seconds, of which roughly 65 are the 10,000-resample bootstrap behind Table D.5. Individual scripts run on their own in any order, subject to the dependencies in each script's header: `clean_studies.R` first, then the two estimation scripts, then the figures, tables and in-text scripts that read them.
+That fetches the deposited archive from Dataverse, verifies its `r nrow(manifest)` checksums, produces every published figure, appendix table and in-text number into `maintained/output/`, rebuilds the ground truth from those outputs, runs the claims audit and its coverage gates, and re-checks the deposit. It takes about 75 seconds, of which roughly 65 are the 10,000-resample bootstrap behind Table D.5. Individual scripts run on their own in any order, subject to the dependencies in each script's header: `clean_studies.R` first, then the two estimation scripts, then the figures, tables and in-text scripts that read them.
 
 Required packages: tidyverse, estimatr, ggh4x, gridExtra, rsample, knitr, kableExtra, here. Paths resolve through `here`, so nothing depends on the working directory and the scripts work equally well under `Rscript` outside RStudio. A successful run overwrites `maintained/output/`, which is committed: **`git diff` on that folder is the reproduction check**, and the CSV and PNG output should come back byte-identical. The six PDF figures always show as changed, because a PDF records the time it was written; compare their PNG twins instead.
 
@@ -101,7 +138,7 @@ Two smaller things are worth recording because a reader reproducing this work wi
 
 ### Does the maintained rewrite reproduce the paper?
 
-Almost entirely. Every appendix table reproduces cell for cell, and `r sum(gt$match_rewrite == 1, na.rm = TRUE)` of the `r n_claims` recorded claims match.
+Almost entirely. Every appendix table reproduces cell for cell. Of the `r n_claims` recorded claims, `r n_verifiable` compare a published number against a rewrite number and `r n_match` of those match at the precision the page prints; `r n_holds_total` are claims about sign, shape or count rather than about a value, and `r n_holds` of those hold; the remaining `r n_approximate` are magnitudes the article itself hedges, which are recorded without a verdict.
 
 ```{r summary-table}
 verdict_df <- tibble::tribble(
@@ -116,7 +153,8 @@ verdict_df <- tibble::tribble(
   "Table D.4 (216 cells, 72 p-values)", "All reproduce",
   "Table D.5 (60 point estimates)", "All reproduce",
   "Table D.5 (bootstrap intervals)", "53 of 60 rows; the deposited script reproduces all 60",
-  "In-text numbers", "All but two reproduce; both are the article rounding its own estimate"
+  "In-text numbers", "All but two reproduce; both are the article rounding its own estimate",
+  "In-text claims about sign and shape", "All but one hold; the exception is the sentence about the three sign misses"
 )
 
 kable(verdict_df, booktabs = TRUE, caption = "Reproduction verdict by component") |>
@@ -127,13 +165,15 @@ The exceptions are small and none of them is a failure of the analysis.
 
 **The article rounds two of its own numbers away from what its data give.** The text reports the two impeachment questions correlating at 0.82; the deposited data give 0.828, which prints as 0.83. It reports the level question reducing Democrats' reports of change by 14 points; the estimate is 13.5 points, which prints as 13. Both are one unit in the last printed digit, and neither touches a conclusion.
 
-**Study 3's published N cannot be recovered from the deposit.** The article reports 1,074 respondents. The deposited data hold 1,023 distinct Study 3 respondents, in the standalone `data_study3.csv` and in the merged file alike. The published figure is the full Mechanical Turk survey and the deposit carries only the respondents in a question format condition; Table D.3's Study 3 rows reproduce exactly from what is there.
+**Study 3's N is a count of answers, not of respondents.** The article reports 1,074. The deposited Study 3 extract carries `r format(round(n_study3), big.mark = ",")` rows that answer the change question, which is the published figure, but only 1,023 distinct `id` values across 1,081 rows, so the `id` column is not a key and a count of distinct respondents gives 1,023 instead. The published Table D.3 settles which of the two the article means: its six Study 3 sample sizes sum to `r format(d3_study3_n, big.mark = ",")`.
 
-**Table D.3's column headings are transposed relative to its own body.** The published table heads its second and third value columns "No change" and "Less", but in all 84 rows the printed Difference equals More minus the column headed "No change". Read in that corrected order all `r gt$value_rewrite[gt$table_figure == "Table D.3" & gt$claim == "Cells agreeing with the published table"]` cells reproduce. Read as printed, `r gt$value_rewrite[gt$table_figure == "Table D.3" & str_detect(gt$claim, "^Cells agreeing if")]` do. The numbers in the table are right; the two headings are swapped.
+**Table D.3's column headings are transposed relative to its own body.** The published table heads its second and third value columns "No change" and "Less", but in `r d3_difference_rows$from_no_change` of its `r d3_difference_rows$rows` rows the printed Difference equals More minus the column headed "No change", against `r d3_difference_rows$from_less` for the column headed "Less". Read in that corrected order all `r gt$value_rewrite[gt$table_figure == "Table D.3" & gt$claim == "Cells agreeing with the published table"]` cells reproduce. Read as printed, `r gt$value_rewrite[gt$table_figure == "Table D.3" & str_detect(gt$claim, "^Cells agreeing if")]` do. The numbers in the table are right; the two headings are swapped.
 
 **One printed label in Figure 4 differs, and it is a rounding tie.** For the Undisputed accusation treatment among Republicans, the counterfactual-format estimate is a mean that comes to exactly -1.125. `lm_robust` returns it one unit in the last place away from that tie, so it prints as -1.13, which is what both the deposited script and this rewrite produce. The published figure prints -1.12, which is what the tie itself gives, and which is also what the appendix's Table D.5 prints for the same quantity. Nothing about the estimate differs; only the last printed digit does.
 
 **Table D.5's bootstrap intervals are the one place the rewrite and the deposit part company.** Both draw 10,000 resamples from seed 0. The deposited script resamples every cell in the counterfactual data and then keeps the twenty the table reports; the rewrite selects the twenty first, so the two walk different random streams from the same seed. The deposited script reproduces all sixty published rows exactly. The rewrite differs on seven rows by a unit in the second decimal, which is Monte Carlo variation rather than a difference in the estimator, and no interval changes whether it covers zero.
+
+**One sentence in the results section is not supported by the article's own appendix.** The text says that in all three cells where the counterfactual format gets the sign wrong, neither estimate can be distinguished from zero. In one of the three it can: the counterfactual estimate for the disputed accusation among Democrats has a 95 per cent interval that excludes zero in Figure 4, in Table D.5 and in the rewrite alike. That sentence, the two rounded numbers above and the transposed Table D.3 headings are the `r n_paper_internal` claims whose fault lies with the article rather than with any code, and they are collected in `graham_coppock_2021_errata.pdf` at the root of this repository, which quotes each published sentence and prints the corrected one with every number in it computed at render time.
 
 ---
 
@@ -190,27 +230,52 @@ Everything except the Table D.5 bootstrap agrees to machine precision. The Figur
 
 ```{r gt-summary}
 summary_df <- gt |>
-  count(defect_locus = replace_na(defect_locus, "matches")) |>
+  count(defect_locus = replace_na(defect_locus, "no disagreement")) |>
   arrange(desc(n)) |>
   rename(Rows = n, `Where the difference lies` = defect_locus)
 
 kable(summary_df, booktabs = TRUE,
-      caption = paste0("Ground truth: ", n_match, " of ", n_claims, " claims match")) |>
+      caption = paste0("Ground truth: ", n_claims - sum(!is.na(gt$defect_locus)), " of ",
+                       n_claims, " rows record no disagreement between the article and ",
+                       "the rewrite")) |>
   styled()
 ```
 
 ```{r gt-misses}
 kable(gt |>
-        filter(match_rewrite == 0) |>
+        filter(!is.na(defect_locus)) |>
         transmute(Claim = paste0(table_figure, ": ", claim),
                   Published = value_paper, Rewrite = signif(value_rewrite, 5),
                   Locus = defect_locus),
       booktabs = TRUE, digits = 4,
-      caption = paste0("The ", n_miss, " claims that do not match")) |>
+      caption = paste0("The ", sum(!is.na(gt$defect_locus)),
+                       " claims the rewrite does not reproduce, and where the fault lies")) |>
   styled(wide_col = 1, width = "7cm")
 ```
 
+Every row that fails carries a locus, because a bare zero reads as a failure of the rewrite and here it is one only once, on the Table D.5 bootstrap intervals. The build stops on any row carrying a verdict without a locus or a locus without a verdict.
+
 The full table, all `r n_claims` rows with their notes, is `ground_truth/graham_coppock_2021_ground_truth.csv`.
+
+### Published claims, and the two instruments that check them
+
+The table above starts from the pipeline and asks what each output corresponds to in the article. That question cannot find a claim the pipeline never reaches, so the repository also works in the other direction. `ground_truth/published_claims.csv` is an exhaustive extraction: every numeric token in the body, the footnotes, the tables, the figures and the supplementary materials, read off the typeset page rather than searched for by pattern, together with a companion pass for numbers the article spells out in words. Each of the `r n_extraction` resulting claims is classified by hand.
+
+```{r claims-table}
+claims_df <- claims |>
+  summarize(Claims = n(), `Needs a block` = sum(needs_block == "TRUE"),
+            .by = claim_type) |>
+  arrange(desc(Claims), .locale = "en") |>
+  rename(`Claim type` = claim_type)
+
+kable(claims_df, booktabs = TRUE,
+      caption = paste0("The extraction: ", n_extraction, " published claims by type")) |>
+  styled()
+```
+
+A `pipeline` claim is one the analysis code produces; a `descriptive` claim is about sign, shape or count rather than about a value. Each of those `r n_needs_row` needs a row in the ground truth. A `definitional` or `structural` claim (a scale endpoint, a panel count, a field date) gets a block only where the pipeline can reach the quantity, and a `transcribed` claim is quoted from another source and cannot drift. All told `r n_needs_block` of the `r n_extraction` claims require a block.
+
+`maintained/in_text_claims.R` carries one block per such claim. Each block quotes the article's sentence verbatim, then recomputes the number from `maintained/output/`, including the cleaned data written there, and prints it at the precision the page uses, with the evidence beneath it where the claim is about shape rather than value. It never reads the ground truth, so the two instruments reach each number by separate paths, and `build_ground_truth.R` runs it as a program, counts what it printed, and compares the two value by value. The build halts if the claims script prints a claim the extraction does not list, if the extraction lists a claim the script does not print, if a `pipeline` or `descriptive` claim has no row in the ground truth, or if the two instruments disagree on any number. All `r n_needs_block` claims that require a block print one.
 
 ---
 
@@ -233,7 +298,8 @@ scripts_df <- tibble::tribble(
   "table_d4_counterfactual_accuracy.R", "output/table_d4_counterfactual_accuracy{,_estimates}.csv",
   "table_d5_ate_vs_self.R", "output/table_d5_ate_vs_self{,_estimates}.csv",
   "text_intext_stats.R", "output/text_intext_stats.csv",
-  "text_sign_comparison.R", "output/text_sign_comparison.csv"
+  "text_sign_comparison.R", "output/text_sign_comparison.csv",
+  "in_text_claims.R", "Printed to the console: every published number beside its sentence"
 )
 
 kable(scripts_df, booktabs = TRUE, caption = "Maintained rewrite scripts") |>
@@ -308,10 +374,11 @@ knitr::include_graphics(fig_path("figure_e2_study2b_simultaneous"))
 kable(gt |>
         transmute(`Table or figure` = table_figure, Claim = claim,
                   Published = value_paper, Rewrite = signif(value_rewrite, 5),
-                  Match = match_rewrite, Locus = defect_locus),
+                  Match = match_rewrite, Holds = holds, Locus = defect_locus),
       booktabs = TRUE, digits = 4,
-      caption = paste0("Rewrite verification: ", n_match, " of ", n_claims,
-                       " claims match the published values")) |>
+      caption = paste0("Rewrite verification: ", n_match, " of ", n_verifiable,
+                       " value claims match the published values, and ", n_holds,
+                       " of ", n_holds_total, " descriptive claims hold")) |>
   styled(wide_col = 2, width = "6cm")
 ```
 

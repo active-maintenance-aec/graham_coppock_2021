@@ -42,7 +42,7 @@ fig4_values <-
          Party %in% c("Democrat", "Republican")) |>
   select(study, Topic, Party, Estimator, Format, category, share = value,
          estimate, std.error, conf.low, conf.high, label = lab_outside) |>
-  arrange(study, Topic, Party, Estimator, Format, category)
+  arrange(study, Topic, Party, Estimator, Format, category, .locale = "en")
 
 write_csv(fig4_values, here::here(out_dir, "figure_4_grand_comparison.csv"))
 print(fig4_values |> filter(!is.na(label)), n = 20)
