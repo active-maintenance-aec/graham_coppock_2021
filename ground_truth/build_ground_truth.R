@@ -846,6 +846,27 @@ if (nrow(locus_gate) > 0) {
   stop("Rows carrying a failing verdict with no locus, or a locus with no failing verdict.")
 }
 
+# Gate: every claim id the errata cites exists ----
+# errata.qmd names, for each published entry, the ground truth rows that entry corrects. An
+# id that no longer exists is a typo or a renamed claim, and a dangling reference in a
+# document whose whole purpose is correcting the record is worse than a build that refuses.
+errata_path <- here::here("errata_entries.csv")
+if (file.exists(errata_path)) {
+  errata_ids <- read_csv(errata_path, show_col_types = FALSE) |>
+    pull(claim_ids) |>
+    str_split(";") |>
+    unlist() |>
+    str_trim()
+  errata_ids <- errata_ids[!is.na(errata_ids) & errata_ids != ""]
+  dangling_errata_ids <- setdiff(errata_ids, gt$claim_id)
+  if (length(dangling_errata_ids) > 0) {
+    stop("errata_entries.csv lists claim ids absent from the ground truth: ",
+         paste(dangling_errata_ids, collapse = ", "))
+  }
+  print(str_glue("Errata spine: {length(unique(errata_ids))} distinct claim ids listed, ",
+                 "all present in the ground truth."))
+}
+
 write_csv(gt, here::here("ground_truth", "graham_coppock_2021_ground_truth.csv"))
 
 print(gt |> select(claim_id, table_figure, claim, value_paper, value_rewrite,

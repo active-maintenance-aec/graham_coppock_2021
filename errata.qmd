@@ -129,8 +129,14 @@ d3_check <- d3_published |>
 #
 # Every number in a corrected sentence or a reason is computed here by the helpers in
 # `setup`, at the time this document is rendered, so no value is typed twice.
+#
+# `claim_ids` names the ground truth rows the entry corrects, semicolon separated, and it is
+# what makes "has this finding been published?" a query over the corpus rather than a reading
+# of every note. It is empty where the entry has no ground truth row: a reference list is not
+# an extraction claim. Every id listed here is checked against the ground truth by
+# ground_truth/build_ground_truth.R, which refuses to finish on a dangling one.
 entries <- tribble(
-  ~entry, ~class, ~source, ~form, ~title, ~location, ~published, ~corrected, ~note,
+  ~entry, ~class, ~source, ~form, ~title, ~location, ~published, ~corrected, ~note, ~claim_ids,
 
   1, "label", "pipeline", "brief",
   "Table D.3's second and third value columns are headed in the wrong order",
@@ -162,6 +168,7 @@ entries <- tribble(
     "value columns are transposed. Table D.3 is reprinted below with the headings in the ",
     "order the body uses. The numbers are unchanged: they are recomputed from the ",
     "deposited data and reproduce the published table cell for cell."),
+  "appendix_d3_cells_as_printed",
 
   2, "definition", "pipeline", "full",
   "The counterfactual format's three sign errors are not all cases in which nothing can be distinguished from zero",
@@ -198,6 +205,7 @@ entries <- tribble(
     "({pts2(cell('Disputed accusation', 'Democrat', 'CATE', 'Diff. in means', 'conf.low'))}, ",
     "{pts2(cell('Disputed accusation', 'Democrat', 'CATE', 'Diff. in means', 'conf.high'))}). ",
     "Figure 4 and Table D.5 both carry the correct estimates and are not reprinted."),
+  "results_wrong_sign_cases_null",
 
   3, "quantity", "pipeline", "full",
   "The effect of asking the level question first among Democrats",
@@ -220,6 +228,7 @@ entries <- tribble(
     "the whole-point precision the article uses. The comparison the sentence makes, that ",
     "the effect is larger among Democrats and Republicans than among pure independents, ",
     "holds."),
+  "results_level_first_democrat",
 
   4, "quantity", "pipeline", "full",
   "The correlation between the two impeachment questions",
@@ -241,9 +250,10 @@ entries <- tribble(
     "The correlation is {sprintf('%.4f', stat('cor(Y1, Y0) impeachment'))}, which rounds ",
     "up rather than down at two decimals. The share reporting exactly zero change is ",
     "{sprintf('%.4f', 100 * stat('Share reporting exactly zero change'))} per cent and is ",
-    "correct as published at whole-percent precision.")
+    "correct as published at whole-percent precision."),
+  "intro_impeach_correlation"
 ) |>
-  mutate(across(c(title, published, corrected, note), as.character))
+  mutate(across(c(title, published, corrected, note, claim_ids), as.character))
 
 stopifnot(nrow(entries) == max(entries$entry), !anyDuplicated(entries$entry))
 
