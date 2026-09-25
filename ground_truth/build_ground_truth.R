@@ -305,8 +305,10 @@ d4_fig4_cells <- d4 |>
 d5_difference <- d5 |> filter(Estimator == "Difference")
 d5_excludes_zero <- sign(d5_difference$conf.low) == sign(d5_difference$conf.high)
 
-# The three cells in which the counterfactual format gets the sign wrong, which the
-# article says are all cells where neither estimate can be told from zero.
+# The cells in which the counterfactual format gets the sign wrong, which the article
+# says are all cells where neither estimate can be told from zero. A cell whose estimate
+# is zero has no sign to be opposite and is excluded upstream in text_sign_comparison.R,
+# so this set is the article's three less the one such cell the article counts.
 topic_label <- function(key) {
   labels <- unique(norm(grand$Topic[grand$topic == key]))
   stopifnot(length(labels) == 1)
@@ -325,6 +327,14 @@ wrong_sign <- signs |>
     both_null = cf_low <= 0 & cf_high >= 0 & dim_low <= 0 & dim_high >= 0
   ) |>
   ungroup()
+
+# The cells excluded for holding a zero estimate, named rather than left as the gap
+# between two counts.
+zero_sign <- signs |>
+  filter(!counterfactual_sign_determinate) |>
+  mutate(label = map_chr(topic, topic_label))
+zero_sign_text <- paste(str_c(zero_sign$label, " among ", zero_sign$Party, "s"),
+                        collapse = "; ")
 
 kavanaugh <- expand_grid(topic_label = c("Senator opposed Kavanaugh",
                                          "Senator supported Kavanaugh"),
@@ -490,12 +500,23 @@ gt <- bind_rows(
       sum(signs$change_wrong_sign), "12", "",
     "results_counterfactual_wrong_sign", "Text, p. 46",
       "Counterfactual format has the opposite sign", sum(signs$counterfactual_wrong_sign),
-      "3", "",
+      "3",
+      paste0("A counterfactual estimate of exactly zero has no sign to be opposite, so a ",
+             "cell holding one is excluded from the comparison rather than counted: ",
+             zero_sign_text, ". The article's three include the Trump coal ash cell ",
+             "among Republicans, and that cell is the whole of the gap between its count ",
+             "and this one. Applying sign() to a zero instead, as the article's own count ",
+             "does, reproduces 3 under estimatr 1.0.6 and gives 4 under 2.0, because the ",
+             "Tax Cuts and Jobs Act residue changes sign bit between them, so the ",
+             "published count is not stably reproducible either way"),
     "results_wrong_sign_cases_null", "Text, p. 46",
       "Sign-miss cells in which neither estimate is distinguishable from zero",
       sum(wrong_sign$both_null), "3",
-      paste0("The article says all three. The counterfactual estimate for the disputed ",
-             "accusation among Democrats is ",
+      paste0("The article says all three of the cells it counts are null. Excluding the ",
+             "zero-estimate cell leaves the ", nrow(wrong_sign), " this pipeline counts, ",
+             "which are exactly the other two the article names, and ",
+             sum(wrong_sign$both_null), " of them is null. The counterfactual estimate ",
+             "for the disputed accusation among Democrats is ",
              sprintf("%.2f", grand_cell(fig4, "Disputed accusation", "Democrat", "CATE",
                                         "Counterfactual", "estimate")),
              " with a 95 per cent interval of (",
@@ -739,6 +760,7 @@ gt <- gt |>
     !is.na(match_rewrite) & match_rewrite == 0 | !is.na(holds) & !holds ~ case_when(
       claim_id == "intro_impeach_correlation" ~ "paper_internal",
       claim_id == "results_level_first_democrat" ~ "paper_internal",
+      claim_id == "results_counterfactual_wrong_sign" ~ "paper_internal",
       claim_id == "results_wrong_sign_cases_null" ~ "paper_internal",
       claim_id == "appendix_d3_cells_as_printed" ~ "paper_internal",
       claim_id == "appendix_d5_intervals" ~ "rewrite",

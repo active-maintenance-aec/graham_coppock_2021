@@ -543,6 +543,19 @@ report("results_sign_opportunities", nrow(signs),
 report("results_counterfactual_wrong_sign", sum(signs$counterfactual_wrong_sign),
        "counterfactual format cells whose sign is opposite the difference in means")
 
+# An estimate of zero has no sign, so text_sign_comparison.R excludes it rather than
+# counting it as opposite. The article's own three include one such cell, which is why its
+# count is 3 where this one is 2. The exclusion is printed beside the count it changes so
+# that no reader has to infer it from the difference.
+zero_sign_cells <- signs[!signs$counterfactual_sign_determinate, ]
+walk(seq_len(nrow(zero_sign_cells)), function(i) {
+  row <- zero_sign_cells[i, ]
+  evidence("counterfactual estimate is zero, so it has no sign to be opposite: ",
+           topic_label(row$topic), ", ", row$Party,
+           ": counterfactual ", sprintf("%.2e", row$cate_counterfactual),
+           ", difference in means ", sprintf("%.2f", row$benchmark))
+})
+
 wrong_sign_cells <- signs[signs$counterfactual_wrong_sign, ]
 wrong_sign_estimates <-
   pmap_dfr(list(map_chr(wrong_sign_cells$topic, topic_label), wrong_sign_cells$Party),
@@ -559,7 +572,8 @@ wrong_sign_estimates <-
 report("results_wrong_sign_cases_null",
        sum(wrong_sign_estimates$cf_low <= 0 & wrong_sign_estimates$cf_high >= 0 &
              wrong_sign_estimates$dim_low <= 0 & wrong_sign_estimates$dim_high >= 0),
-       "of the three sign-miss cells in which neither estimate is distinguishable from zero")
+       str_glue("of the {nrow(wrong_sign_estimates)} sign-miss cells in which neither ",
+                "estimate is distinguishable from zero"))
 walk(seq_len(nrow(wrong_sign_estimates)), function(i) {
   row <- wrong_sign_estimates[i, ]
   evidence(row$topic, ", ", row$party,

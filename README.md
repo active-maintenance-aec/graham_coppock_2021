@@ -171,7 +171,7 @@ and `ggrepel` and never calls a function from any of them.
 
 Almost entirely. Every appendix table reproduces cell for cell. Of the
 82 recorded claims, 67 compare a published number against a rewrite
-number and 61 of those match at the precision the page prints; 12 are
+number and 60 of those match at the precision the page prints; 12 are
 claims about sign, shape or count rather than about a value, and 11 of
 those hold; the remaining 3 are magnitudes the article itself hedges,
 which are recorded without a verdict.
@@ -238,18 +238,24 @@ rewrite differs on seven rows by a unit in the second decimal, which is
 Monte Carlo variation rather than a difference in the estimator, and no
 interval changes whether it covers zero.
 
-**One sentence in the results section is not supported by the article’s
-own appendix.** The text says that in all three cells where the
-counterfactual format gets the sign wrong, neither estimate can be
-distinguished from zero. In one of the three it can: the counterfactual
-estimate for the disputed accusation among Democrats has a 95 per cent
-interval that excludes zero in Figure 4, in Table D.5 and in the rewrite
-alike. That sentence, the two rounded numbers above and the transposed
-Table D.3 headings are the 4 claims whose fault lies with the article
-rather than with any code, and they are collected in
-`graham_coppock_2021_errata.pdf` at the root of this repository, which
-quotes each published sentence and prints the corrected one with every
-number in it computed at render time.
+**One sentence in the results section is wrong twice over.** The text
+says the counterfactual format gets the sign wrong in 3 of 20 cells, and
+that in all three neither the counterfactual estimate nor the difference
+in means can be distinguished from zero. The count is 2, not 3: one of
+the three cells has a counterfactual estimate of exactly zero, and a
+zero has no sign to be opposite. Comparing the two signs directly, which
+is what the published count does, returns 3 under the linear algebra the
+deposited archive was run against and 4 under a current one, so that
+figure is not stably reproducible in either direction. Of the two cells
+that survive, one is null and one is not: the counterfactual estimate
+for the disputed accusation among Democrats has a 95 per cent interval
+that excludes zero in Figure 4, in Table D.5, and in the rewrite alike.
+Those two corrections to the one sentence, the two rounded numbers
+above, and the transposed Table D.3 headings are the 5 claims whose
+fault lies with the article rather than with any code, and they are
+collected in `graham_coppock_2021_errata.pdf` at the root of this
+repository, which quotes each published sentence and prints the
+corrected one with every number in it computed at render time.
 
 ------------------------------------------------------------------------
 
@@ -348,25 +354,26 @@ and the surrounding text quotes.
 
 | Where the difference lies | Rows |
 |:--------------------------|-----:|
-| no disagreement           |   75 |
-| paper_internal            |    4 |
+| no disagreement           |   74 |
+| paper_internal            |    5 |
 | environment               |    2 |
 | rewrite                   |    1 |
 
-Ground truth: 75 of 82 rows record no disagreement between the article
+Ground truth: 74 of 82 rows record no disagreement between the article
 and the rewrite
 
 | Claim | Published | Rewrite | Locus |
 |:---|:---|---:|:---|
 | Text, p. 32: Correlation of the two impeachment questions | 0.82 | 0.8285 | paper_internal |
 | Text, p. 44: Same decrease among Democrats (points) | 14 | 13.4590 | paper_internal |
-| Text, p. 46: Sign-miss cells in which neither estimate is distinguishable from zero | 3 | 2.0000 | paper_internal |
+| Text, p. 46: Counterfactual format has the opposite sign | 3 | 2.0000 | paper_internal |
+| Text, p. 46: Sign-miss cells in which neither estimate is distinguishable from zero | 3 | 1.0000 | paper_internal |
 | Figure 4: Printed labels agreeing with the published figure | 96 | 95.0000 | environment |
 | Figure 4: Undisputed accusation, Republican, CATE, Counterfactual | -1.12 | -1.1250 | environment |
 | Table D.3: Cells agreeing if the column headings are read as printed | 336 | 172.0000 | paper_internal |
 | Table D.5: Bootstrap standard errors and interval endpoints agreeing | 60 | 53.0000 | rewrite |
 
-The 7 claims the rewrite does not reproduce, and where the fault lies
+The 8 claims the rewrite does not reproduce, and where the fault lies
 
 Every row that fails carries a locus, because a bare zero reads as a
 failure of the rewrite and here it is one only once, on the Table D.5
@@ -569,8 +576,8 @@ alt="Figure E.2. Study 2b, setting the simultaneous outcomes format against the 
 | Text, p. 44 | Party groups of two whose decrease exceeds the independents’ | 2 | 2.0000 | NA | TRUE | NA |
 | Text, p. 46 | Cells compared, change format against the experiment | 20 | 20.0000 | 1 | NA | NA |
 | Text, p. 46 | Change format has the opposite sign | 12 | 12.0000 | 1 | NA | NA |
-| Text, p. 46 | Counterfactual format has the opposite sign | 3 | 3.0000 | 1 | NA | NA |
-| Text, p. 46 | Sign-miss cells in which neither estimate is distinguishable from zero | 3 | 2.0000 | NA | FALSE | paper_internal |
+| Text, p. 46 | Counterfactual format has the opposite sign | 3 | 2.0000 | 0 | NA | paper_internal |
+| Text, p. 46 | Sign-miss cells in which neither estimate is distinguishable from zero | 3 | 1.0000 | NA | FALSE | paper_internal |
 | Text, p. 46 | Tax Cuts and Jobs Act parties of two whose experimental estimate contains zero | 2 | 2.0000 | NA | TRUE | NA |
 | Text, p. 46 | Opportunities to evaluate a counterfactual guess | 40 | 40.0000 | 1 | NA | NA |
 | Text, p. 47 | Difference in means tests rejecting at p \< 0.05 | 12 | 12.0000 | 1 | NA | NA |
@@ -613,23 +620,23 @@ alt="Figure E.2. Study 2b, setting the simultaneous outcomes format against the 
 | Figure E.2a | No-pretreatment cells of four in which the simultaneous format sits further from the experiment | 3 | 3.0000 | NA | TRUE | NA |
 | Figure E.2b | Ratio of the simultaneous to the change format share of Democrats reporting more support | 2 | 2.2177 | NA | NA | NA |
 
-Rewrite verification: 61 of 67 value claims match the published values,
+Rewrite verification: 60 of 67 value claims match the published values,
 and 11 of 12 descriptive claims hold
 
 ------------------------------------------------------------------------
 
 ## R Environment
 
-| Package    | Version |
-|:-----------|:--------|
-| tidyverse  | 2.0.0   |
-| estimatr   | 1.0.6   |
-| ggh4x      | 0.3.1   |
-| gridExtra  | 2.3     |
-| rsample    | 1.3.2   |
-| knitr      | 1.51    |
-| kableExtra | 1.4.0   |
-| here       | 1.0.2   |
+| Package    | Version    |
+|:-----------|:-----------|
+| tidyverse  | 2.0.0      |
+| estimatr   | 2.0.0.9000 |
+| ggh4x      | 0.3.1      |
+| gridExtra  | 2.3        |
+| rsample    | 1.3.2      |
+| knitr      | 1.51       |
+| kableExtra | 1.4.0      |
+| here       | 1.0.2      |
 
 Key package versions
 

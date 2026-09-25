@@ -5,6 +5,8 @@
 #   wrong relative to the experimental benchmark, for the ten treatments in Figure 4.
 #   The article states 12 of 20 for the change format and 3 of 20 for the
 #   counterfactual format; both counts are computed here rather than transcribed.
+#   A cell whose estimate is zero has no sign to be opposite, and is excluded rather
+#   than counted: see the tolerance below.
 
 source(here::here("maintained", "helpers.R"))
 
@@ -33,22 +35,45 @@ comparison <-
     )
   ) |>
   select(study, topic, Party, quantity, estimate) |>
-  pivot_wider(names_from = quantity, values_from = estimate) |>
+  pivot_wider(names_from = quantity, values_from = estimate)
+
+# An estimate of zero has no sign, so it cannot have the opposite sign of anything, and
+# sign() is the wrong predicate for it. Two of the twenty counterfactual CATEs are zero:
+# Trump coal ash among Republicans lands on exactly -0, and the Tax Cuts and Jobs Act
+# among Republicans on a residue near 1e-17 whose sign bit differs between estimatr 1.0.6
+# and 2.0. Comparing sign() directly counts the first always and the second only under
+# 2.0, so the published count of 3 is reproducible only by accident of the solver: the
+# same code gives 4 under estimatr 2.0.0.9000. The tolerance sits nine orders of magnitude
+# above those residues and six below the smallest estimate that is genuinely nonzero
+# (0.0028 in the change format, 0.0139 in the counterfactual), so no cell is near it.
+zero_tol <- 1e-8
+
+comparison <-
+  comparison |>
   mutate(
-    change_wrong_sign = sign(more_less_change) != sign(benchmark),
-    counterfactual_wrong_sign = sign(cate_counterfactual) != sign(benchmark)
+    change_sign_determinate = abs(more_less_change) > zero_tol & abs(benchmark) > zero_tol,
+    counterfactual_sign_determinate =
+      abs(cate_counterfactual) > zero_tol & abs(benchmark) > zero_tol,
+    change_wrong_sign =
+      change_sign_determinate & sign(more_less_change) != sign(benchmark),
+    counterfactual_wrong_sign =
+      counterfactual_sign_determinate & sign(cate_counterfactual) != sign(benchmark)
   )
 
 counts <- tibble(
   stat = c(
     "Cells compared (10 treatments x 2 parties)",
     "Change format: sign opposite the difference in means",
-    "Counterfactual format: sign opposite the difference in means"
+    "Counterfactual format: sign opposite the difference in means",
+    "Change format: estimate zero, so no sign to compare",
+    "Counterfactual format: estimate zero, so no sign to compare"
   ),
   value = c(
     nrow(comparison),
     sum(comparison$change_wrong_sign),
-    sum(comparison$counterfactual_wrong_sign)
+    sum(comparison$counterfactual_wrong_sign),
+    sum(!comparison$change_sign_determinate),
+    sum(!comparison$counterfactual_sign_determinate)
   )
 )
 

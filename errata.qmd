@@ -67,7 +67,13 @@ d5_cell <- function(topic_string, party, estimator, column) {
 pts <- function(x) str_replace(sprintf("%.1f", x), "^-", "–")
 
 # Fuller precision, for a reason line rather than a sentence.
-pts2 <- function(x) str_replace(sprintf("%.2f", x), "^-", "–")
+# A quantity that rounds to zero from below prints as "–0.00", which is not how a zero is
+# written anywhere in the article; strip the sign, as maintained/helpers.R does for the
+# tables. Entry 5 turns on a cell whose estimate is exactly that.
+pts2 <- function(x) {
+  s <- str_replace(sprintf("%.2f", x), "^-", "–")
+  if_else(str_detect(s, "^–0[.]0*$"), str_remove(s, "^–"), s)
+}
 
 # A spelled-out count stays spelled out when it is corrected.
 spelled <- function(n) {
@@ -76,7 +82,9 @@ spelled <- function(n) {
   words[n]
 }
 
-# The three cells in which the counterfactual format's sign is opposite the experiment's.
+# The cells in which the counterfactual format's sign is opposite the experiment's. A cell
+# whose estimate is zero has no sign to be opposite and is excluded upstream in
+# text_sign_comparison.R, so this is the article's three less the one such cell it counts.
 wrong_sign <- signs |>
   filter(counterfactual_wrong_sign) |>
   mutate(label = map_chr(topic, topic_label)) |>
@@ -89,6 +97,37 @@ wrong_sign <- signs |>
     both_null = cf_low <= 0 & cf_high >= 0 & dim_low <= 0 & dim_high >= 0
   ) |>
   ungroup()
+
+# The cells excluded for holding a zero estimate. Entry 5 names them rather than leaving
+# them as the gap between two counts.
+zero_sign <- signs |>
+  filter(!counterfactual_sign_determinate) |>
+  mutate(label = map_chr(topic, topic_label))
+
+# The p. 46 sentence, assembled once from the two clauses that are corrected. Entries 2
+# and 5 correct different clauses of it, so each marks its own span and inherits the
+# other's clause as it stands. The published form is typed from the article; the corrected
+# form is computed, including the tokens that were not wrong, because rendering the whole
+# sentence from the pipeline is what verifies them.
+mark <- function(x, marked) if (marked) str_c("[[", x, "]]") else x
+
+sign_published <- function(mark_count = FALSE, mark_null = FALSE) str_c(
+  "The more-minus-less estimates derived from the change format have the opposite sign ",
+  "as the experimental difference-in-means estimates in 12 out of 20 opportunities, ",
+  "compared with ", mark("3 of 20", mark_count), " for the counterfactual format. ",
+  mark("In all three of those cases", mark_null), ", neither the counterfactual estimate ",
+  "nor the difference in means estimate can be distinguished from zero.")
+
+sign_corrected <- function(mark_count = FALSE, mark_null = FALSE) str_c(
+  "The more-minus-less estimates derived from the change format have the opposite sign ",
+  "as the experimental difference-in-means estimates in ", sum(signs$change_wrong_sign),
+  " out of ", nrow(signs), " opportunities, compared with ",
+  mark(str_c(sum(signs$counterfactual_wrong_sign), " of ", nrow(signs)), mark_count),
+  " for the counterfactual format. ",
+  mark(str_c("In ", spelled(sum(wrong_sign$both_null)), " of those ",
+             spelled(nrow(wrong_sign)), " cases"), mark_null),
+  ", neither the counterfactual estimate nor the difference in means estimate can be ",
+  "distinguished from zero.")
 
 # Table D.3's own Difference column against More minus each of the two candidate columns.
 # Every cell on the page is rounded to one decimal on its own, so the difference of two
@@ -171,22 +210,10 @@ entries <- tribble(
   "appendix_d3_cells_as_printed",
 
   2, "definition", "pipeline", "full",
-  "The counterfactual format's three sign errors are not all cases in which nothing can be distinguished from zero",
+  "The counterfactual format's sign errors are not all cases in which nothing can be distinguished from zero",
   "published p. 46",
-  paste0(
-    "The more-minus-less estimates derived from the change format have the opposite sign ",
-    "as the experimental difference-in-means estimates in 12 out of 20 opportunities, ",
-    "compared with 3 of 20 for the counterfactual format. [[In all three of those cases]], ",
-    "neither the counterfactual estimate nor the difference in means estimate can be ",
-    "distinguished from zero."),
-  str_glue(
-    "The more-minus-less estimates derived from the change format have the opposite sign ",
-    "as the experimental difference-in-means estimates in {sum(signs$change_wrong_sign)} ",
-    "out of {nrow(signs)} opportunities, compared with ",
-    "{sum(signs$counterfactual_wrong_sign)} of {nrow(signs)} for the counterfactual ",
-    "format. [[In {spelled(sum(wrong_sign$both_null))} of those {spelled(nrow(wrong_sign))} ",
-    "cases]], neither the counterfactual estimate nor the difference in means estimate can ",
-    "be distinguished from zero."),
+  sign_published(mark_null = TRUE),
+  sign_corrected(mark_null = TRUE),
   str_glue(
     "The exception is the disputed accusation among Democrats, where the counterfactual ",
     "estimate is ",
@@ -204,7 +231,9 @@ entries <- tribble(
     "with an interval of ",
     "({pts2(cell('Disputed accusation', 'Democrat', 'CATE', 'Diff. in means', 'conf.low'))}, ",
     "{pts2(cell('Disputed accusation', 'Democrat', 'CATE', 'Diff. in means', 'conf.high'))}). ",
-    "Figure 4 and Table D.5 both carry the correct estimates and are not reprinted."),
+    "Figure 4 and Table D.5 both carry the correct estimates and are not reprinted. How ",
+    "many cells the sentence should count is a separate correction, entry 5 below, which ",
+    "removes a different cell from the three and leaves this one standing."),
   "results_wrong_sign_cases_null",
 
   3, "quantity", "pipeline", "full",
@@ -251,7 +280,34 @@ entries <- tribble(
     "up rather than down at two decimals. The share reporting exactly zero change is ",
     "{sprintf('%.4f', 100 * stat('Share reporting exactly zero change'))} per cent and is ",
     "correct as published at whole-percent precision."),
-  "intro_impeach_correlation"
+  "intro_impeach_correlation",
+
+  5, "definition", "pipeline", "full",
+  "The counterfactual format has two sign errors, not three",
+  "published p. 46",
+  sign_published(mark_count = TRUE),
+  sign_corrected(mark_count = TRUE),
+  str_glue(
+    "One of the three cells the sentence counts, the Trump coal ash executive order among ",
+    "Republicans, has a counterfactual estimate of ",
+    "{pts2(cell('Trump coal ash exec. order', 'Republican', 'CATE', 'Counterfactual', 'estimate'))} ",
+    "scale points (SE ",
+    "{pts2(cell('Trump coal ash exec. order', 'Republican', 'CATE', 'Counterfactual', 'std.error'))}). ",
+    "An estimate of zero has no sign, so it cannot have the opposite sign of the ",
+    "experiment, and it is not counted here. The Tax Cuts and Jobs Act cell among ",
+    "Republicans is zero in the same way, differing from zero by ",
+    "{sprintf('%.0e', abs(cell('Tax Cuts and Jobs Act', 'Republican', 'CATE', 'Counterfactual', 'estimate')))} ",
+    "scale points, and is also not counted.\n\n",
+    "Comparing the two signs directly, which is what produces the published count, makes ",
+    "the answer turn on the last bits of that second value. The same code over the same ",
+    "data returns 3 under the linear algebra the published archive was run against and 4 ",
+    "under a current one, so the published count is not reproducible in either ",
+    "direction rather than simply being one too high.\n\n",
+    "The direction of the article's argument is untouched, and the corrected numbers are ",
+    "wider apart than the published ones: the change format gets the sign wrong in ",
+    "{sum(signs$change_wrong_sign)} of {nrow(signs)} opportunities against the ",
+    "counterfactual format's {sum(signs$counterfactual_wrong_sign)}."),
+  "results_counterfactual_wrong_sign"
 ) |>
   mutate(across(c(title, published, corrected, note, claim_ids), as.character))
 
@@ -261,7 +317,7 @@ stopifnot(nrow(entries) == max(entries$entry), !anyDuplicated(entries$entry))
 bold <- function(x) str_replace_all(x, "\\[\\[(.*?)\\]\\]", "**\\1**")
 ```
 
-This note lists `r spelled(nrow(entries))` corrections to "Asking About Attitude Change," published in *Public Opinion Quarterly* 85(1), doi [10.1093/poq/nfab009](https://doi.org/10.1093/poq/nfab009): one appendix table whose column headings are in the wrong order, one sentence that describes the estimates incorrectly, and two misstated numbers. **None of them changes a conclusion of the paper.** The evidence behind the paper's argument, that the change format gets the sign of an effect wrong far more often than the counterfactual format does, is unaffected.
+This note lists `r spelled(nrow(entries))` corrections to "Asking About Attitude Change," published in *Public Opinion Quarterly* 85(1), doi [10.1093/poq/nfab009](https://doi.org/10.1093/poq/nfab009): one appendix table whose column headings are in the wrong order, two corrections to a single sentence that describes the estimates incorrectly, and two misstated numbers. **None of them changes a conclusion of the paper.** The evidence behind the paper's argument, that the change format gets the sign of an effect wrong far more often than the counterfactual format does, is unaffected.
 
 Every number in a corrected sentence below is computed from the deposited replication archive ([10.7910/DVN/GFF78K](https://doi.org/10.7910/DVN/GFF78K)) at the time this document is rendered, including the numbers that were not wrong. The code and output supporting each correction are at [github.com/active-maintenance-aec/graham_coppock_2021](https://github.com/active-maintenance-aec/graham_coppock_2021).
 
