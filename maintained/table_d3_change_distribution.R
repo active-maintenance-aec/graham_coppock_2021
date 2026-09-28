@@ -22,7 +22,10 @@ tab_selfpct_appendix <-
     tidy(lm_robust((YC ==  0) ~ 1, data = pick(everything()), clusters = id)) |> mutate(category = "Same"),
     tidy(lm_robust((YC ==  1) ~ 1, data = pick(everything()), clusters = id)) |> mutate(category = "More"),
     tidy(lm_robust( YC        ~ 1, data = pick(everything()), clusters = id)) |> mutate(category = "Diff")
-  ))
+  )) |>
+  # A proportion of exactly 0 or 1 comes from a constant outcome, whose standard error
+  # is 0; estimatr >= 2.0.1 returns NA for an exactly-zero variance, so set it here.
+  mutate(std.error = if_else(category != "Diff" & estimate %in% c(0, 1), 0, std.error))
 
 tab_selfpct_n <-
   substitution_dat |>
