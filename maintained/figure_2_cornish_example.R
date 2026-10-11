@@ -21,13 +21,8 @@ g <- make_grand_plot(
   outside_lab_size = 2.8,
   strip_text_size = 9
 ) +
-  facet_grid(Estimator ~ Party, scales = "free_x", switch = "y", space = "free") +
-  theme(legend.position = "right",
-        strip.text.y = element_text(size = 8, margin = margin(0, 3, 0, 0)),
-        axis.text.x = element_blank(),
-        axis.text.y = element_text(size = 8),
-        panel.spacing.x = unit(0, "cm"),
-        panel.spacing.y = unit(.1, "cm")) +
+  facet_grid(Estimator ~ Party, scales = "free_y", switch = "y", space = "free") +
+  theme(legend.position = "right") +
   guides(fill = guide_legend(reverse = TRUE, title = "Self-reported\nchange"),
          size = "none", shape = "none", color = "none")
 

@@ -95,30 +95,34 @@ make_grand_plot <- function(
 
   cate_sub <- filtered |> filter(Estimator == "CATE")
 
+  # Format sits on x and coord_flip() lays it vertically, as in the authors'
+  # makePlot_grand(): the facet scales are then free on the Format axis, so a
+  # row panel carries only the formats it has.
   filtered |>
-    ggplot(aes(y = Format, x = estimate, xmin = conf.low, xmax = conf.high,
+    ggplot(aes(x = Format, y = estimate, ymin = conf.low, ymax = conf.high,
                fill = category, color = Estimator)) +
-    geom_vline(aes(xintercept = if_else(Estimator == "CATE", 0.5, NA_real_)),
+    geom_hline(aes(yintercept = if_else(Estimator == "CATE", 0.5, NA_real_)),
                linewidth = .4, lty = 2, color = "gray65") +
-    geom_rect(aes(xmin = 0, xmax = 1, ymin = -Inf, ymax = Inf),
-              fill = "transparent", linewidth = .3, color = "transparent") +
+    geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = 0, ymax = 1),
+              fill = "transparent", linewidth = .3) +
     scale_color_manual(values = c("transparent", "gray5")) +
-    geom_bar(aes(x = value), stat = "identity", alpha = .6, orientation = "y") +
-    geom_linerange(data = cate_sub, aes(xmin = conf.low, xmax = conf.high), linewidth = .3) +
+    geom_bar(aes(y = value), stat = "identity", alpha = .6) +
+    geom_errorbar(data = cate_sub, width = 0, linewidth = .3) +
     geom_point(data = cate_sub, fill = "white", size = point_size, color = "gray5") +
-    geom_text(aes(x = .02, label = lab_lo), size = 2.3, hjust = 0, vjust = vjust_val) +
-    geom_text(aes(x = .98, label = lab_hi), size = 2.3, hjust = 1, vjust = vjust_val) +
-    geom_text(aes(x = outside_pos, label = lab_outside), size = outside_lab_size,
+    geom_text(aes(y = .02, label = lab_lo), size = 2.3, hjust = 0, vjust = vjust_val) +
+    geom_text(aes(y = .98, label = lab_hi), size = 2.3, hjust = 1, vjust = vjust_val) +
+    geom_text(aes(y = outside_pos, label = lab_outside), size = outside_lab_size,
               hjust = 1, color = "gray5") +
-    facet_nested(Topic ~ Party + Estimator, switch = "x", scales = "free_x", space = "free_x") +
-    scale_x_continuous(expand = c(.02, .02), limits = c(0, outside_pos)) +
+    facet_nested(Party + Estimator ~ Topic, switch = "y", scales = "free_y", space = "free_y") +
+    scale_y_continuous(expand = c(.02, .02)) +
+    coord_flip(ylim = c(0, outside_pos)) +
     theme_minimal() +
     theme(
       text = element_text(color = "gray5"),
       strip.background = element_blank(),
       strip.placement = "outside",
       strip.text = element_text(size = strip_text_size, margin = margin(0, 0, 1, 0)),
-      strip.text.x = element_text(size = strip_text_size - 1, margin = margin(0, 0, 3, 0)),
+      strip.text.y = element_text(size = strip_text_size - 1, margin = margin(0, 3, 0, 0)),
       legend.position = "none",
       legend.title = element_text(size = 8),
       legend.text = element_text(size = 8),
@@ -126,18 +130,19 @@ make_grand_plot <- function(
       legend.spacing.x = unit(.2, "cm"),
       plot.title = element_text(size = 9, hjust = .5),
       axis.title = element_blank(),
-      axis.text.y = element_blank(),
-      axis.text.x = element_text(size = 8),
+      axis.text.x = element_blank(),
+      axis.text.y = element_text(size = 8),
       axis.ticks = element_line(color = "transparent"),
-      panel.spacing.x = unit(.1, "cm"),
-      panel.spacing.y = unit(0, "cm"),
+      panel.spacing.x = unit(0, "cm"),
+      panel.spacing.y = unit(.1, "cm"),
       panel.border = element_blank(),
       panel.grid = element_blank(),
       plot.margin = margin(0, 0, 0, 0)
     ) +
     scale_fill_manual(
       values = c("transparent", "forestgreen", "gray80", "firebrick4"),
-      labels = c("", "More (1)", "Same (0)", "Less (-1)")
+      labels = c("", "More (1)", "Same (0)", "Less (-1)"),
+      na.translate = FALSE
     ) +
     labs(y = "Self-reported change (percentage points)", x = "Format",
          fill = "Self-reported change")
