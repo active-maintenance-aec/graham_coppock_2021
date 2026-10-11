@@ -118,7 +118,8 @@ archive_d5_boot_reproduced <-
 
 # Printed figure labels ----
 # Figures 2, 4, 5 and E.2 print an estimate and a standard error beside every row they
-# draw. A label agrees only if both halves do.
+# draw. A label agrees only if both halves do. Both are snapped to 10 digits, as the
+# pipeline does before it prints them.
 labels_rewrite <-
   bind_rows(
     fig2 |> filter(!is.na(label)) |> mutate(figure = "Figure 2", study = as.character(study)),
@@ -130,7 +131,7 @@ labels_rewrite <-
   ) |>
   transmute(figure, study, Topic = norm(Topic), Party,
             Estimator, Format = as.character(Format),
-            estimate_rewrite = estimate, se_rewrite = std.error)
+            estimate_rewrite = round(estimate, 10), se_rewrite = round(std.error, 10))
 
 labels_published <- pub("published_figure_labels.csv") |> mutate(Topic = norm(Topic))
 
@@ -631,15 +632,16 @@ gt <- bind_rows(
     ~claim_id, ~table_figure, ~claim, ~value_rewrite, ~value_paper, ~notes,
     "fig4_undisputed_republican_counterfactual", "Figure 4",
       "Undisputed accusation, Republican, CATE, Counterfactual",
-      grand_cell(fig4, "Undisputed accusation", "Republican", "CATE", "Counterfactual",
-                 "estimate"),
+      round(grand_cell(fig4, "Undisputed accusation", "Republican", "CATE", "Counterfactual",
+                       "estimate"), 10),
       "-1.12",
       paste0("The quantity is a mean of 72 values that comes to -1.125 exactly, which is a tie ",
              "at the second decimal. lm_robust returns it one unit in the last place away from ",
              "that tie, so it prints as -1.13; the mean of the same 72 values, which the ",
              "appendix's Table D.5 reports for the same cell, lands on the tie and prints as ",
              "-1.12, which is what the published figure shows. The deposited script produces ",
-             "the same bits as the rewrite and prints -1.13 too.")
+             "the same bits as the rewrite and prints -1.13; the maintained pipeline snaps the ",
+             "label to 10 digits before printing it, so it prints -1.12 as the figure does.")
   ),
   label_misses,
 
@@ -773,7 +775,7 @@ gt <- gt |>
 
 gt$notes[!is.na(gt$claim_id) & gt$claim_id == "fig4_labels_agreeing"] <-
   paste0(gt$notes[!is.na(gt$claim_id) & gt$claim_id == "fig4_labels_agreeing"],
-         ". The one label that disagrees has its own row below.")
+         ". The one label on an exact tie at its printed digit has its own row below.")
 
 gt <- gt |>
   select(paper_id, claim_id, table_figure, claim, value_script, value_paper, match,

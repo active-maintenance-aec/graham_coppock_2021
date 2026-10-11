@@ -68,7 +68,11 @@ grand_plot_df_treat_only <-
   ) |>
   mutate(
     Topic = factor(Topic, unique(Topic)),
-    lab_outside = paste0(format_num(estimate, 2), " (", format_num(std.error, 2), ")")
+    # An estimate on an exact tie at the printed digit (a mean of 72 values at -1.125)
+    # comes back from lm_robust one ulp past it; snapping to 10 digits prints it as
+    # the published figure does.
+    lab_outside = paste0(format_num(round(estimate, 10), 2), " (",
+                         format_num(round(std.error, 10), 2), ")")
   ) |>
   mutate(
     is_share = str_detect(outcome, "0|1"),

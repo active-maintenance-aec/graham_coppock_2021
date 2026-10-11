@@ -157,7 +157,7 @@ verdict_df <- tibble::tribble(
   "Figure 1b (seven printed group means)", "All seven reproduce",
   "Figure 2 (ten printed labels)", "All ten reproduce",
   "Figure 3 (shape and the effects the text quotes)", "Reproduces",
-  "Figure 4 (96 printed labels)", "95 of 96 reproduce; the miss is a rounding tie",
+  "Figure 4 (96 printed labels)", "All 96 reproduce, one of them on a rounding tie",
   "Figure 5 (24 printed labels)", "All 24 reproduce",
   "Figure E.2 (44 printed labels)", "All 44 reproduce",
   "Table D.3 (336 cells)", "All reproduce, with the published column headings transposed",
@@ -180,7 +180,7 @@ The exceptions are small and none of them is a failure of the analysis.
 
 **Table D.3's column headings are transposed relative to its own body.** The published table heads its second and third value columns "No change" and "Less", but in `r d3_difference_rows$from_no_change` of its `r d3_difference_rows$rows` rows the printed Difference equals More minus the column headed "No change", against `r d3_difference_rows$from_less` for the column headed "Less". Read in that corrected order all `r gt$value_rewrite[gt$table_figure == "Table D.3" & gt$claim == "Cells agreeing with the published table"]` cells reproduce. Read as printed, `r gt$value_rewrite[gt$table_figure == "Table D.3" & str_detect(gt$claim, "^Cells agreeing if")]` do. The numbers in the table are right; the two headings are swapped.
 
-**One printed label in Figure 4 differs, and it is a rounding tie.** For the Undisputed accusation treatment among Republicans, the counterfactual-format estimate is a mean that comes to exactly -1.125. `lm_robust` returns it one unit in the last place away from that tie, so it prints as -1.13, which is what both the deposited script and this rewrite produce. The published figure prints -1.12, which is what the tie itself gives, and which is also what the appendix's Table D.5 prints for the same quantity. Nothing about the estimate differs; only the last printed digit does.
+**One printed label in Figure 4 sits on a rounding tie.** For the Undisputed accusation treatment among Republicans, the counterfactual-format estimate is a mean that comes to exactly -1.125. `lm_robust` returns it one unit in the last place away from that tie, so the deposited script prints it as -1.13. The published figure prints -1.12, which is what the tie itself gives, and which is also what the appendix's Table D.5 prints for the same quantity. The rewrite snaps each label's estimate and standard error to ten digits before printing it, which restores the tie, so it prints -1.12 as the figure does. Nothing about the estimate differs; only the last printed digit did.
 
 **Table D.5's bootstrap intervals are the one place the rewrite and the deposit part company.** Both draw 10,000 resamples from seed 0. The deposited script resamples every cell in the counterfactual data and then keeps the twenty the table reports; the rewrite selects the twenty first, so the two walk different random streams from the same seed. The deposited script reproduces all sixty published rows exactly. The rewrite differs on seven rows by a unit in the second decimal, which is Monte Carlo variation rather than a difference in the estimator, and no interval changes whether it covers zero.
 

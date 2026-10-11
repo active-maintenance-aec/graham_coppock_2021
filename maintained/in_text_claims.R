@@ -172,7 +172,8 @@ cells_agreeing <- function(published_key, published_value, published_error, digi
 }
 
 # The four figures that print an estimate and a standard error beside every row they draw.
-# A label agrees only if both halves do at the two decimals the figures print.
+# A label agrees only if both halves do at the two decimals the figures print, after the
+# 10-digit snap the pipeline applies before printing.
 labels_rewrite <-
   bind_rows(
     fig2 |> mutate(figure = "Figure 2", study = as.character(study)),
@@ -185,7 +186,7 @@ labels_rewrite <-
   filter(!is.na(label)) |>
   transmute(key = str_c(figure, "|", study, "|", norm(Topic), "|", Party, "|",
                         Estimator, "|", Format),
-            figure, estimate, std.error)
+            figure, estimate = round(estimate, 10), std.error = round(std.error, 10))
 
 labels_published <-
   pub("published_figure_labels.csv") |>
@@ -660,13 +661,14 @@ walk(c("Figure 2", "Figure 4", "Figure 5", "Figure E.2a", "Figure E.2b"), functi
                sum(labels_published$figure == f)))
 })
 
-# The one Figure 4 label that does not agree.
+# The one Figure 4 label that sits on an exact tie at its printed digit.
 # covers: fig4_undisputed_republican_counterfactual
 undisputed <- panel_row(fig4, "Undisputed accusation", "Republican", "CATE", "Counterfactual")
-report("fig4_undisputed_republican_counterfactual", undisputed$estimate,
+report("fig4_undisputed_republican_counterfactual", round(undisputed$estimate, 10),
        "Figure 4, undisputed accusation, Republicans, counterfactual CATE")
 evidence("at seventeen significant digits: ", sprintf("%.17g", undisputed$estimate),
-         "; the same quantity as a plain mean lands on the tie -1.125 exactly and prints -1.12")
+         "; the plain mean lands on the tie -1.125 exactly, and the 10-digit snap before printing ",
+         "prints it -1.12 as the figure does")
 
 # Figure 3 prints no numbers of its own, so what it asserts is the shape of the two panels
 # and the estimates the surrounding text quotes from them.

@@ -171,7 +171,7 @@ and `ggrepel` and never calls a function from any of them.
 
 Almost entirely. Every appendix table reproduces cell for cell. Of the
 82 recorded claims, 67 compare a published number against a rewrite
-number and 60 of those match at the precision the page prints; 12 are
+number and 62 of those match at the precision the page prints; 12 are
 claims about sign, shape or count rather than about a value, and 11 of
 those hold; the remaining 3 are magnitudes the article itself hedges,
 which are recorded without a verdict.
@@ -181,7 +181,7 @@ which are recorded without a verdict.
 | Figure 1b (seven printed group means) | All seven reproduce |
 | Figure 2 (ten printed labels) | All ten reproduce |
 | Figure 3 (shape and the effects the text quotes) | Reproduces |
-| Figure 4 (96 printed labels) | 95 of 96 reproduce; the miss is a rounding tie |
+| Figure 4 (96 printed labels) | All 96 reproduce, one of them on a rounding tie |
 | Figure 5 (24 printed labels) | All 24 reproduce |
 | Figure E.2 (44 printed labels) | All 44 reproduce |
 | Table D.3 (336 cells) | All reproduce, with the published column headings transposed |
@@ -218,15 +218,16 @@ minus the column headed “No change”, against 2 for the column headed
 printed, 172 do. The numbers in the table are right; the two headings
 are swapped.
 
-**One printed label in Figure 4 differs, and it is a rounding tie.** For
-the Undisputed accusation treatment among Republicans, the
+**One printed label in Figure 4 sits on a rounding tie.** For the
+Undisputed accusation treatment among Republicans, the
 counterfactual-format estimate is a mean that comes to exactly -1.125.
 `lm_robust` returns it one unit in the last place away from that tie, so
-it prints as -1.13, which is what both the deposited script and this
-rewrite produce. The published figure prints -1.12, which is what the
-tie itself gives, and which is also what the appendix’s Table D.5 prints
-for the same quantity. Nothing about the estimate differs; only the last
-printed digit does.
+the deposited script prints it as -1.13. The published figure prints
+-1.12, which is what the tie itself gives, and which is also what the
+appendix’s Table D.5 prints for the same quantity. The rewrite snaps
+each label’s estimate and standard error to ten digits before printing
+it, which restores the tie, so it prints -1.12 as the figure does.
+Nothing about the estimate differs; only the last printed digit did.
 
 **Table D.5’s bootstrap intervals are the one place the rewrite and the
 deposit part company.** Both draw 10,000 resamples from seed 0. The
@@ -354,12 +355,11 @@ and the surrounding text quotes.
 
 | Where the difference lies | Rows |
 |:--------------------------|-----:|
-| no disagreement           |   74 |
+| no disagreement           |   76 |
 | paper_internal            |    5 |
-| environment               |    2 |
 | rewrite                   |    1 |
 
-Ground truth: 74 of 82 rows record no disagreement between the article
+Ground truth: 76 of 82 rows record no disagreement between the article
 and the rewrite
 
 | Claim | Published | Rewrite | Locus |
@@ -368,12 +368,10 @@ and the rewrite
 | Text, p. 44: Same decrease among Democrats (points) | 14 | 13.4590 | paper_internal |
 | Text, p. 46: Counterfactual format has the opposite sign | 3 | 2.0000 | paper_internal |
 | Text, p. 46: Sign-miss cells in which neither estimate is distinguishable from zero | 3 | 1.0000 | paper_internal |
-| Figure 4: Printed labels agreeing with the published figure | 96 | 95.0000 | environment |
-| Figure 4: Undisputed accusation, Republican, CATE, Counterfactual | -1.12 | -1.1250 | environment |
 | Table D.3: Cells agreeing if the column headings are read as printed | 336 | 172.0000 | paper_internal |
 | Table D.5: Bootstrap standard errors and interval endpoints agreeing | 60 | 53.0000 | rewrite |
 
-The 8 claims the rewrite does not reproduce, and where the fault lies
+The 6 claims the rewrite does not reproduce, and where the fault lies
 
 Every row that fails carries a locus, because a bare zero reads as a
 failure of the rewrite and here it is one only once, on the Table D.5
@@ -603,11 +601,11 @@ alt="Figure E.2. Study 2b, setting the simultaneous outcomes format against the 
 | Figure 3b | Endorsed Trump, Republicans: sign of the level question’s effect | -1 | -1.0000 | NA | TRUE | NA |
 | Figure 3b | Mueller comments, Democrats: sign of the level question’s effect | -1 | -1.0000 | NA | TRUE | NA |
 | Figure 2 | Printed labels agreeing with the published figure | 10 | 10.0000 | 1 | NA | NA |
-| Figure 4 | Printed labels agreeing with the published figure | 96 | 95.0000 | 0 | NA | environment |
+| Figure 4 | Printed labels agreeing with the published figure | 96 | 96.0000 | 1 | NA | NA |
 | Figure 5 | Printed labels agreeing with the published figure | 24 | 24.0000 | 1 | NA | NA |
 | Figure E.2a | Printed labels agreeing with the published figure | 24 | 24.0000 | 1 | NA | NA |
 | Figure E.2b | Printed labels agreeing with the published figure | 20 | 20.0000 | 1 | NA | NA |
-| Figure 4 | Undisputed accusation, Republican, CATE, Counterfactual | -1.12 | -1.1250 | 0 | NA | environment |
+| Figure 4 | Undisputed accusation, Republican, CATE, Counterfactual | -1.12 | -1.1250 | 1 | NA | NA |
 | Table D.3 | Cells agreeing with the published table | 336 | 336.0000 | 1 | NA | NA |
 | Table D.3 | Cells agreeing if the column headings are read as printed | 336 | 172.0000 | 0 | NA | paper_internal |
 | Table D.3 | Sample sizes agreeing | 84 | 84.0000 | 1 | NA | NA |
@@ -620,23 +618,23 @@ alt="Figure E.2. Study 2b, setting the simultaneous outcomes format against the 
 | Figure E.2a | No-pretreatment cells of four in which the simultaneous format sits further from the experiment | 3 | 3.0000 | NA | TRUE | NA |
 | Figure E.2b | Ratio of the simultaneous to the change format share of Democrats reporting more support | 2 | 2.2177 | NA | NA | NA |
 
-Rewrite verification: 60 of 67 value claims match the published values,
+Rewrite verification: 62 of 67 value claims match the published values,
 and 11 of 12 descriptive claims hold
 
 ------------------------------------------------------------------------
 
 ## R Environment
 
-| Package    | Version    |
-|:-----------|:-----------|
-| tidyverse  | 2.0.0      |
-| estimatr   | 2.0.0.9000 |
-| ggh4x      | 0.3.1      |
-| gridExtra  | 2.3        |
-| rsample    | 1.3.2      |
-| knitr      | 1.51       |
-| kableExtra | 1.4.0      |
-| here       | 1.0.2      |
+| Package    | Version |
+|:-----------|:--------|
+| tidyverse  | 2.0.0   |
+| estimatr   | 2.0.1   |
+| ggh4x      | 0.3.1   |
+| gridExtra  | 2.3     |
+| rsample    | 1.3.2   |
+| knitr      | 1.51    |
+| kableExtra | 1.4.0   |
+| here       | 1.0.2   |
 
 Key package versions
 

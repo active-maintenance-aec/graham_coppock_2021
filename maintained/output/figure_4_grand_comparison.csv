@@ -222,7 +222,7 @@ study,Topic,Party,Estimator,Format,category,share,estimate,std.error,conf.low,co
 1,Undisputed accusation,Republican,More-less,Change, Same,0.21621621621621623,NA,0.06861056852129647,NA,NA,NA
 1,Undisputed accusation,Republican,More-less,Change,Less,0.7297297297297298,NA,0.07401656182502245,NA,NA,NA
 1,Undisputed accusation,Republican,CATE,Diff. in means,NA,NA,-1.192761605035405,0.34838045727483175,-1.8875845180401456,-0.49793869203066454,-1.19 (0.35)
-1,Undisputed accusation,Republican,CATE,Counterfactual,NA,NA,-1.1250000000000002,0.18442642548256322,-1.4927358479464325,-0.7572641520535679,-1.13 (0.18)
+1,Undisputed accusation,Republican,CATE,Counterfactual,NA,NA,-1.1250000000000002,0.18442642548256322,-1.4927358479464325,-0.7572641520535679,-1.12 (0.18)
 2a,Obama torture exec. order,Democrat,More-less,Counterfactual,  Diff,0.08608321377331427,0.08608321377331427,0.019307242216765597,0.04817579425240696,0.12399063329422158,0.09 (0.02)
 2a,Obama torture exec. order,Democrat,More-less,Counterfactual, More,0.17647058823529424,NA,0.014450108365897564,NA,NA,NA
 2a,Obama torture exec. order,Democrat,More-less,Counterfactual, Same,0.7331420373027274,NA,0.01676600241090389,NA,NA,NA
