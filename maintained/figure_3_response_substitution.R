@@ -54,7 +54,7 @@ g3a <- tab_reduce_change |>
   geom_hline(yintercept = 0, color = "white",  linewidth = .25) +
   geom_hline(yintercept = 0, color = "gray60", linewidth = .25, lty = 2) +
   geom_point(size = 1.75) +
-  geom_linerange() +
+  geom_errorbar(width = 0.5) +
   theme_bw() +
   theme(
     legend.position      = "none",
@@ -77,7 +77,8 @@ g3a <- tab_reduce_change |>
   scale_color_manual(values = c("gray5", bpr_colors_noI)) +
   scale_shape_manual(values = c(17, 19, 15)) +
   facet_wrap(~Topic, nrow = 1) +
-  labs(y = "Difference in percent\nreporting change", x = "Party")
+  labs(y = "Difference in percent\nreporting change", x = "Party",
+       tag = expression(paste("(", bold("a"), ")")))
 
 # --- Panel (b): self-reported means by format and party ---
 
@@ -105,9 +106,9 @@ g3b <- tab_self_means |>
   scale_color_manual(values = c("gray5", bpr_colors_noI)) +
   scale_shape_manual(values = c(17, 19, 15)) +
   geom_path(linewidth = .5, position = position_dodge(width = .5)) +
-  geom_linerange(
+  geom_errorbar(
     aes(ymin = conf.low, ymax = conf.high),
-    linewidth = .4, position = position_dodge(width = .5)
+    width = 0.5, linewidth = .4, position = position_dodge(width = .5)
   ) +
   geom_point(size = 1.75, position = position_dodge(width = .5)) +
   coord_cartesian(ylim = c(-1, 1)) +
@@ -134,7 +135,8 @@ g3b <- tab_self_means |>
     legend.key.height    = unit(.3, "cm"),
     legend.margin        = margin(0, 0, 0, 0)
   ) +
-  labs(y = "Self-reported change", x = "Asked level question first?") +
+  labs(y = "Self-reported change", x = "Asked level question first?",
+       tag = expression(paste("(", bold("b"), ")"))) +
   facet_grid(~Topic, switch = "y")
 
 # --- The gap between the two points in each panel (b) facet ---
