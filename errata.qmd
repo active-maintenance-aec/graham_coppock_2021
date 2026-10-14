@@ -26,6 +26,7 @@ grand <- out("estimates_grand_comparison.csv")
 d3_table <- out("table_d3_change_distribution.csv")
 d3_published <- pub("published_table_d3.csv")
 d5_published <- pub("published_table_d5.csv")
+d5_estimates <- out("table_d5_ate_vs_self_estimates.csv")
 
 # Every number inside a corrected sentence below is computed here, from the deposited
 # data, at the time this document is rendered. That includes the numbers that were not
@@ -105,6 +106,29 @@ wrong_sign <- signs |>
 zero_sign <- signs |>
   filter(!counterfactual_sign_determinate) |>
   mutate(label = map_chr(topic, topic_label))
+
+# Table D.5's estimates, with the difference between the experiment and the counterfactual
+# format and its bootstrap interval. Entry 2 places its exception among them: the article
+# reports six of these differences as statistically significant, and the cell that excludes
+# zero is not one of them.
+d5_estimate <- function(topic_string, party, estimator, column) {
+  rows <- d5_estimates |>
+    filter(Topic == topic_string, Party == party, Estimator == estimator)
+  stopifnot(nrow(rows) == 1)
+  rows[[column]]
+}
+
+d5_significant <- d5_estimates |>
+  filter(Estimator == "Difference", conf.low > 0 | conf.high < 0)
+
+other_wrong_sign <- wrong_sign |>
+  filter(!(topic == "Disputed accusation" & Party == "Democrat"))
+
+stopifnot(
+  nrow(d5_significant) == 6,
+  !any(d5_significant$Topic == "Disputed accusation" & d5_significant$Party == "Democrat"),
+  nrow(wrong_sign) == 2, nrow(other_wrong_sign) == 1
+)
 
 # The p. 46 sentence, assembled once from the two clauses that are corrected. Entries 2
 # and 5 correct different clauses of it, so each marks its own span and inherits the
@@ -235,7 +259,27 @@ entries <- tribble(
     "{pts2(cell('Disputed accusation', 'Democrat', 'CATE', 'Diff. in means', 'conf.high'))}). ",
     "Figure 4 and Table D.5 both carry the correct estimates and are not reprinted. How ",
     "many cells the sentence should count is a separate correction, entry 5 below, which ",
-    "removes a different cell from the three and leaves this one standing."),
+    "removes a different cell from the three and leaves this one standing.\n\n",
+    "What the sentence was there to establish still holds in a narrower form. The ",
+    "counterfactual estimate excludes zero in this cell, but the experiment is imprecise ",
+    "(standard error ",
+    "{pts2(d5_estimate('Disputed accusation', 'Democrat', 'Experiment', 'std.error'))}), ",
+    "and the difference between the two estimates, ",
+    "{pts2(d5_estimate('Disputed accusation', 'Democrat', 'Difference', 'estimate'))}, has a ",
+    "bootstrap interval of ",
+    "({pts2(d5_estimate('Disputed accusation', 'Democrat', 'Difference', 'conf.low'))}, ",
+    "{pts2(d5_estimate('Disputed accusation', 'Democrat', 'Difference', 'conf.high'))}). ",
+    "The cell is not among the {spelled(nrow(d5_significant))} differences the article ",
+    "reports as statistically significant, and the other sign error, ",
+    "{str_to_lower(other_wrong_sign$topic)} among {other_wrong_sign$Party}s, is ",
+    "{pts2(d5_estimate(other_wrong_sign$topic, other_wrong_sign$Party, 'Guess', 'estimate'))} ",
+    "against ",
+    "{pts2(d5_estimate(other_wrong_sign$topic, other_wrong_sign$Party, 'Experiment', 'estimate'))} ",
+    "with an interval of ",
+    "({pts2(d5_estimate(other_wrong_sign$topic, other_wrong_sign$Party, 'Difference', 'conf.low'))}, ",
+    "{pts2(d5_estimate(other_wrong_sign$topic, other_wrong_sign$Party, 'Difference', 'conf.high'))}) ",
+    "for their difference. Neither of the counterfactual format's sign errors is a ",
+    "statistically distinguishable disagreement with the experiment."),
   "results_wrong_sign_cases_null",
 
   3, "quantity", "pipeline", "full",
@@ -381,6 +425,14 @@ entries <- tribble(
   "How Robust Is Evidence of [[Perceptual Partisan]] Bias in Survey Responses?",
   "How Robust Is Evidence of [[Partisan Perceptual]] Bias in Survey Responses?",
   "Public Opinion Quarterly 84(2), doi 10.1093/poq/nfaa024: the title is \"How Robust Is Evidence of Partisan Perceptual Bias in Survey Responses? A New Approach for Studying Expressive Responding.\"",
+  "",
+
+  15, "bibliographic", "reference_audit", "brief",
+  "Yeh et al. (2018) omits its article number",
+  "published p. 53",
+  "British Medical Journal [[363]].",
+  "British Medical Journal [[363: k5094]].",
+  "Crossref, doi 10.1136/bmj.k5094: the article is BMJ 363: k5094. The BMJ paginates by article number, so without it the reference has no locator.",
   ""
 ) |>
   mutate(across(c(title, published, corrected, note, claim_ids), as.character))

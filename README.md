@@ -257,7 +257,7 @@ fault lies with the article rather than with any code, and they are
 collected in `graham_coppock_2021_errata.pdf` at the root of this
 repository, which quotes each published sentence and prints the
 corrected one with every number in it computed at render time. The note
-also corrects 9 errors in the reference list, found by checking every
+also corrects 10 errors in the reference list, found by checking every
 entry against Crossref and against the cited works themselves.
 
 ------------------------------------------------------------------------
