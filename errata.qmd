@@ -67,6 +67,12 @@ d5_cell <- function(topic_string, party, estimator, column) {
 # dash for the minus sign, so a corrected sentence reads like the published one.
 pts <- function(x) str_replace(sprintf("%.1f", x), "^-", "–")
 
+# Whole points, the precision of the p. 44 and p. 32 sentences, so a corrected side changes
+# nothing outside its marks (decision 11). The minus is U+2212, as the page prints it:
+# the edition's patch matches it against the $-$ that DROPPED sets, where an en dash would
+# match nothing.
+whole <- function(x) str_replace(sprintf("%.0f", x), "^-", "−")
+
 # Fuller precision, for a reason line rather than a sentence.
 # A quantity that rounds to zero from below prints as "–0.00", which is not how a zero is
 # written anywhere in the article; strip the sign, as maintained/helpers.R does for the
@@ -286,20 +292,21 @@ entries <- tribble(
   "The effect of asking the level question first among Democrats",
   "published p. 44",
   paste0(
-    "The effect is larger among Democrats ([[14]] points, SE: 3 points) and Republicans ",
-    "(8 points, SE: 4 points) than among pure independents (2 points, SE: 6 points)."),
+    "The effect is larger among Democrats ([[−14]] points, SE: 3 points) and Republicans ",
+    "(−8 points, SE: 4 points) than among pure independents (−2 points, SE: 6 points)."),
   str_glue(
     "The effect is larger among Democrats ",
-    "([[{pts(abs(100 * stat('Fig 3a Democrat estimate')))}]] points, SE: ",
-    "{pts(100 * stat('Fig 3a Democrat SE'))} points) and Republicans ",
-    "({pts(abs(100 * stat('Fig 3a Republican estimate')))} points, SE: ",
-    "{pts(100 * stat('Fig 3a Republican SE'))} points) than among pure independents ",
-    "({pts(abs(100 * stat('Fig 3a Independent estimate')))} points, SE: ",
-    "{pts(100 * stat('Fig 3a Independent SE'))} points)."),
+    "([[{whole(100 * stat('Fig 3a Democrat estimate'))}]] points, SE: ",
+    "{whole(100 * stat('Fig 3a Democrat SE'))} points) and Republicans ",
+    "({whole(100 * stat('Fig 3a Republican estimate'))} points, SE: ",
+    "{whole(100 * stat('Fig 3a Republican SE'))} points) than among pure independents ",
+    "({whole(100 * stat('Fig 3a Independent estimate'))} points, SE: ",
+    "{whole(100 * stat('Fig 3a Independent SE'))} points)."),
   str_glue(
     "The Democratic estimate is ",
-    "{sprintf('%.4f', abs(100 * stat('Fig 3a Democrat estimate')))} points, which rounds ",
-    "to {sprintf('%.0f', abs(100 * stat('Fig 3a Democrat estimate')))} rather than 14 at ",
+    "{str_replace(sprintf('%.4f', 100 * stat('Fig 3a Democrat estimate')), '^-', '−')} ",
+    "points, which rounds to {whole(100 * stat('Fig 3a Democrat estimate'))} rather than ",
+    "−14 at ",
     "the whole-point precision the article uses. The comparison the sentence makes, that ",
     "the effect is larger among Democrats and Republicans than among pure independents, ",
     "holds."),
@@ -319,8 +326,8 @@ entries <- tribble(
     "([[{sprintf('%.2f', stat('cor(Y1, Y0) impeachment'))}]]) of the two responses ",
     "indicates that most subjects believe their counterfactual attitudes would have been ",
     "very close to their actual attitudes ",
-    "({pts(100 * stat('Share reporting exactly zero change'))} percent report exactly zero ",
-    "change)."),
+    "({whole(100 * stat('Share reporting exactly zero change'))} percent report exactly ",
+    "zero change)."),
   str_glue(
     "The correlation is {sprintf('%.4f', stat('cor(Y1, Y0) impeachment'))}, which rounds ",
     "up rather than down at two decimals. The share reporting exactly zero change is ",
