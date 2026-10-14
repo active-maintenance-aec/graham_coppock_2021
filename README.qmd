@@ -51,10 +51,13 @@ n_paper_internal <- sum(gt$defect_locus == "paper_internal", na.rm = TRUE)
 
 # The errata note defines each correction once, in the spine it writes here, and this
 # report counts the entries off that file rather than keeping a second copy of the list.
-# Each entry corrects one claim whose fault lies with the article rather than with any
-# code, so the two counts are the same count reached from opposite ends and must agree.
+# Each entry outside the reference list corrects one claim whose fault lies with the
+# article rather than with any code, so the two counts are the same count reached from
+# opposite ends and must agree. The reference-list entries come from the bibliography
+# audit and have no ground truth row.
 errata_spine <- read_csv(here("errata_entries.csv"), show_col_types = FALSE)
-n_errata <- nrow(errata_spine)
+n_errata <- sum(errata_spine$class != "bibliographic")
+n_reference <- sum(errata_spine$class == "bibliographic")
 stopifnot(n_errata == n_paper_internal)
 
 # The published Table D.3's own Study 3 sample sizes, read off the transcription of the
@@ -184,7 +187,7 @@ The exceptions are small and none of them is a failure of the analysis.
 
 **Table D.5's bootstrap intervals are the one place the rewrite and the deposit part company.** Both draw 10,000 resamples from seed 0. The deposited script resamples every cell in the counterfactual data and then keeps the twenty the table reports; the rewrite selects the twenty first, so the two walk different random streams from the same seed. The deposited script reproduces all sixty published rows exactly. The rewrite differs on seven rows by a unit in the second decimal, which is Monte Carlo variation rather than a difference in the estimator, and no interval changes whether it covers zero.
 
-**One sentence in the results section is wrong twice over.** The text says the counterfactual format gets the sign wrong in 3 of 20 cells, and that in all three neither the counterfactual estimate nor the difference in means can be distinguished from zero. The count is 2, not 3: one of the three cells has a counterfactual estimate of exactly zero, and a zero has no sign to be opposite. Comparing the two signs directly, which is what the published count does, returns 3 under the linear algebra the deposited archive was run against and 4 under a current one, so that figure is not stably reproducible in either direction. Of the two cells that survive, one is null and one is not: the counterfactual estimate for the disputed accusation among Democrats has a 95 per cent interval that excludes zero in Figure 4, in Table D.5, and in the rewrite alike. Those two corrections to the one sentence, the two rounded numbers above, and the transposed Table D.3 headings are the `r n_errata` claims whose fault lies with the article rather than with any code, and they are collected in `graham_coppock_2021_errata.pdf` at the root of this repository, which quotes each published sentence and prints the corrected one with every number in it computed at render time.
+**One sentence in the results section is wrong twice over.** The text says the counterfactual format gets the sign wrong in 3 of 20 cells, and that in all three neither the counterfactual estimate nor the difference in means can be distinguished from zero. The count is 2, not 3: one of the three cells has a counterfactual estimate of exactly zero, and a zero has no sign to be opposite. Comparing the two signs directly, which is what the published count does, returns 3 under the linear algebra the deposited archive was run against and 4 under a current one, so that figure is not stably reproducible in either direction. Of the two cells that survive, one is null and one is not: the counterfactual estimate for the disputed accusation among Democrats has a 95 per cent interval that excludes zero in Figure 4, in Table D.5, and in the rewrite alike. Those two corrections to the one sentence, the two rounded numbers above, and the transposed Table D.3 headings are the `r n_errata` claims whose fault lies with the article rather than with any code, and they are collected in `graham_coppock_2021_errata.pdf` at the root of this repository, which quotes each published sentence and prints the corrected one with every number in it computed at render time. The note also corrects `r n_reference` errors in the reference list, found by checking every entry against Crossref and against the cited works themselves.
 
 ---
 

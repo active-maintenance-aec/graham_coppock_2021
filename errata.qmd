@@ -77,7 +77,9 @@ pts2 <- function(x) {
 
 # A spelled-out count stays spelled out when it is corrected.
 spelled <- function(n) {
-  words <- c("one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten")
+  words <- c("one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
+    "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen",
+    "nineteen", "twenty")
   stopifnot(n >= 1, n <= length(words))
   words[n]
 }
@@ -307,19 +309,95 @@ entries <- tribble(
     "wider apart than the published ones: the change format gets the sign wrong in ",
     "{sum(signs$change_wrong_sign)} of {nrow(signs)} opportunities against the ",
     "counterfactual format's {sum(signs$counterfactual_wrong_sign)}."),
-  "results_counterfactual_wrong_sign"
+  "results_counterfactual_wrong_sign",
+
+  6, "bibliographic", "reference_audit", "brief",
+  "Page (2009) is printed with a broken URL",
+  "published p. 52",
+  "story?id=8316019[[\\&page]]=1.",
+  "story?id=8316019[[&page]]=1.",
+  "The URL is printed with a backslash before its ampersand, a LaTeX escape that reached the page. The story (Susan Page, USA Today, August 13, 2009) is at https://abcnews.go.com/amp/Politics/story?id=8316019&page=1.",
+  "",
+
+  7, "bibliographic", "reference_audit", "brief",
+  "Guess and Coppock (2020) is given the page of its corrigendum",
+  "published p. 52",
+  "British Journal of Political Science 50: [[1517]].",
+  "British Journal of Political Science 50: [[1497--1515]].",
+  "Crossref, doi 10.1017/S0007123418000327: the article runs from p. 1497 to p. 1515 of volume 50, issue 4. Page 1517 is its corrigendum (doi 10.1017/S0007123419000024).",
+  "",
+
+  8, "bibliographic", "reference_audit", "brief",
+  "Jerzy Neyman's given name is misspelled",
+  "published p. 52",
+  "Neyman, [[Jerzey]]. 1923.",
+  "Neyman, [[Jerzy]]. 1923.",
+  "The author is Jerzy Neyman (Jerzy Splawa-Neyman in the 1990 translation, Statistical Science 5(4), doi 10.1214/ss/1177012031).",
+  "",
+
+  9, "bibliographic", "reference_audit", "brief",
+  "Strack and Martin (1987) prints its editors' names inverted",
+  "published p. 53",
+  "Survey Methodology, edited by [[J. Hippler Hans, Schwarz Norbert, and Sudman Seymour]], 123--48.",
+  "Survey Methodology, edited by [[Hans-J. Hippler, Norbert Schwarz, and Seymour Sudman]], 123--48.",
+  "Crossref, doi 10.1007/978-1-4612-4798-2: the volume is edited by Hans-J. Hippler, Norbert Schwarz, and Seymour Sudman. The entry prints each given name after its surname, as if it were one.",
+  "",
+
+  10, "bibliographic", "reference_audit", "brief",
+  "Strack and Martin (1987) misquotes its own title",
+  "published p. 53",
+  "Account of Context Effects in [[Attitudes]] Surveys.",
+  "Account of Context Effects in [[Attitude]] Surveys.",
+  "Crossref, doi 10.1007/978-1-4612-4798-2_7: the chapter is \"Thinking, Judging, and Communicating: A Process Account of Context Effects in Attitude Surveys.\"",
+  "",
+
+  11, "bibliographic", "reference_audit", "brief",
+  "Briñol and Petty (2012) prints an editor's name inverted",
+  "published p. 52",
+  "Handbook of Self-Knowledge, edited by [[Vazire Simine]] and Timothy D. Wilson,",
+  "Handbook of Self-Knowledge, edited by [[Simine Vazire]] and Timothy D. Wilson,",
+  "The Handbook of Self-Knowledge (Guilford Press, 2012) is edited by Simine Vazire and Timothy D. Wilson, as the chapter's own header and the publisher's contents page give it.",
+  "",
+
+  12, "bibliographic", "reference_audit", "brief",
+  "Schryer and Ross (2012) gives its editors in the wrong order",
+  "published p. 52",
+  "In Social Metacognition, eds. [[Kenneth G. DeMarree, Pablo Briñol]], 141--57.",
+  "In Social Metacognition, eds. [[Pablo Briñol and Kenneth G. DeMarree]], 141--57.",
+  "Crossref, doi 10.4324/9780203865989: Social Metacognition (Psychology Press, 2012) is edited by Pablo Briñol and Kenneth G. DeMarree, in that order.",
+  "",
+
+  13, "bibliographic", "reference_audit", "brief",
+  "Tourangeau, Rips, and Rasinski (2000) gives the first author the wrong given name",
+  "published p. 53",
+  "Tourangeau, [[Robert]], Lance J. Rips,",
+  "Tourangeau, [[Roger]], Lance J. Rips,",
+  "Crossref, doi 10.1017/CBO9780511819322: the first author is Roger Tourangeau.",
+  "",
+
+  14, "bibliographic", "reference_audit", "brief",
+  "Yair and Huber (2021) misquotes its own title",
+  "published p. 53",
+  "How Robust Is Evidence of [[Perceptual Partisan]] Bias in Survey Responses?",
+  "How Robust Is Evidence of [[Partisan Perceptual]] Bias in Survey Responses?",
+  "Public Opinion Quarterly 84(2), doi 10.1093/poq/nfaa024: the title is \"How Robust Is Evidence of Partisan Perceptual Bias in Survey Responses? A New Approach for Studying Expressive Responding.\"",
+  ""
 ) |>
   mutate(across(c(title, published, corrected, note, claim_ids), as.character))
 
 stopifnot(nrow(entries) == max(entries$entry), !anyDuplicated(entries$entry))
 
 # The spine's markup, resolved for this document. Another renderer resolves it differently.
-bold <- function(x) str_replace_all(x, "\\[\\[(.*?)\\]\\]", "**\\1**")
+# A backslash in a field is a backslash on the page (entry 6), so it is escaped for markdown.
+bold <- function(x) {
+  str_replace_all(x, fixed("\\"), "\\\\") |>
+    str_replace_all("\\[\\[(.*?)\\]\\]", "**\\1**")
+}
 ```
 
-This note lists `r spelled(nrow(entries))` corrections to "Asking About Attitude Change," published in *Public Opinion Quarterly* 85(1), doi [10.1093/poq/nfab009](https://doi.org/10.1093/poq/nfab009): one appendix table whose column headings are in the wrong order, two corrections to a single sentence that describes the estimates incorrectly, and two misstated numbers. **None of them changes a conclusion of the paper.** The evidence behind the paper's argument, that the change format gets the sign of an effect wrong far more often than the counterfactual format does, is unaffected.
+This note lists `r spelled(nrow(entries))` corrections to "Asking About Attitude Change," published in *Public Opinion Quarterly* 85(1), doi [10.1093/poq/nfab009](https://doi.org/10.1093/poq/nfab009): one appendix table whose column headings are in the wrong order, two corrections to a single sentence that describes the estimates incorrectly, two misstated numbers, and nine errors in the reference list. **None of them changes a conclusion of the paper.** The evidence behind the paper's argument, that the change format gets the sign of an effect wrong far more often than the counterfactual format does, is unaffected.
 
-Every number in a corrected sentence below is computed from the deposited replication archive ([10.7910/DVN/GFF78K](https://doi.org/10.7910/DVN/GFF78K)) at the time this document is rendered, including the numbers that were not wrong. The code and output supporting each correction are at [github.com/active-maintenance-aec/graham_coppock_2021](https://github.com/active-maintenance-aec/graham_coppock_2021).
+Every number in a corrected sentence below, outside the reference list, is computed from the deposited replication archive ([10.7910/DVN/GFF78K](https://doi.org/10.7910/DVN/GFF78K)) at the time this document is rendered, including the numbers that were not wrong. The code and output supporting each correction are at [github.com/active-maintenance-aec/graham_coppock_2021](https://github.com/active-maintenance-aec/graham_coppock_2021).
 
 **Every quantity on the percentage scale is stated to one decimal place, and bold marks the corrections.** A corrected sentence therefore differs from the published one in more places than it is wrong: the article states these quantities in whole points, and setting a whole number to one decimal is not a correction. Only what is bold has changed.
 
