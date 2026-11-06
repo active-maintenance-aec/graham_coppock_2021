@@ -206,8 +206,15 @@ d3_check <- d3_published |>
 # of every note. It is empty where the entry has no ground truth row: a reference list is not
 # an extraction claim. Every id listed here is checked against the ground truth by
 # ground_truth/build_ground_truth.R, which refuses to finish on a dangling one.
+# corrected_values runs parallel to claim_ids, one value per id in the same order, carrying
+# the corrected quantity as a number rather than as a sentence. The sentence already holds
+# it, but only inside prose a reader has to parse. Each value comes from the same expression
+# that glues the sentence, so the two cannot be written apart, and the gate below re-checks
+# that each one is still inside the span it belongs to. An entry that corrects nothing (a
+# note, or any class other than quantity) carries NA, and so does a quantity entry whose
+# claim is not a number printed in the corrected sentence.
 entries <- tribble(
-  ~entry, ~class, ~source, ~form, ~title, ~location, ~published, ~corrected, ~note, ~claim_ids,
+  ~entry, ~class, ~source, ~form, ~title, ~location, ~published, ~corrected, ~note, ~claim_ids, ~corrected_values,
 
   1, "label", "pipeline", "brief",
   "Table D.3's second and third value columns are headed in the wrong order",
@@ -239,7 +246,7 @@ entries <- tribble(
     "value columns are transposed. Table D.3 is reprinted below with the headings in the ",
     "order the body uses. The numbers are unchanged: they are recomputed from the ",
     "deposited data and reproduce the published table cell for cell."),
-  "appendix_d3_cells_as_printed",
+  "appendix_d3_cells_as_printed", NA_character_,
 
   2, "definition", "pipeline", "full",
   "The counterfactual format's sign errors are not all cases in which nothing can be distinguished from zero",
@@ -286,7 +293,7 @@ entries <- tribble(
     "{pts2(d5_estimate(other_wrong_sign$topic, other_wrong_sign$Party, 'Difference', 'conf.high'))}) ",
     "for their difference. Neither of the counterfactual format's sign errors is a ",
     "statistically distinguishable disagreement with the experiment."),
-  "results_wrong_sign_cases_null",
+  "results_wrong_sign_cases_null", NA_character_,
 
   3, "quantity", "pipeline", "full",
   "The effect of asking the level question first among Democrats",
@@ -310,7 +317,7 @@ entries <- tribble(
     "the whole-point precision the article uses. The comparison the sentence makes, that ",
     "the effect is larger among Democrats and Republicans than among pure independents, ",
     "holds."),
-  "results_level_first_democrat",
+  "results_level_first_democrat", whole(abs(100 * stat('Fig 3a Democrat estimate'))),
 
   4, "quantity", "pipeline", "full",
   "The correlation between the two impeachment questions",
@@ -333,7 +340,7 @@ entries <- tribble(
     "up rather than down at two decimals. The share reporting exactly zero change is ",
     "{sprintf('%.4f', 100 * stat('Share reporting exactly zero change'))} per cent and is ",
     "correct as published at whole-percent precision."),
-  "intro_impeach_correlation",
+  "intro_impeach_correlation", sprintf('%.2f', stat('cor(Y1, Y0) impeachment')),
 
   5, "definition", "pipeline", "full",
   "The counterfactual format has two sign errors, not three",
@@ -360,7 +367,7 @@ entries <- tribble(
     "wider apart than the published ones: the change format gets the sign wrong in ",
     "{sum(signs$change_wrong_sign)} of {nrow(signs)} opportunities against the ",
     "counterfactual format's {sum(signs$counterfactual_wrong_sign)}."),
-  "results_counterfactual_wrong_sign",
+  "results_counterfactual_wrong_sign", NA_character_,
 
   6, "bibliographic", "reference_audit", "brief",
   "Page (2009) is printed with a broken URL",
@@ -368,7 +375,7 @@ entries <- tribble(
   "story?id=8316019[[\\&page]]=1.",
   "story?id=8316019[[&page]]=1.",
   "The URL is printed with a backslash before its ampersand, a LaTeX escape that reached the page. The story (Susan Page, USA Today, August 13, 2009) is at https://abcnews.go.com/amp/Politics/story?id=8316019&page=1.",
-  "",
+  "", NA_character_,
 
   7, "bibliographic", "reference_audit", "brief",
   "Guess and Coppock (2020) is given the page of its corrigendum",
@@ -376,7 +383,7 @@ entries <- tribble(
   "British Journal of Political Science 50: [[1517]].",
   "British Journal of Political Science 50: [[1497--1515]].",
   "Crossref, doi 10.1017/S0007123418000327: the article runs from p. 1497 to p. 1515 of volume 50, issue 4. Page 1517 is its corrigendum (doi 10.1017/S0007123419000024).",
-  "",
+  "", NA_character_,
 
   8, "bibliographic", "reference_audit", "brief",
   "Jerzy Neyman's given name is misspelled",
@@ -384,7 +391,7 @@ entries <- tribble(
   "Neyman, [[Jerzey]]. 1923.",
   "Neyman, [[Jerzy]]. 1923.",
   "The author is Jerzy Neyman (Jerzy Splawa-Neyman in the 1990 translation, Statistical Science 5(4), doi 10.1214/ss/1177012031).",
-  "",
+  "", NA_character_,
 
   9, "bibliographic", "reference_audit", "brief",
   "Strack and Martin (1987) prints its editors' names inverted",
@@ -392,7 +399,7 @@ entries <- tribble(
   "Survey Methodology, edited by [[J. Hippler Hans, Schwarz Norbert, and Sudman Seymour]], 123--48.",
   "Survey Methodology, edited by [[Hans-J. Hippler, Norbert Schwarz, and Seymour Sudman]], 123--48.",
   "Crossref, doi 10.1007/978-1-4612-4798-2: the volume is edited by Hans-J. Hippler, Norbert Schwarz, and Seymour Sudman. The entry prints each given name after its surname, as if it were one.",
-  "",
+  "", NA_character_,
 
   10, "bibliographic", "reference_audit", "brief",
   "Strack and Martin (1987) misquotes its own title",
@@ -400,7 +407,7 @@ entries <- tribble(
   "Account of Context Effects in [[Attitudes]] Surveys.",
   "Account of Context Effects in [[Attitude]] Surveys.",
   "Crossref, doi 10.1007/978-1-4612-4798-2_7: the chapter is \"Thinking, Judging, and Communicating: A Process Account of Context Effects in Attitude Surveys.\"",
-  "",
+  "", NA_character_,
 
   11, "bibliographic", "reference_audit", "brief",
   "Briñol and Petty (2012) prints an editor's name inverted",
@@ -408,7 +415,7 @@ entries <- tribble(
   "Handbook of Self-Knowledge, edited by [[Vazire Simine]] and Timothy D. Wilson,",
   "Handbook of Self-Knowledge, edited by [[Simine Vazire]] and Timothy D. Wilson,",
   "The Handbook of Self-Knowledge (Guilford Press, 2012) is edited by Simine Vazire and Timothy D. Wilson, as the chapter's own header and the publisher's contents page give it.",
-  "",
+  "", NA_character_,
 
   12, "bibliographic", "reference_audit", "brief",
   "Schryer and Ross (2012) gives its editors in the wrong order",
@@ -416,7 +423,7 @@ entries <- tribble(
   "In Social Metacognition, eds. [[Kenneth G. DeMarree, Pablo Briñol]], 141--57.",
   "In Social Metacognition, eds. [[Pablo Briñol and Kenneth G. DeMarree]], 141--57.",
   "Crossref, doi 10.4324/9780203865989: Social Metacognition (Psychology Press, 2012) is edited by Pablo Briñol and Kenneth G. DeMarree, in that order.",
-  "",
+  "", NA_character_,
 
   13, "bibliographic", "reference_audit", "brief",
   "Tourangeau, Rips, and Rasinski (2000) gives the first author the wrong given name",
@@ -424,7 +431,7 @@ entries <- tribble(
   "Tourangeau, [[Robert]], Lance J. Rips,",
   "Tourangeau, [[Roger]], Lance J. Rips,",
   "Crossref, doi 10.1017/CBO9780511819322: the first author is Roger Tourangeau.",
-  "",
+  "", NA_character_,
 
   14, "bibliographic", "reference_audit", "brief",
   "Yair and Huber (2021) misquotes its own title",
@@ -432,7 +439,7 @@ entries <- tribble(
   "How Robust Is Evidence of [[Perceptual Partisan]] Bias in Survey Responses?",
   "How Robust Is Evidence of [[Partisan Perceptual]] Bias in Survey Responses?",
   "Public Opinion Quarterly 84(2), doi 10.1093/poq/nfaa024: the title is \"How Robust Is Evidence of Partisan Perceptual Bias in Survey Responses? A New Approach for Studying Expressive Responding.\"",
-  "",
+  "", NA_character_,
 
   15, "bibliographic", "reference_audit", "brief",
   "Yeh et al. (2018) omits its article number",
@@ -440,11 +447,69 @@ entries <- tribble(
   "British Medical Journal [[363]].",
   "British Medical Journal [[363: k5094]].",
   "Crossref, doi 10.1136/bmj.k5094: the article is BMJ 363: k5094. The BMJ paginates by article number, so without it the reference has no locator.",
-  ""
+  "",
+  NA_character_
 ) |>
-  mutate(across(c(title, published, corrected, note, claim_ids), as.character))
+  mutate(across(c(title, published, corrected, note, claim_ids, corrected_values), as.character))
 
 stopifnot(nrow(entries) == max(entries$entry), !anyDuplicated(entries$entry))
+
+# Gate: corrected_values agrees with the sentence it was glued into ----
+# The column and the sentence are written from one expression, so they begin in agreement
+# and this gate exists for the edit that separates them: a value moved from one marked span
+# to another, a span reworded to carry a second number, a claim id appended without its
+# value. Each value has to be inside the span it belongs to, matched by position where the
+# counts line up, and inside SOME span where they do not. The spelled form counts as the
+# numeral, since a minimal edit sets "six" and not "6".
+marked_spans <- function(x) str_match_all(x, "\\[\\[(.*?)\\]\\]")[[1]][, 2]
+
+spelled_numbers <- c("one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+                     "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen",
+                     "seventeen", "eighteen", "nineteen", "twenty")
+
+inside_span <- function(value, span) {
+  numeral <- str_detect(span, fixed(value))
+  spelled <- !is.na(suppressWarnings(as.numeric(value))) &&
+    as.numeric(value) %in% seq_along(spelled_numbers) &&
+    str_detect(span, fixed(spelled_numbers[as.numeric(value)]))
+  numeral || spelled
+}
+
+quantified <- entries |>
+  filter(!is.na(corrected_values)) |>
+  mutate(ids = str_split(claim_ids, ";"), values = str_split(corrected_values, ";"),
+         spans = map(corrected, marked_spans))
+
+stopifnot(all(lengths(quantified$ids) == lengths(quantified$values)))
+
+value_placed <- pmap_lgl(quantified, function(...) {
+  e <- list(...)
+  if (length(e$values) == length(e$spans)) {
+    all(map2_lgl(e$values, e$spans, inside_span))
+  } else {
+    all(map_lgl(e$values, \(v) any(map_lgl(e$spans, \(s) inside_span(v, s)))))
+  }
+})
+
+if (!all(value_placed)) {
+  print(quantified |> filter(!value_placed) |> select(entry, title, corrected_values, corrected))
+  stop("An entry's corrected_values are not in the spans of its corrected sentence.")
+}
+
+# An entry that changes a quantity has to say which one, and an entry that changes none may
+# not carry a value. The class is the declaration and this is where it binds. A note
+# corrects nothing, so it carries NA even where its class is quantity, and an entry with no
+# claim id has no claim to carry a value for. `unvalued` lists the quantity entries whose
+# claim is not a number printed in the corrected sentence; they carry NA by decision.
+unvalued <- integer(0)
+stopifnot(
+  all(!is.na(entries$corrected_values[entries$class == "quantity" & entries$form != "note" &
+                                        !is.na(entries$claim_ids) & entries$claim_ids != "" &
+                                        !entries$entry %in% unvalued])),
+  all(is.na(entries$corrected_values[entries$class != "quantity"])),
+  all(is.na(entries$corrected_values[entries$form == "note"])),
+  all(is.na(entries$corrected_values) | (!is.na(entries$claim_ids) & entries$claim_ids != ""))
+)
 
 # The spine's markup, resolved for this document. Another renderer resolves it differently.
 # A backslash in a field is a backslash on the page (entry 6), so it is escaped for markdown.
