@@ -15,7 +15,10 @@
 - [Rewrite Verification](#rewrite-verification)
 - [R Environment](#r-environment)
 
-**Archived at Zenodo:** [doi:10.5281/zenodo.24168389](https://doi.org/10.5281/zenodo.24168389). This DOI always resolves to the latest release of the maintained version.
+**Archived at Zenodo:**
+[doi:10.5281/zenodo.24168389](https://doi.org/10.5281/zenodo.24168389).
+This DOI always resolves to the latest release of the maintained
+version.
 
 *Drafted by Claude Opus 5 under the supervision of Alex Coppock.*
 
@@ -337,7 +340,12 @@ comparing digits.
 `ground_truth/extract_archive_values.R` fills the `value_script` column.
 It runs the deposited scripts in a scratch copy, with the two repairs
 above, and compares each of their objects against the maintained output
-it corresponds to.
+it corresponds to. Before that it runs each deposited script exactly as
+shipped, each in its own copy of the deposit, and records the outcome in
+`archive_run_status.csv` and every file a run adds to or changes in that
+copy in `archive_overwrites.csv`: 1 of the 2 analysis scripts finish,
+and the runs add 2 files the deposit does not contain and write over 0
+of its own.
 
 | Object | Archive rows | Rewrite rows | Joined | Largest difference |
 |:---|---:|---:|---:|---:|
@@ -368,10 +376,10 @@ and the rewrite
 
 | Claim | Published | Rewrite | Locus |
 |:---|:---|---:|:---|
-| Text, p. 32: Correlation of the two impeachment questions | 0.82 | 0.8285 | paper_internal |
-| Text, p. 44: Same decrease among Democrats (points) | 14 | 13.4590 | paper_internal |
-| Text, p. 46: Counterfactual format has the opposite sign | 3 | 2.0000 | paper_internal |
-| Text, p. 46: Sign-miss cells in which neither estimate is distinguishable from zero | 3 | 1.0000 | paper_internal |
+| Introduction, p. 32: Correlation of the two impeachment questions | 0.82 | 0.8285 | paper_internal |
+| Results, p. 44: Same decrease among Democrats (points) | 14 | 13.4590 | paper_internal |
+| Results, p. 46: Counterfactual format has the opposite sign | 3 | 2.0000 | paper_internal |
+| Results, p. 46: Sign-miss cells in which neither estimate is distinguishable from zero | 3 | 1.0000 | paper_internal |
 | Table D.3: Cells agreeing if the column headings are read as printed | 336 | 172.0000 | paper_internal |
 | Table D.5: Bootstrap standard errors and interval endpoints agreeing | 60 | 53.0000 | rewrite |
 
@@ -537,60 +545,60 @@ alt="Figure E.2. Study 2b, setting the simultaneous outcomes format against the 
 
 ## Rewrite Verification
 
-| Table or figure | Claim | Published | Rewrite | Match | Holds | Locus |
+| Location | Claim | Published | Rewrite | Match | Holds | Locus |
 |:---|:---|:---|---:|---:|:---|:---|
-| Text, p. 31 | Survey responses obtained from Lucid | 4034 | 4034.0000 | 1 | NA | NA |
-| Text, p. 32 | Correlation of the two impeachment questions | 0.82 | 0.8285 | 0 | NA | paper_internal |
-| Text, p. 32 | Share reporting exactly zero change (per cent) | 72 | 72.0870 | 1 | NA | NA |
-| Text, p. 32 | Average difference between the two questions | 0.16 | 0.1601 | 1 | NA | NA |
-| Text, p. 32 | Standard error of that average | 0.02 | 0.0226 | 1 | NA | NA |
-| Text, p. 38 | Cornish, Democrats reporting less likely (per cent) | 87 | 86.7920 | 1 | NA | NA |
-| Text, p. 38 | Cornish, Republicans reporting no effect (per cent) | 57 | 56.7570 | 1 | NA | NA |
-| Text, p. 39 | Cornish, Democrats’ more-minus-less score, change format | -0.85 | -0.8491 | 1 | NA | NA |
-| Text, p. 39 | The same score with the level question asked first | -0.61 | -0.6087 | 1 | NA | NA |
-| Text, p. 39 | Cornish, effect of the level question on Democrats’ more-minus-less score | 0.24 | 0.2404 | 1 | NA | NA |
-| Text, p. 39 | Standard error of the level question’s effect, Democrats | 0.10 | 0.0972 | 1 | NA | NA |
-| Text, p. 39 | Cornish, same effect among Republicans | -0.24 | -0.2438 | 1 | NA | NA |
-| Text, p. 39 | Standard error of the level question’s effect, Republicans | 0.14 | 0.1421 | 1 | NA | NA |
-| Text, p. 39 | Cornish, difference in means among Democrats | 0.02 | 0.0208 | 1 | NA | NA |
-| Text, p. 39 | Standard error of that difference in means, Democrats | 0.32 | 0.3186 | 1 | NA | NA |
-| Text, p. 39 | Cornish, difference in means among Republicans | -2.01 | -2.0131 | 1 | NA | NA |
-| Text, p. 39 | Standard error of that difference in means, Republicans | 0.33 | 0.3263 | 1 | NA | NA |
-| Text, p. 39 | Parties of two whose experimental estimate is negative with an interval excluding zero | 1 | 1.0000 | NA | TRUE | NA |
-| Text, p. 39 | Cornish, counterfactual format estimate among Democrats | -0.49 | -0.4854 | 1 | NA | NA |
-| Text, p. 39 | Standard error of the counterfactual estimate, Democrats | 0.11 | 0.1111 | 1 | NA | NA |
-| Text, p. 40 | Cornish, counterfactual format estimate among Republicans | -1.07 | -1.0685 | 1 | NA | NA |
-| Text, p. 40 | Standard error of the counterfactual estimate, Republicans | 0.17 | 0.1693 | 1 | NA | NA |
-| Text, p. 40 | Democrats overstate negative change by approximately half a point | 0.5 | 0.5062 | NA | NA | NA |
-| Text, p. 40 | Republicans understate negative change by almost a full point | 1 | 0.9446 | NA | NA | NA |
-| Text, p. 40 | Study 1 N | 417 | 417.0000 | 1 | NA | NA |
-| Text, p. 40 | Study 2a N | 2475 | 2475.0000 | 1 | NA | NA |
-| Text, p. 44 | Study 2b N | 1110 | 1110.0000 | 1 | NA | NA |
-| Text, p. 44 | Study 3 N | 1074 | 1074.0000 | 1 | NA | NA |
-| Text, p. 44 | Decrease in reporting any change, all respondents (points) | 10 | 9.9271 | 1 | NA | NA |
-| Text, p. 44 | Standard error of that effect (points) | 2 | 2.4431 | 1 | NA | NA |
-| Text, p. 44 | Same decrease among Democrats (points) | 14 | 13.4590 | 0 | NA | paper_internal |
-| Text, p. 44 | Standard error, Democrats (points) | 3 | 3.1890 | 1 | NA | NA |
-| Text, p. 44 | Same decrease among Republicans (points) | 8 | 7.9455 | 1 | NA | NA |
-| Text, p. 44 | Standard error, Republicans (points) | 4 | 4.2791 | 1 | NA | NA |
-| Text, p. 44 | Same decrease among pure independents (points) | 2 | 2.2329 | 1 | NA | NA |
-| Text, p. 44 | Standard error, independents (points) | 6 | 6.1777 | 1 | NA | NA |
-| Text, p. 44 | Party groups of two whose decrease exceeds the independents’ | 2 | 2.0000 | NA | TRUE | NA |
-| Text, p. 46 | Cells compared, change format against the experiment | 20 | 20.0000 | 1 | NA | NA |
-| Text, p. 46 | Change format has the opposite sign | 12 | 12.0000 | 1 | NA | NA |
-| Text, p. 46 | Counterfactual format has the opposite sign | 3 | 2.0000 | 0 | NA | paper_internal |
-| Text, p. 46 | Sign-miss cells in which neither estimate is distinguishable from zero | 3 | 1.0000 | NA | FALSE | paper_internal |
-| Text, p. 46 | Tax Cuts and Jobs Act parties of two whose experimental estimate contains zero | 2 | 2.0000 | NA | TRUE | NA |
-| Text, p. 46 | Opportunities to evaluate a counterfactual guess | 40 | 40.0000 | 1 | NA | NA |
-| Text, p. 47 | Difference in means tests rejecting at p \< 0.05 | 12 | 12.0000 | 1 | NA | NA |
-| Text, p. 47 | The same count as a percentage of the forty tests | 30.0 | 30.0000 | 1 | NA | NA |
-| Text, p. 46 | Comparisons of the experiment against the counterfactual guess | 20 | 20.0000 | 1 | NA | NA |
-| Text, p. 46 | Differences whose bootstrap interval excludes zero | 6 | 6.0000 | 1 | NA | NA |
-| Text, p. 46 | The same count as a percentage of the twenty comparisons | 30 | 30.0000 | 1 | NA | NA |
-| Text, p. 49 | Kavanaugh cells of four in which most respondents report the vote changed their preference | 4 | 4.0000 | NA | TRUE | NA |
-| Text, p. 49 | Sign of the counterfactual estimate for Democrats whose Senator opposed Kavanaugh | 1 | 1.0000 | NA | TRUE | NA |
-| Text, p. 49 | Parties of two whose counterfactual estimate of Biden’s loss excludes zero | 1 | 1.0000 | NA | TRUE | NA |
-| Text, p. 49 | Of one: whether the DREAM Act counterfactual boost is larger for Republicans | 1 | 1.0000 | NA | TRUE | NA |
+| Introduction, p. 31 | Survey responses obtained from Lucid | 4034 | 4034.0000 | 1 | NA | NA |
+| Introduction, p. 32 | Correlation of the two impeachment questions | 0.82 | 0.8285 | 0 | NA | paper_internal |
+| Introduction, p. 32 | Share reporting exactly zero change (per cent) | 72 | 72.0870 | 1 | NA | NA |
+| Introduction, p. 32 | Average difference between the two questions | 0.16 | 0.1601 | 1 | NA | NA |
+| Introduction, p. 32 | Standard error of that average | 0.02 | 0.0226 | 1 | NA | NA |
+| Detailed Example, p. 38 | Cornish, Democrats reporting less likely (per cent) | 87 | 86.7920 | 1 | NA | NA |
+| Detailed Example, p. 38 | Cornish, Republicans reporting no effect (per cent) | 57 | 56.7570 | 1 | NA | NA |
+| Detailed Example, p. 39 | Cornish, Democrats’ more-minus-less score, change format | -0.85 | -0.8491 | 1 | NA | NA |
+| Detailed Example, p. 39 | The same score with the level question asked first | -0.61 | -0.6087 | 1 | NA | NA |
+| Detailed Example, p. 39 | Cornish, effect of the level question on Democrats’ more-minus-less score | 0.24 | 0.2404 | 1 | NA | NA |
+| Detailed Example, p. 39 | Standard error of the level question’s effect, Democrats | 0.10 | 0.0972 | 1 | NA | NA |
+| Detailed Example, p. 39 | Cornish, same effect among Republicans | -0.24 | -0.2438 | 1 | NA | NA |
+| Detailed Example, p. 39 | Standard error of the level question’s effect, Republicans | 0.14 | 0.1421 | 1 | NA | NA |
+| Detailed Example, p. 39 | Cornish, difference in means among Democrats | 0.02 | 0.0208 | 1 | NA | NA |
+| Detailed Example, p. 39 | Standard error of that difference in means, Democrats | 0.32 | 0.3186 | 1 | NA | NA |
+| Detailed Example, p. 39 | Cornish, difference in means among Republicans | -2.01 | -2.0131 | 1 | NA | NA |
+| Detailed Example, p. 39 | Standard error of that difference in means, Republicans | 0.33 | 0.3263 | 1 | NA | NA |
+| Detailed Example, p. 39 | Parties of two whose experimental estimate is negative with an interval excluding zero | 1 | 1.0000 | NA | TRUE | NA |
+| Detailed Example, p. 39 | Cornish, counterfactual format estimate among Democrats | -0.49 | -0.4854 | 1 | NA | NA |
+| Detailed Example, p. 39 | Standard error of the counterfactual estimate, Democrats | 0.11 | 0.1111 | 1 | NA | NA |
+| Detailed Example, p. 40 | Cornish, counterfactual format estimate among Republicans | -1.07 | -1.0685 | 1 | NA | NA |
+| Detailed Example, p. 40 | Standard error of the counterfactual estimate, Republicans | 0.17 | 0.1693 | 1 | NA | NA |
+| Detailed Example, p. 40 | Democrats overstate negative change by approximately half a point | 0.5 | 0.5062 | NA | NA | NA |
+| Detailed Example, p. 40 | Republicans understate negative change by almost a full point | 1 | 0.9446 | NA | NA | NA |
+| Research Design, p. 40 | Study 1 N | 417 | 417.0000 | 1 | NA | NA |
+| Research Design, p. 40 | Study 2a N | 2475 | 2475.0000 | 1 | NA | NA |
+| Research Design, p. 44 | Study 2b N | 1110 | 1110.0000 | 1 | NA | NA |
+| Research Design, p. 44 | Study 3 N | 1074 | 1074.0000 | 1 | NA | NA |
+| Results, p. 44 | Decrease in reporting any change, all respondents (points) | 10 | 9.9271 | 1 | NA | NA |
+| Results, p. 44 | Standard error of that effect (points) | 2 | 2.4431 | 1 | NA | NA |
+| Results, p. 44 | Same decrease among Democrats (points) | 14 | 13.4590 | 0 | NA | paper_internal |
+| Results, p. 44 | Standard error, Democrats (points) | 3 | 3.1890 | 1 | NA | NA |
+| Results, p. 44 | Same decrease among Republicans (points) | 8 | 7.9455 | 1 | NA | NA |
+| Results, p. 44 | Standard error, Republicans (points) | 4 | 4.2791 | 1 | NA | NA |
+| Results, p. 44 | Same decrease among pure independents (points) | 2 | 2.2329 | 1 | NA | NA |
+| Results, p. 44 | Standard error, independents (points) | 6 | 6.1777 | 1 | NA | NA |
+| Results, p. 44 | Party groups of two whose decrease exceeds the independents’ | 2 | 2.0000 | NA | TRUE | NA |
+| Results, p. 46 | Cells compared, change format against the experiment | 20 | 20.0000 | 1 | NA | NA |
+| Results, p. 46 | Change format has the opposite sign | 12 | 12.0000 | 1 | NA | NA |
+| Results, p. 46 | Counterfactual format has the opposite sign | 3 | 2.0000 | 0 | NA | paper_internal |
+| Results, p. 46 | Sign-miss cells in which neither estimate is distinguishable from zero | 3 | 1.0000 | NA | FALSE | paper_internal |
+| Results, p. 46 | Tax Cuts and Jobs Act parties of two whose experimental estimate contains zero | 2 | 2.0000 | NA | TRUE | NA |
+| Results, p. 46 | Opportunities to evaluate a counterfactual guess | 40 | 40.0000 | 1 | NA | NA |
+| Results, p. 47 | Difference in means tests rejecting at p \< 0.05 | 12 | 12.0000 | 1 | NA | NA |
+| Results, p. 47 | The same count as a percentage of the forty tests | 30.0 | 30.0000 | 1 | NA | NA |
+| Results, p. 46 | Comparisons of the experiment against the counterfactual guess | 20 | 20.0000 | 1 | NA | NA |
+| Results, p. 46 | Differences whose bootstrap interval excludes zero | 6 | 6.0000 | 1 | NA | NA |
+| Results, p. 46 | The same count as a percentage of the twenty comparisons | 30 | 30.0000 | 1 | NA | NA |
+| The Nonrandomized Counterfactual Format, p. 49 | Kavanaugh cells of four in which most respondents report the vote changed their preference | 4 | 4.0000 | NA | TRUE | NA |
+| The Nonrandomized Counterfactual Format, p. 49 | Sign of the counterfactual estimate for Democrats whose Senator opposed Kavanaugh | 1 | 1.0000 | NA | TRUE | NA |
+| The Nonrandomized Counterfactual Format, p. 49 | Parties of two whose counterfactual estimate of Biden’s loss excludes zero | 1 | 1.0000 | NA | TRUE | NA |
+| The Nonrandomized Counterfactual Format, p. 49 | Of one: whether the DREAM Act counterfactual boost is larger for Republicans | 1 | 1.0000 | NA | TRUE | NA |
 | Figure 1b | Average change, party ID 1 | 0.17 | 0.1670 | 1 | NA | NA |
 | Figure 1b | Average change, party ID 2 | 0.19 | 0.1890 | 1 | NA | NA |
 | Figure 1b | Average change, party ID 3 | 0.29 | 0.2857 | 1 | NA | NA |
@@ -598,12 +606,12 @@ alt="Figure E.2. Study 2b, setting the simultaneous outcomes format against the 
 | Figure 1b | Average change, party ID 5 | 0.14 | 0.1367 | 1 | NA | NA |
 | Figure 1b | Average change, party ID 6 | 0.17 | 0.1677 | 1 | NA | NA |
 | Figure 1b | Average change, party ID 7 | 0.06 | 0.0578 | 1 | NA | NA |
-| Figure 1b | Partisan groups of seven whose average change is positive with an interval excluding zero | 6 | 6.0000 | NA | TRUE | NA |
+| Introduction, p. 32 | Partisan groups of seven whose average change is positive with an interval excluding zero | 6 | 6.0000 | NA | TRUE | NA |
 | Figure 3a | Estimates plotted (ten facets by All, Democrat, Republican) | 30 | 30.0000 | 1 | NA | NA |
 | Figure 3a | Pooled decrease in reporting any change, all respondents (points) | 10 | 9.9271 | 1 | NA | NA |
 | Figure 3b | Means plotted (nine facets by two formats by two parties) | 36 | 36.0000 | 1 | NA | NA |
-| Figure 3b | Endorsed Trump, Republicans: sign of the level question’s effect | -1 | -1.0000 | NA | TRUE | NA |
-| Figure 3b | Mueller comments, Democrats: sign of the level question’s effect | -1 | -1.0000 | NA | TRUE | NA |
+| Results, p. 45 | Endorsed Trump, Republicans: sign of the level question’s effect | -1 | -1.0000 | NA | TRUE | NA |
+| Results, p. 45 | Mueller comments, Democrats: sign of the level question’s effect | -1 | -1.0000 | NA | TRUE | NA |
 | Figure 2 | Printed labels agreeing with the published figure | 10 | 10.0000 | 1 | NA | NA |
 | Figure 4 | Printed labels agreeing with the published figure | 96 | 96.0000 | 1 | NA | NA |
 | Figure 5 | Printed labels agreeing with the published figure | 24 | 24.0000 | 1 | NA | NA |
@@ -619,8 +627,8 @@ alt="Figure E.2. Study 2b, setting the simultaneous outcomes format against the 
 | Table D.5 | Point estimates agreeing with the published table | 60 | 60.0000 | 1 | NA | NA |
 | Table D.5 | Sample sizes agreeing | 60 | 60.0000 | 1 | NA | NA |
 | Table D.5 | Bootstrap standard errors and interval endpoints agreeing | 60 | 53.0000 | 0 | NA | rewrite |
-| Figure E.2a | No-pretreatment cells of four in which the simultaneous format sits further from the experiment | 3 | 3.0000 | NA | TRUE | NA |
-| Figure E.2b | Ratio of the simultaneous to the change format share of Democrats reporting more support | 2 | 2.2177 | NA | NA | NA |
+| Supplementary Material, Section E.2 | No-pretreatment cells of four in which the simultaneous format sits further from the experiment | 3 | 3.0000 | NA | TRUE | NA |
+| Supplementary Material, Section E.2 | Ratio of the simultaneous to the change format share of Democrats reporting more support | 2 | 2.2177 | NA | NA | NA |
 
 Rewrite verification: 62 of 67 value claims match the published values,
 and 11 of 12 descriptive claims hold
@@ -634,12 +642,12 @@ and 11 of 12 descriptive claims hold
 | tidyverse  | 2.0.0   |
 | estimatr   | 2.0.1   |
 | ggh4x      | 0.3.1   |
-| gridExtra  | 2.3     |
+| gridExtra  | 2.3.1   |
 | rsample    | 1.3.2   |
-| knitr      | 1.51    |
-| kableExtra | 1.4.0   |
+| knitr      | 1.52    |
+| kableExtra | 1.4.1   |
 | here       | 1.0.2   |
 
 Key package versions
 
-R version: R version 4.6.0 (2026-04-24)
+R version: R version 4.6.2 (2026-10-29)

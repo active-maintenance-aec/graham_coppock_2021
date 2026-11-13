@@ -1,5 +1,6 @@
 # graham_coppock_2021/ground_truth/extract_archive_values.R
-# Output: ground_truth/archive_values.csv
+# Output: ground_truth/archive_values.csv, ground_truth/archive_run_status.csv,
+#   ground_truth/archive_overwrites.csv
 # Depends on: original/ (fetched by download_original.R), maintained/output/ (a completed
 #   run of run_all.R)
 # Description: Run the deposited analysis scripts and record, for every quantity the
@@ -7,6 +8,14 @@
 #   rewrite's. The result is the committed archive_values.csv, which build_ground_truth.R
 #   reads to fill value_script. Without it, value_script would be an assertion that the
 #   two agree rather than a measurement of whether they do.
+#
+#   Before that, each deposited script is run once exactly as shipped, by Rscript in its
+#   own fresh copy of the deposit, and its exit status and every file it adds to or
+#   changes in that copy are recorded in archive_run_status.csv and
+#   archive_overwrites.csv. There is one pass, as_shipped. The deposit ships no
+#   intermediate that any of its own code writes (both .rds files are data, built by no
+#   deposited script), so a stripped pass would withhold nothing and is not run.
+#   functions.R is only ever sourced by the two analysis scripts and gets no row.
 #
 #   This script is deliberately NOT part of run_all.R. It runs the deposit, which needs
 #   two edits that cannot be made to original/ itself, so it works in a copy:
@@ -30,6 +39,76 @@ run_dir <- Sys.getenv("ARCHIVE_RUN_DIR",
 out_dir <- here::here("maintained", "output")
 stopifnot(dir.exists(out_dir))
 stopifnot(dir.exists(here::here("original")))
+
+# The deposit as shipped ----
+# Each script gets its own copy so that what it writes is attributed to it alone. A file
+# whose modification time moves is one the script wrote, and its MD5 against the
+# deposited copy says whether the contents came back the same.
+analysis_scripts <- c("analysis_main.R", "analysis_impeach.R")
+
+snapshot <- function(dir) {
+  files <- list.files(dir, recursive = TRUE, all.files = TRUE, no.. = TRUE)
+  tibble(file = files,
+         md5 = unname(tools::md5sum(file.path(dir, files))),
+         mtime = file.mtime(file.path(dir, files)))
+}
+
+run_as_shipped <- function(script) {
+  dir <- file.path(run_dir, "as_shipped", script)
+  unlink(dir, recursive = TRUE)
+  dir.create(dir, recursive = TRUE)
+  file.copy(list.files(here::here("original"), full.names = TRUE), dir,
+            overwrite = TRUE, copy.date = TRUE)
+  before <- snapshot(dir)
+  Sys.sleep(1)
+  run <- processx::run("Rscript", script, wd = dir, error_on_status = FALSE,
+                       timeout = 3600, stderr_to_stdout = TRUE)
+  after <- snapshot(dir)
+
+  # The first error and, for an rlang condition, the "!" line beneath it that says what
+  # went wrong.
+  output <- str_split_1(run$stdout, "\n")
+  first_error <- head(which(str_detect(output, "^Error")), 1)
+  error_lines <- if (length(first_error) == 0) character(0) else {
+    detail <- output[seq(first_error + 1, length.out = 2)]
+    c(output[first_error], detail[str_detect(detail, "^! ")])
+  }
+  status <- tibble(
+    pass = "as_shipped",
+    script,
+    role = "analysis",
+    exit_status = if (run$timeout) NA_integer_ else run$status,
+    outcome = case_when(run$timeout ~ "timeout", run$status == 0 ~ "clean",
+                        .default = "error"),
+    stopped_at = if (length(error_lines) > 0) {
+      str_squish(str_c(error_lines, collapse = " "))
+    } else {
+      NA_character_
+    }
+  )
+
+  effects <- full_join(before, after, by = "file", suffix = c("_before", "_after")) |>
+    mutate(effect = case_when(
+      is.na(md5_before) ~ "added",
+      is.na(md5_after) ~ "deleted",
+      mtime_after > mtime_before ~ "overwritten",
+      .default = NA_character_
+    )) |>
+    filter(!is.na(effect)) |>
+    transmute(pass = "as_shipped", file, effect,
+              matches_deposit = if_else(effect == "overwritten", md5_after == md5_before, NA))
+
+  list(status = status, effects = effects)
+}
+
+as_shipped <- map(analysis_scripts, run_as_shipped)
+run_status <- map(as_shipped, "status") |> list_rbind()
+overwrites <- map(as_shipped, "effects") |> list_rbind() |> distinct()
+
+write_csv(run_status, here::here("ground_truth", "archive_run_status.csv"))
+write_csv(overwrites, here::here("ground_truth", "archive_overwrites.csv"))
+print(run_status, width = 200)
+print(overwrites, width = 200)
 
 # Build the scratch copy ----
 dir.create(file.path(run_dir, "drafts", "POQ_RR", "figures"), recursive = TRUE, showWarnings = FALSE)

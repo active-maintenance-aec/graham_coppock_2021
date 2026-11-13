@@ -500,6 +500,13 @@ if (!all(value_placed)) {
   stop("An entry's corrected_values are not in the spans of its corrected sentence.")
 }
 
+# The placement is written to the spine as values_in_spans, one logical per entry: TRUE
+# when every corrected value is the token its sentence prints, NA for an entry with no
+# values. The gate above stops on FALSE, because no entry here stores a value on the
+# claim's scale rather than the sentence's.
+entries <- entries |>
+  left_join(tibble(entry = quantified$entry, values_in_spans = value_placed), by = "entry")
+
 # An entry that changes a quantity has to say which one, and an entry that changes none may
 # not carry a value. The class is the declaration and this is where it binds. A note
 # corrects nothing, so it carries NA even where its class is quantity, and an entry with no

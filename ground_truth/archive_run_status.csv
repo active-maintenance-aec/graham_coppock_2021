@@ -1,0 +1,3 @@
+pass,script,role,exit_status,outcome,stopped_at
+as_shipped,analysis_main.R,analysis,1,error,Error in `ggsave()`: ! Cannot find directory 'drafts/POQ_RR/figures'.
+as_shipped,analysis_impeach.R,analysis,0,clean,NA

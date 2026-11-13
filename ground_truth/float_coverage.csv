@@ -1,0 +1,15 @@
+float,published_numbers,covered,reproduced_by_rewrite,reproduced_by_archive,plotted,plotted_reproduced,note
+Table 1,18,0,0,0,NA,NA,"Counts of polls and questions from the authors' search of public polls, transcribed in the extraction; no deposited data produce them."
+Figure 1,7,7,7,7,7,7,Panel (a) plots individual responses and prints no numbers; the counts are panel (b)'s seven printed means.
+Figure 2,10,10,10,10,10,10,NA
+Table 2,8,0,0,0,NA,NA,"Summarizes the treatments and outcome questions; its numbers are survey wording, carried in the extraction."
+Figure 3,0,0,0,0,66,66,Prints no numbers; plotted counts the estimates in panel (a) and the means in panel (b).
+Figure 4,96,96,96,96,96,96,NA
+Table 3,3,0,0,0,NA,NA,"Summarizes the pretreated treatments and outcome questions; its numbers are survey wording, carried in the extraction."
+Figure 5,24,24,24,24,24,24,NA
+Figure A.1,0,0,0,0,0,0,A diagram of the design; prints no numbers.
+Table B.1,0,0,0,0,NA,NA,Reproduces the Cornish survey text; carries no data.
+Table D.3,420,420,420,420,NA,NA,"Cells read in the corrected column order; read as printed, fewer agree (errata entry 5)."
+Table D.4,360,360,360,360,NA,NA,NA
+Table D.5,180,180,173,180,NA,NA,The rewrite's bootstrap differs from the deposit's by Monte Carlo variation; the deposit reproduces every row.
+Figure E.2,44,44,44,44,44,44,NA
